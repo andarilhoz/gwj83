@@ -2,15 +2,16 @@ extends CharacterBody2D
 
 @onready var player = %Player
 @export var speed = 50
-
-func _process(delta):
-	if !player:
-		player = get_tree().get_root().find_child("Player", true, false)
-		if player:
-			print("Player encontrado DEPOIS:", player)
+@export var stop_distance: float = 16.0  # raio de parada
 
 func _physics_process(delta):
 	if player:
-		var direction = global_position.direction_to(player.global_position)
-		velocity = direction * speed
-		move_and_slide()
+		var to_player = player.global_position - global_position
+		var distance = to_player.length()
+
+		if distance > stop_distance:
+			var direction = to_player.normalized()
+			velocity = direction * speed
+			move_and_slide()
+		else:
+			velocity = Vector2.ZERO

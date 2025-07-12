@@ -372,6 +372,7 @@ ease = 2
 physics_interpolation_mode = 1
 position = Vector2(344, 264)
 zoom = Vector2(2.5, 2.5)
+process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -398,6 +399,7 @@ godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("tile_movement_component")]
+unique_name_in_owner = true
 position = Vector2(344, 264)
 scale = Vector2(0.0705, 0.0705)
 script = ExtResource("1_dbro3")
