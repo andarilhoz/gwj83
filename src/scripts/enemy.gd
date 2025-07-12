@@ -9,6 +9,10 @@ extends CharacterBody2D
 
 var walk_timer: float = 0.0
 
+func _ready():
+	attack.player = player  # passa a referência pro componente de ataque
+
+
 func _physics_process(delta):
 	if !player or attack.is_attacking:
 		return

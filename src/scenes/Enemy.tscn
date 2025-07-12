@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://3a1m2kb51an2"]
+[gd_scene load_steps=34 format=3 uid="uid://3a1m2kb51an2"]
 
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_dyya8"]
 [ext_resource type="Texture2D" uid="uid://l2kwc14oabhu" path="res://src/assets/EnemyPlaceHolder/Orc-Attack01.png" id="1_rsx1q"]
@@ -201,6 +201,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yue2g"]
 size = Vector2(11, 15)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rvav"]
+radius = 5.09902
+
 [node name="Enemy_Base" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_dyya8")
@@ -208,11 +211,18 @@ script = ExtResource("1_dyya8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8xw2p")
 animation = &"Walk"
-frame_progress = 0.15881
+frame_progress = 0.798048
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EnemyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_yue2g")
 
 [node name="EnemyAttack" type="Node" parent="."]
 script = ExtResource("6_6rvav")
+
+[node name="Attack_Hitbox" type="Area2D" parent="."]
+
+[node name="Attack Collider" type="CollisionShape2D" parent="Attack_Hitbox"]
+position = Vector2(11, 0)
+shape = SubResource("CircleShape2D_6rvav")
+disabled = true
