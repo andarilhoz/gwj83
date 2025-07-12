@@ -1,20 +1,17 @@
 extends CharacterBody2D
 
-@export var tilemap_slime: NodePath
 @export var tile_movement_component: TileMovementComponent
+@export var energy_component: EnergyComponent
 
-var _tilemap_slime: TileMapDual
+@export var walk_loss_energy: float
+@export var dash_loss_energy: float
+
 var _move_timer: float = 0.0
-var painted_coords = Vector2i(2, 1)
-
 var last_direction = Vector2.ZERO
 
-var dashing: bool = false
-
 func _ready():
-	_tilemap_slime = get_node(tilemap_slime)
 	tile_movement_component.start(self)
-	paint_current_tile()
+	tile_movement_component.painted_floor.connect(Callable(self, "_on_painted_floor"))
 
 func _process(delta):
 	_move_timer -= delta
@@ -33,27 +30,27 @@ func _process(delta):
 		current_direction = Vector2.RIGHT
 	
 	if current_direction != Vector2.ZERO:
-		last_direction = current_direction
-		tile_movement_component.move_in_direction(self, current_direction)
+		move_towards(current_direction)
 	
 	if Input.is_action_just_pressed("attack"):
 		dash()
 
+func move_towards(direction: Vector2):
+	var has_slime = tile_movement_component.has_slime_in_direction(direction)
+	var can_spend = energy_component.can_lose_energy(walk_loss_energy)
+	
+	if(!has_slime && !can_spend):
+		return
+		
+	last_direction = direction
+	tile_movement_component.move_in_direction(self, direction)
 
 func dash():
-	dashing = true
+	if !energy_component.can_lose_energy(dash_loss_energy):
+		return
+	
+	energy_component.lose_energy(dash_loss_energy)
 	tile_movement_component.dash_towards(self, 3, last_direction)
 
-func paint_current_tile():
-	var cell = _tilemap_slime.local_to_map(position)
-	_tilemap_slime.set_cell(cell, 0, painted_coords)
-
-func _paint_tiles(cells):
-	for cell in cells:
-		_tilemap_slime.set_cell(cell, 0, painted_coords)
-
-func _on_move_finished():
-	paint_current_tile()
-
-func _on_dash_finished():
-	dashing = false
+func _on_painted_floor():
+	energy_component.lose_energy(walk_loss_energy)

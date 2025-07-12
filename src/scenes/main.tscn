@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=24 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Script" uid="uid://b4ymxb2exqw5j" path="res://src/scripts/player.gd" id="1_dbro3"]
@@ -9,9 +9,12 @@
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/TileMapDual.gd" id="5_lp058"]
 [ext_resource type="Material" uid="uid://ckch5r1m2f8oo" path="res://assets/shader/shader-material.tres" id="5_p1ia5"]
 [ext_resource type="Script" uid="uid://bahh1mknjhcs5" path="res://src/scripts/tile_movement_component.gd" id="8_5lsyw"]
+[ext_resource type="Script" uid="uid://bqpu7nte3oa33" path="res://src/scripts/energy_component.gd" id="10_ccybt"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_p1ia5"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_kbdt0"]
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="12_p1ia5"]
+[ext_resource type="Texture2D" uid="uid://bn3t3m1vs25hl" path="res://src/assets/bar_1.png" id="13_4rjby"]
+[ext_resource type="Texture2D" uid="uid://cxn28ifxip22h" path="res://src/assets/bar_2.png" id="14_ccybt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rjby"]
 texture = ExtResource("2_kbdt0")
@@ -299,13 +302,15 @@ display_material = ExtResource("5_p1ia5")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("tile_movement_component")]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("tile_movement_component", "energy_component")]
 unique_name_in_owner = true
 position = Vector2(344, 264)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dbro3")
-tilemap_slime = NodePath("../TileMapSlime")
 tile_movement_component = NodePath("TileMovementComponent")
+energy_component = NodePath("EnergyComponent")
+walk_loss_energy = 1.0
+dash_loss_energy = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_h2yge")
@@ -317,7 +322,13 @@ texture = ExtResource("2_2lg1k")
 
 [node name="TileMovementComponent" type="Node2D" parent="Player"]
 script = ExtResource("8_5lsyw")
+tilemap_slime = NodePath("../../TileMapSlime")
 tilemap_path = NodePath("../../WalkablePath")
+
+[node name="EnergyComponent" type="Node" parent="Player" node_paths=PackedStringArray("progress_bar")]
+script = ExtResource("10_ccybt")
+progress_bar = NodePath("../../CanvasLayer/TextureProgressBar")
+initial_energy = 100.0
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
@@ -333,3 +344,21 @@ dead_zone_height = 0.135
 [node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
 position = Vector2(471, 273)
 scale = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = -169.0
+offset_right = 855.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_under = ExtResource("13_4rjby")
+texture_progress = ExtResource("14_ccybt")
