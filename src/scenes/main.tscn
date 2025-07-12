@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=11 format=4 uid="uid://1tp1h011inky"]
 
-[ext_resource type="Script" uid="uid://b4ymxb2exqw5j" path="res://src/scripts/player.gd" id="1_dbro3"]
-[ext_resource type="Texture2D" uid="uid://cl3kghe5hpxyd" path="res://src/assets/player.png" id="2_2lg1k"]
+[ext_resource type="PackedScene" uid="uid://csfs1csue1yor" path="res://src/scenes/player.tscn" id="1_dbro3"]
 [ext_resource type="Material" uid="uid://cmbcfxlkxxnwq" path="res://addons/TileMapDual/ghost_material.tres" id="3_5lsyw"]
 [ext_resource type="Texture2D" uid="uid://k5ttixgoy6gd" path="res://src/assets/TilemapDemo.png" id="4_kokaf"]
 [ext_resource type="Script" uid="uid://cjk8nronimk5r" path="res://addons/TileMapDual/TileMapDual.gd" id="5_lp058"]
+[ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="6_2lg1k"]
 [ext_resource type="Texture2D" uid="uid://saau30ujbsu2" path="res://src/assets/SlimeTileSet_Transparent.png" id="6_24j03"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1ia5"]
 texture = ExtResource("4_kokaf")
@@ -229,21 +227,8 @@ sources/0 = SubResource("TileSetAtlasSource_4rjby")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-visible = false
+[node name="Player" parent="." instance=ExtResource("1_dbro3")]
 position = Vector2(583, 488)
-scale = Vector2(0.0705, 0.0705)
-script = ExtResource("1_dbro3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_h2yge")
-
-[node name="Player" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_2lg1k")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(28.3691, 0)
-scale = Vector2(14.1844, 14.1844)
 
 [node name="TileMapDual" type="TileMapLayer" parent="."]
 material = ExtResource("3_5lsyw")
@@ -260,3 +245,6 @@ tile_set = SubResource("TileSet_ccybt")
 script = ExtResource("5_lp058")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
+
+[node name="Enemy" parent="." instance=ExtResource("6_2lg1k")]
+position = Vector2(855, 451)
