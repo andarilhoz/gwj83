@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cko7hqqrpxs6c"
-path="res://.godot/imported/TileSetTransparency.png-72afbdc3b1b8f03b8fc7ec652715e41a.ctex"
+uid="uid://0ylh4ikt8n3c"
+path="res://.godot/imported/icon.svg-656a4de8c586cb554f94b1bfc6a28d95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TileSetTransparency.png"
-dest_files=["res://.godot/imported/TileSetTransparency.png-72afbdc3b1b8f03b8fc7ec652715e41a.ctex"]
+source_file="res://src/assets/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-656a4de8c586cb554f94b1bfc6a28d95.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

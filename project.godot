@@ -13,7 +13,7 @@ config_version=5
 config/name="Godot Wild Jam 83"
 run/main_scene="uid://1tp1h011inky"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://src/assets/icon.svg"
 
 [editor_plugins]
 
