@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://3a1m2kb51an2"]
+[gd_scene load_steps=33 format=3 uid="uid://3a1m2kb51an2"]
 
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_dyya8"]
 [ext_resource type="Texture2D" uid="uid://l2kwc14oabhu" path="res://src/assets/EnemyPlaceHolder/Orc-Attack01.png" id="1_rsx1q"]
 [ext_resource type="Texture2D" uid="uid://bjva61hf8u7kw" path="res://src/assets/EnemyPlaceHolder/Orc-Idle.png" id="1_vywwn"]
 [ext_resource type="Texture2D" uid="uid://dcktbekblnxlw" path="res://src/assets/EnemyPlaceHolder/Orc-Death.png" id="2_dyya8"]
 [ext_resource type="Texture2D" uid="uid://c74f74fcx6pe6" path="res://src/assets/EnemyPlaceHolder/Orc-Walk.png" id="4_6rvav"]
+[ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="6_6rvav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxdrd"]
 atlas = ExtResource("1_rsx1q")
@@ -207,8 +208,11 @@ script = ExtResource("1_dyya8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8xw2p")
 animation = &"Walk"
-frame_progress = 0.585045
+frame_progress = 0.15881
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_yue2g")
+
+[node name="EnemyAttack" type="Node" parent="."]
+script = ExtResource("6_6rvav")
