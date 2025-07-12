@@ -15,9 +15,13 @@ run/main_scene="uid://1tp1h011inky"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://src/assets/icon.svg"
 
+[autoload]
+
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg")
+enabled=PackedStringArray("res://addons/TileMapDual/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
