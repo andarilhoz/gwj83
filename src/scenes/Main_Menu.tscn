@@ -1,0 +1,150 @@
+[gd_scene load_steps=18 format=3 uid="uid://boleq5066l3sp"]
+
+[ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
+[ext_resource type="Texture2D" uid="uid://cetjh3c6p8dil" path="res://src/assets/MenuPlaceHolders/pixel-art-video-games-retro-games-castlevania-wallpaper-preview.jpg" id="1_yh40j"]
+[ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="2_kwek3"]
+[ext_resource type="Texture2D" uid="uid://dywt655sx2mon" path="res://src/assets/MenuPlaceHolders/League-of-Legends-Logo.png" id="3_xfhpr"]
+[ext_resource type="AudioStream" uid="uid://ccvw786cgcrsj" path="res://src/assets/MenuPlaceHolders/5503696892461056.wav" id="5_xfhpr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
+texture = ExtResource("1_yh40j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amoe7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b05dy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idn0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3esw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxowy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_250sv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yh40j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtsvh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwek3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yto3i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfhpr"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kwek3")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.65834, 0.65834, 0.65834, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_amoe7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -115.5
+offset_right = 213.0
+offset_bottom = 115.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.17924, 0.596303, 0.229149, 1)
+theme_override_colors/font_color = Color(0.342186, 0.856691, 0.307106, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rtsvh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.17924, 0.596303, 0.229149, 1)
+theme_override_colors/font_color = Color(0.342186, 0.856691, 0.307106, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rtsvh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+text = "Options"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.17924, 0.596303, 0.229149, 1)
+theme_override_colors/font_color = Color(0.342186, 0.856691, 0.307106, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rtsvh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+text = "Exit
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.5
+offset_right = 165.5
+offset_bottom = 186.0
+grow_horizontal = 2
+texture = ExtResource("3_xfhpr")
+expand_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xfhpr")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
