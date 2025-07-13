@@ -1,3 +1,5 @@
+class_name Enemy
+
 extends CharacterBody2D
 
 @onready var player = %Player
@@ -8,6 +10,8 @@ extends CharacterBody2D
 @export var stop_distance: float = 86.0
 
 var walk_timer: float = 0.0
+
+var level = 1;
 
 func _ready():
 	attack.player = player  # passa a referência pro componente de ataque

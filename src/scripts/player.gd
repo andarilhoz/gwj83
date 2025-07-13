@@ -9,6 +9,9 @@ extends CharacterBody2D
 var _move_timer: float = 0.0
 var last_direction = Vector2.ZERO
 
+var dashing: bool = false
+var level: int = 1
+
 func _ready():
 	tile_movement_component.start(self)
 	tile_movement_component.painted_floor.connect(Callable(self, "_on_painted_floor"))
@@ -34,7 +37,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("attack"):
 		dash()
-
+	
 func move_towards(direction: Vector2):
 	var has_slime = tile_movement_component.has_slime_in_direction(direction)
 	var can_spend = energy_component.can_lose_energy(walk_loss_energy)
@@ -49,8 +52,30 @@ func dash():
 	if !energy_component.can_lose_energy(dash_loss_energy):
 		return
 	
+	dashing = true
 	energy_component.lose_energy(dash_loss_energy)
 	tile_movement_component.dash_towards(self, 3, last_direction)
 
 func _on_painted_floor():
 	energy_component.lose_energy(walk_loss_energy)
+
+func _on_dash_finished():
+	dashing = false
+	
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("enemy"):
+		return
+	
+	var enemy = body as Enemy
+	print("Inimigo level: ", enemy.level)
+	
+	if enemy.level < level:
+		enemy.queue_free()
+	elif enemy.level == level and dashing:
+		enemy.queue_free()
+		
+	
+	
+	

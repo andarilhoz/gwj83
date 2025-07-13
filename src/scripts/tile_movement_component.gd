@@ -83,6 +83,7 @@ func dash_towards(entity: Object, blocks: int, direction: Vector2):
 	tween.tween_property(entity, "position", next_pos, move_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.connect("finished", Callable(self, "_paint_tiles").bind(path_tiles))
 	tween.connect("finished", Callable(self, "_on_dash_finished"))
+	tween.connect("finished", Callable(entity, "_on_dash_finished"))
 
 func _on_move_finished():
 	paint_current_tile()
