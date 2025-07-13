@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=34 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
+[ext_resource type="Script" uid="uid://b6ytxxutj8ve6" path="res://src/scripts/enemy_spawner.gd" id="2_yk6rd"]
 [ext_resource type="Material" uid="uid://cmbcfxlkxxnwq" path="res://addons/TileMapDual/ghost_material.tres" id="3_5lsyw"]
 [ext_resource type="Texture2D" uid="uid://dwvgs0tontrdh" path="res://src/assets/GrassTileSet.png" id="4_lcp4o"]
 [ext_resource type="Texture2D" uid="uid://cltlx4q1x4unx" path="res://src/assets/BrickTileSet_1024.png" id="4_v252j"]
@@ -592,9 +593,14 @@ follow_damping_value = Vector2(0.3, 0.3)
 dead_zone_width = 0.108
 dead_zone_height = 0.135
 
-[node name="Enemy_Base" parent="." groups=["enemy"] instance=ExtResource("12_p1ia5")]
+[node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_yk6rd")
+player = NodePath("../Player")
+enemy_scene = ExtResource("12_p1ia5")
+spawn_radius = 2184.15
+
+[node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
 position = Vector2(471, 273)
-scale = Vector2(4, 4)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(0, 450)

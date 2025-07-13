@@ -72,9 +72,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Inimigo level: ", enemy.level)
 	
 	if enemy.level < level:
-		enemy.queue_free()
+		enemy.die()
 	elif enemy.level == level and dashing:
-		enemy.queue_free()
+		enemy.die()
 		
 	
 	

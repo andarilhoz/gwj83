@@ -2,7 +2,7 @@ class_name Enemy
 
 extends CharacterBody2D
 
-@onready var player = %Player
+
 @onready var anim = $AnimatedSprite2D
 @onready var attack = $EnemyAttack
 
@@ -12,14 +12,20 @@ extends CharacterBody2D
 var walk_timer: float = 0.0
 
 var level = 1;
+var player: CharacterBody2D
+var initialized : bool = false
 
-func _ready():
-	attack.player = player  # passa a referência pro componente de ataque
+signal died
 
-
+func initialize(received_player: CharacterBody2D):
+	attack.player = received_player
+	player = received_player
+	initialized = true
+	
 func _physics_process(delta):
 	if !player or attack.is_attacking:
 		return
+		
 
 	var to_player: Vector2 = player.global_position - global_position
 	anim.flip_h = player.global_position.x < global_position.x
@@ -47,3 +53,6 @@ func update_sprite_bounce(delta):
 		anim.position.y = 0
 		anim.rotation = 0
 		walk_timer = 0
+
+func die():
+	died.emit()
