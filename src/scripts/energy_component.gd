@@ -2,7 +2,7 @@ class_name EnergyComponent
 
 extends Node
 
-@export var progress_bar: TextureProgressBar
+@onready var progress_bar: TextureProgressBar = $"../../CanvasLayer/EnergyBar"
 @export var initial_energy: float
 
 signal zero_energy

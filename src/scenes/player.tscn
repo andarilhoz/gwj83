@@ -30,12 +30,18 @@ frame = 11
 
 [node name="TileMovementComponent" type="Node2D" parent="."]
 script = ExtResource("3_ya6j6")
-tilemap_slime = NodePath("../../TileMapSlime")
-tilemap_path_small = NodePath("../../WalkablePathSmall")
-tilemap_path_medium = NodePath("../../WalkablePathMedium")
-tilemap_path_big = NodePath("../../WalkablePathBig")
+tilemap_slime = NodePath("../../TileMaps/TileMapSlime")
+tilemap_path_small = NodePath("../../TileMaps/WalkablePathSmall")
+tilemap_path_medium = NodePath("../../TileMaps/WalkablePathMedium")
+tilemap_path_big = NodePath("../../TileMaps/WalkablePathBig")
 
-[node name="EnergyComponent" type="Node" parent="." node_paths=PackedStringArray("progress_bar")]
+[node name="EnergyComponent" type="Node" parent="."]
 script = ExtResource("4_0qy4j")
-progress_bar = NodePath("")
 initial_energy = 15000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h2yge")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
