@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=33 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
-[ext_resource type="Script" uid="uid://b4ymxb2exqw5j" path="res://src/scripts/player.gd" id="1_dbro3"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
 [ext_resource type="Material" uid="uid://cmbcfxlkxxnwq" path="res://addons/TileMapDual/ghost_material.tres" id="3_5lsyw"]
 [ext_resource type="Texture2D" uid="uid://dwvgs0tontrdh" path="res://src/assets/GrassTileSet.png" id="4_lcp4o"]
@@ -12,13 +11,11 @@
 [ext_resource type="Material" uid="uid://jcqwckeq2ucq" path="res://assets/shader/WorldPositionGrass.tres" id="6_yk6rd"]
 [ext_resource type="Material" uid="uid://e7juk7ci47yw" path="res://assets/shader/WorldPositionBrick.tres" id="7_n75dp"]
 [ext_resource type="Texture2D" uid="uid://chd4fu11lgy67" path="res://src/assets/BrickTileSet_512.png" id="7_qsm7c"]
-[ext_resource type="Script" uid="uid://bahh1mknjhcs5" path="res://src/scripts/tile_movement_component.gd" id="8_5lsyw"]
-[ext_resource type="Script" uid="uid://bqpu7nte3oa33" path="res://src/scripts/energy_component.gd" id="10_ccybt"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_p1ia5"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_kbdt0"]
+[ext_resource type="PackedScene" uid="uid://bbxv486ri4pxd" path="res://src/scenes/player.tscn" id="12_lcp4o"]
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="12_p1ia5"]
 [ext_resource type="Texture2D" uid="uid://bn3t3m1vs25hl" path="res://src/assets/bar_1.png" id="13_4rjby"]
-[ext_resource type="Texture2D" uid="uid://d0iyl7lncguop" path="res://src/assets/SlimeCharacter/SlimeCharacter.png" id="13_v252j"]
 [ext_resource type="Texture2D" uid="uid://cxn28ifxip22h" path="res://src/assets/bar_2.png" id="14_ccybt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rjby"]
@@ -512,9 +509,6 @@ terrain_set_0/terrain_1/name = "FG -GooTileSet_Masked.png"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_p1ia5")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
-radius = 84.47
-
 [sub_resource type="Resource" id="Resource_4rjby"]
 script = ExtResource("11_kbdt0")
 duration = 1.0
@@ -580,46 +574,16 @@ display_material = ExtResource("5_p1ia5")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("tile_movement_component", "energy_component")]
+[node name="Player" parent="." instance=ExtResource("12_lcp4o")]
 unique_name_in_owner = true
 position = Vector2(-7, -8)
-scale = Vector2(0.5, 0.5)
-script = ExtResource("1_dbro3")
-tile_movement_component = NodePath("TileMovementComponent")
-energy_component = NodePath("EnergyComponent")
-walk_loss_energy = 1.0
-dash_loss_energy = 10.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_h2yge")
-
-[node name="Player" type="Sprite2D" parent="Player"]
-texture_filter = 3
-position = Vector2(0, -40)
-scale = Vector2(4, 4)
-texture = ExtResource("13_v252j")
-hframes = 7
-vframes = 7
-frame = 11
-
-[node name="TileMovementComponent" type="Node2D" parent="Player"]
-script = ExtResource("8_5lsyw")
-tilemap_slime = NodePath("../../TileMapSlime")
-tilemap_path_small = NodePath("../../WalkablePathSmall")
-tilemap_path_medium = NodePath("../../WalkablePathMedium")
-tilemap_path_big = NodePath("../../WalkablePathBig")
-
-[node name="EnergyComponent" type="Node" parent="Player" node_paths=PackedStringArray("progress_bar")]
-script = ExtResource("10_ccybt")
-progress_bar = NodePath("../../CanvasLayer/TextureProgressBar")
-initial_energy = 15000.0
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(-7, -8)
 script = ExtResource("10_p1ia5")
 follow_mode = 5
-follow_target = NodePath("../Player")
+follow_target = NodePath("")
 tween_resource = SubResource("Resource_4rjby")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
