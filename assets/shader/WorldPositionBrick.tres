@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://e7juk7ci47yw"]
+
+[ext_resource type="Shader" uid="uid://6rlmlioft12x" path="res://assets/shader/shader.gdshader" id="1_plded"]
+[ext_resource type="Texture2D" uid="uid://dw7l8gy56g66x" path="res://src/assets/StoneFloorTiled.png" id="2_plded"]
+
+[resource]
+shader = ExtResource("1_plded")
+shader_parameter/overlay = ExtResource("2_plded")
+shader_parameter/fg_color = Color(1, 0, 0, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.704
+shader_parameter/tile_size = 800.0
