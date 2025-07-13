@@ -13,7 +13,7 @@ var dashing: bool = false
 var level: int = 1
 
 func _ready():
-	tile_movement_component.start(self)
+	tile_movement_component.start(self, level)
 	tile_movement_component.painted_floor.connect(Callable(self, "_on_painted_floor"))
 
 func _process(delta):
@@ -39,14 +39,14 @@ func _process(delta):
 		dash()
 	
 func move_towards(direction: Vector2):
-	var has_slime = tile_movement_component.has_slime_in_direction(direction)
+	var has_slime = tile_movement_component.has_slime_in_direction(direction, level)
 	var can_spend = energy_component.can_lose_energy(walk_loss_energy)
 	
 	if(!has_slime && !can_spend):
 		return
 		
 	last_direction = direction
-	tile_movement_component.move_in_direction(self, direction)
+	tile_movement_component.move_in_direction(self, direction, level)
 
 func dash():
 	if !energy_component.can_lose_energy(dash_loss_energy):
@@ -54,7 +54,7 @@ func dash():
 	
 	dashing = true
 	energy_component.lose_energy(dash_loss_energy)
-	tile_movement_component.dash_towards(self, 3, last_direction)
+	tile_movement_component.dash_towards(self, 3, last_direction, level)
 
 func _on_painted_floor():
 	energy_component.lose_energy(walk_loss_energy)
