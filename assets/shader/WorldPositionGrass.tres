@@ -8,5 +8,5 @@ shader = ExtResource("1_nfwwp")
 shader_parameter/overlay = ExtResource("2_nfwwp")
 shader_parameter/fg_color = Color(1, 0, 0, 1)
 shader_parameter/bg_color = Color(0, 0, 0, 1)
-shader_parameter/tolerance = 0.61
+shader_parameter/tolerance = 0.341
 shader_parameter/tile_size = 400.0
