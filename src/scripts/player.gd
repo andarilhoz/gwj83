@@ -69,7 +69,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 	
 	var enemy = body as Enemy
-	print("Inimigo level: ", enemy.level)
 	
 	if enemy.level < level:
 		enemy.die()

@@ -69,6 +69,7 @@ func dash_towards(entity: Object, blocks: int, direction: Vector2, size: int):
 		return
 	
 	if blocks < 1:
+		entity.call("_on_dash_finished")
 		dashing = false
 		return
 	
