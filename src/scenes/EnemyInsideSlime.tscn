@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgjak0e8dbrpp"]
+
+[ext_resource type="Texture2D" uid="uid://bjva61hf8u7kw" path="res://src/assets/EnemyPlaceHolder/Orc-Idle.png" id="1_2fyrt"]
+[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scenes/enemy_inside_slime.gd" id="1_6jqkd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
+bounce = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jqkd"]
+atlas = ExtResource("1_2fyrt")
+region = Rect2(44, 42, 22, 15)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2fyrt"]
+radius = 15.1327
+
+[node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
+script = ExtResource("1_6jqkd")
+rigidbody = NodePath("RigidBody2D")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+node_a = NodePath("../RigidBody2D")
+length = 5.0
+stiffness = 64.0
+damping = 0.51
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 32
+collision_mask = 16
+physics_material_override = SubResource("PhysicsMaterial_2fyrt")
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_6jqkd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-7, 0)
+shape = SubResource("CircleShape2D_2fyrt")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
