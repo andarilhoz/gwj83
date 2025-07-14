@@ -7,7 +7,7 @@ extends Node2D
 @export var tilemap_path_small: NodePath
 @export var tilemap_path_medium: NodePath
 @export var tilemap_path_big: NodePath
-@export var move_duration: float = 0.1
+@export var move_duration: float = 0.2
 @export var start_cell: Vector2 = Vector2i(24, 6)
 
 var _tilemap_slime: TileMapDual
@@ -19,6 +19,7 @@ var dashing: bool = false
 var painted_coords = Vector2i(2, 1)
 
 signal painted_floor
+signal dash_finished
 
 func _ready():
 	_tilemap_slime = get_node(tilemap_slime)
@@ -104,6 +105,8 @@ func _on_move_finished(size: int):
 
 func _on_dash_finished():
 	dashing = false
+	emit_signal("dash_finished")
+
 
 func paint_current_tile(size: int):
 	if has_slime_in_cell(size):

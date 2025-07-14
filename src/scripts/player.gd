@@ -11,14 +11,22 @@ var last_direction = Vector2.ZERO
 
 var dashing: bool = false
 var level: int = 1
+var dash_amount: int = 3
+
+
 
 func _ready():
 	tile_movement_component.start(self, level)
 	tile_movement_component.painted_floor.connect(Callable(self, "_on_painted_floor"))
+	tile_movement_component.dash_finished.connect(Callable(self, "_on_dash_finished"))
 
 func _process(delta):
 	_move_timer -= delta
 	if _move_timer > 0:
+		return
+		
+	# Se estiver dashing, não muda animação
+	if dashing:
 		return
 
 	var current_direction = Vector2.ZERO
@@ -29,11 +37,20 @@ func _process(delta):
 		current_direction = Vector2.DOWN
 	elif Input.is_action_pressed("move_left"):
 		current_direction = Vector2.LEFT
+		$AnimatedSprite2D.flip_h = false
 	elif Input.is_action_pressed("move_right"):
 		current_direction = Vector2.RIGHT
+		$AnimatedSprite2D.flip_h = true
 	
 	if current_direction != Vector2.ZERO:
 		move_towards(current_direction)
+		# Toca animação de andar
+		if $AnimatedSprite2D.animation != "Walk":
+			$AnimatedSprite2D.play("Walk")
+	else:
+		# Para a animação se não estiver se movendo
+		if $AnimatedSprite2D.animation != "Idle":
+			$AnimatedSprite2D.play("Idle")
 	
 	if Input.is_action_just_pressed("attack"):
 		dash()
@@ -54,14 +71,15 @@ func dash():
 	
 	dashing = true
 	energy_component.lose_energy(dash_loss_energy)
-	tile_movement_component.dash_towards(self, 3, last_direction, level)
+	tile_movement_component.dash_towards(self, dash_amount, last_direction, level)
+	$AnimatedSprite2D.play("Dash")
 
 func _on_painted_floor():
 	energy_component.lose_energy(walk_loss_energy)
 
 func _on_dash_finished():
 	dashing = false
-	
+	$AnimatedSprite2D.play("Dash_Finish")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -72,8 +90,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	if enemy.level < level:
 		enemy.die()
+		$AnimatedSprite2D.play("After_Eating")
 	elif enemy.level == level and dashing:
 		enemy.die()
+		$AnimatedSprite2D.play("After_Eating")
 		
 	
 	
