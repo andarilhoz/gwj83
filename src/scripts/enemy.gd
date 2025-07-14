@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D
 @onready var attack = $EnemyAttack
+@onready var movement_component: EnemyMovementComponent = $Enemy_movement_component
 
 @export var speed = 200
 @export var stop_distance: float = 86.0
@@ -20,26 +21,21 @@ signal died
 func initialize(received_player: CharacterBody2D):
 	attack.player = received_player
 	player = received_player
+	movement_component.start(self, speed, stop_distance) 
 	initialized = true
-	
+
+
 func _physics_process(delta):
 	if !player or attack.is_attacking:
 		return
-		
 
-	var to_player: Vector2 = player.global_position - global_position
+	var to_player = movement_component.move_towards_player(player, delta)
 	anim.flip_h = player.global_position.x < global_position.x
-	var distance: float = to_player.length()
+	move_and_slide()
 
-	if distance > stop_distance:
-		var direction: Vector2 = to_player.normalized()
-		velocity = direction * speed
-		move_and_slide()
-	else:
-		velocity = Vector2.ZERO
-
+	if velocity.length() < 1:
 		if attack.can_attack():
-			attack.attack(to_player.normalized())
+			attack.attack(to_player)
 
 func _process(delta):
 	update_sprite_bounce(delta)

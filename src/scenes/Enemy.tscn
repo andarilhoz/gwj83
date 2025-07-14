@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://3a1m2kb51an2"]
+[gd_scene load_steps=35 format=3 uid="uid://3a1m2kb51an2"]
 
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_dyya8"]
 [ext_resource type="Texture2D" uid="uid://l2kwc14oabhu" path="res://src/assets/EnemyPlaceHolder/Orc-Attack01.png" id="1_rsx1q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dcktbekblnxlw" path="res://src/assets/EnemyPlaceHolder/Orc-Death.png" id="2_dyya8"]
 [ext_resource type="Texture2D" uid="uid://c74f74fcx6pe6" path="res://src/assets/EnemyPlaceHolder/Orc-Walk.png" id="4_6rvav"]
 [ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="6_6rvav"]
+[ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="7_cxdrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxdrd"]
 atlas = ExtResource("1_rsx1q")
@@ -229,3 +230,6 @@ script = ExtResource("6_6rvav")
 position = Vector2(11, 0)
 shape = SubResource("CircleShape2D_6rvav")
 disabled = true
+
+[node name="Enemy_movement_component" type="Node" parent="."]
+script = ExtResource("7_cxdrd")
