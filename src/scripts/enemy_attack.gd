@@ -5,7 +5,7 @@ var player: Node2D
 @export var bounce_duration: float = 0.15
 @export var cooldown: float = 1.0
 var hitbox
-
+@export var attack_sound: AudioStreamPlayer2D
 
 var is_attacking = false
 var attack_timer = 0.0
@@ -16,6 +16,8 @@ func _ready():
 	origin_node = get_parent()
 	anim = origin_node.get_node("AnimatedSprite2D")  # ou ajuste o caminho se diferente
 	hitbox = origin_node.get_node("Attack_Hitbox")
+	if attack_sound == null:
+		attack_sound = origin_node.get_node("AttackSound") # ← pega o som do pai
 
 func _process(delta):
 	if attack_timer > 0:
@@ -31,8 +33,10 @@ func attack(direction: Vector2):
 	is_attacking = true
 	attack_timer = cooldown
 
+
 	var original_position = anim.position
 	var target_position = original_position + direction * bounce_distance
+	
 
 # Ativa a hitbox
 	hitbox.global_position = player.global_position
@@ -45,8 +49,12 @@ func attack(direction: Vector2):
 	var tween = create_tween()
 	tween.tween_property(anim, "position", target_position, bounce_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(anim, "position", original_position, bounce_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	anim.play("Attack")
+	attack_sound.play()
+	
 
 	await tween.finished
+	anim.play("Walk")
 
 # Desativa a hitbox
 	hitbox.monitoring = false

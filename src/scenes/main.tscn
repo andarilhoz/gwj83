@@ -603,7 +603,7 @@ enemy_scene = ExtResource("12_p1ia5")
 spawn_radius = 2184.15
 
 [node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
-position = Vector2(471, 273)
+position = Vector2(-631, -418)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(0, 450)

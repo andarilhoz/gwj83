@@ -23,8 +23,8 @@ func initialize(received_player: CharacterBody2D):
 	player = received_player
 	movement_component.start(self, speed, stop_distance) 
 	initialized = true
-
-
+	
+	
 func _physics_process(delta):
 	if !player or attack.is_attacking:
 		return
@@ -32,6 +32,10 @@ func _physics_process(delta):
 	var to_player = movement_component.move_towards_player(player, delta)
 	anim.flip_h = player.global_position.x < global_position.x
 	move_and_slide()
+	if velocity.length() > 0:
+		anim.play("Walk")
+
+
 
 	if velocity.length() < 1:
 		if attack.can_attack():

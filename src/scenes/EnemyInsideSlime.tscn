@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dgjak0e8dbrpp"]
 
-[ext_resource type="Texture2D" uid="uid://bjva61hf8u7kw" path="res://src/assets/EnemyPlaceHolder/Orc-Idle.png" id="1_2fyrt"]
 [ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scenes/enemy_inside_slime.gd" id="1_6jqkd"]
+[ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="2_6jqkd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
 bounce = 0.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jqkd"]
-atlas = ExtResource("1_2fyrt")
-region = Rect2(44, 42, 22, 15)
+atlas = ExtResource("2_6jqkd")
+region = Rect2(0, 32, 64, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fyrt"]
 radius = 15.1327
@@ -33,7 +33,7 @@ freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture_filter = 1
-scale = Vector2(2, 2)
+position = Vector2(-7, -1)
 texture = SubResource("AtlasTexture_6jqkd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
