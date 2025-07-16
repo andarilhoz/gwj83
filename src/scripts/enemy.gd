@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var attack = $EnemyAttack
 @onready var movement_component: EnemyMovementComponent = $Enemy_movement_component
+@export var absorbed_version: PackedScene #Cena do Inimigo dentro da Slime
+
 
 @export var speed = 200
 @export var stop_distance: float = 86.0

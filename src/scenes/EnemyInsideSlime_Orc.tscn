@@ -1,20 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgjak0e8dbrpp"]
+[gd_scene load_steps=6 format=3 uid="uid://dywas5gseqrh5"]
 
-[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_6jqkd"]
-[ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="2_6jqkd"]
+[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_bsi3n"]
+[ext_resource type="Texture2D" uid="uid://cln2ungkt4ret" path="res://src/assets/Enemy_Sprites/Ork_SppriteSheet.png" id="2_bsi3n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
 bounce = 0.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jqkd"]
-atlas = ExtResource("2_6jqkd")
-region = Rect2(0, 32, 64, 32)
+atlas = ExtResource("2_bsi3n")
+region = Rect2(0, 64, 128, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fyrt"]
 radius = 15.1327
 
 [node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
-script = ExtResource("1_6jqkd")
+script = ExtResource("1_bsi3n")
 rigidbody = NodePath("RigidBody2D")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=36 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="12_p1ia5"]
 [ext_resource type="Texture2D" uid="uid://bn3t3m1vs25hl" path="res://src/assets/bar_1.png" id="13_4rjby"]
 [ext_resource type="Texture2D" uid="uid://cxn28ifxip22h" path="res://src/assets/bar_2.png" id="14_ccybt"]
+[ext_resource type="PackedScene" uid="uid://d1frq1n7eeuvj" path="res://src/scenes/Enemy_Orc.tscn" id="16_htxff"]
+[ext_resource type="AudioStream" uid="uid://b7tp5dnlrr31" path="res://src/assets/Sounds/SlimeBG.wav" id="20_v252j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rjby"]
 texture = ExtResource("2_kbdt0")
@@ -599,7 +601,7 @@ dead_zone_height = 0.135
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
-enemy_scene = ExtResource("12_p1ia5")
+enemy_scene = ExtResource("16_htxff")
 spawn_radius = 2184.15
 
 [node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
@@ -626,3 +628,7 @@ scale = Vector2(0.5, 0.5)
 value = 50.0
 texture_under = ExtResource("13_4rjby")
 texture_progress = ExtResource("14_ccybt")
+
+[node name="SceneAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_v252j")
+autoplay = true

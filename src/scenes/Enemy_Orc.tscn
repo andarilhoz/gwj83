@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1frq1n7eeuvj"]
+
+[ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_5pe7i"]
+[ext_resource type="Texture2D" uid="uid://cln2ungkt4ret" path="res://src/assets/Enemy_Sprites/Ork_SppriteSheet.png" id="2_5pe7i"]
+[ext_resource type="PackedScene" uid="uid://dywas5gseqrh5" path="res://src/scenes/EnemyInsideSlime_Orc.tscn" id="2_32lbc"]
+[ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="3_kxsdw"]
+[ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="4_kdiuh"]
+[ext_resource type="AudioStream" uid="uid://4s3j0rp083ks" path="res://src/assets/Sounds/OrcV1.wav" id="6_32lbc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32lbc"]
+atlas = ExtResource("2_5pe7i")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxsdw"]
+atlas = ExtResource("2_5pe7i")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdiuh"]
+atlas = ExtResource("2_5pe7i")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xw2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32lbc")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxsdw")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdiuh")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yue2g"]
+size = Vector2(57, 123.563)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rvav"]
+radius = 13.3417
+
+[node name="Enemy_Orc" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_5pe7i")
+absorbed_version = ExtResource("2_32lbc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.75, -0.75)
+scale = Vector2(-3, 3)
+sprite_frames = SubResource("SpriteFrames_8xw2p")
+animation = &"Walk"
+
+[node name="EnemyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 29.2188)
+shape = SubResource("RectangleShape2D_yue2g")
+
+[node name="EnemyAttack" type="Node" parent="."]
+script = ExtResource("3_kxsdw")
+
+[node name="Attack_Hitbox" type="Area2D" parent="."]
+
+[node name="Attack Collider" type="CollisionShape2D" parent="Attack_Hitbox"]
+position = Vector2(47, 14)
+shape = SubResource("CircleShape2D_6rvav")
+disabled = true
+
+[node name="Enemy_movement_component" type="Node" parent="."]
+script = ExtResource("4_kdiuh")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_32lbc")

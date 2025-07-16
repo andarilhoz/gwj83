@@ -108,7 +108,7 @@ func dash():
 		
 		if enemy.level == level:
 			enemy.die()
-			_spawn_enemy_inside()
+			_spawn_enemy_inside(enemy.absorbed_version)
 	$AnimatedSprite2D.play("Dash")
 
 
@@ -129,34 +129,32 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 	if enemy.level < level:
 		enemy.die()
-		_spawn_enemy_inside()
+		_spawn_enemy_inside(enemy.absorbed_version)
 		$AnimatedSprite2D.play("After_Eating")
 	elif enemy.level == level and dashing:
 		enemy.die()
-		_spawn_enemy_inside()
+		_spawn_enemy_inside(enemy.absorbed_version)
 		$AnimatedSprite2D.play("After_Eating")
 
-func _spawn_enemy_inside():
-	var scene = preload("res://src/scenes/EnemyInsideSlime.tscn")
-	var enemy_instance = scene.instantiate()
 
+func _spawn_enemy_inside(absorbed_scene: PackedScene):
+	var enemy_instance = absorbed_scene.instantiate()
 	$InternalPhysicsBodies.add_child(enemy_instance)
 
-	# Raio de spawn interno
-	var spawn_radius := 20.0  # 🔧 Ajuste conforme o tamanho do slime
-
-	# Posição aleatória dentro do círculo
+	# Posição aleatória dentro de um círculo interno
+	var spawn_radius := 20.0
 	var angle = randf() * TAU
 	var distance = randf() * spawn_radius
 	var offset = Vector2(cos(angle), sin(angle)) * distance
 	enemy_instance.position = offset
 
-	# Rotação aleatória (em radianos)
+	# Rotação aleatória
 	enemy_instance.rotation = randf() * TAU
 
-	# Configura o joint
+	# Conecta o inimigo à física do slime via joint
 	var joint = enemy_instance.get_node("DampedSpringJoint2D")
-	joint.node_b = get_path()  # o player/slime
+	joint.node_b = get_path()
+
 
 
 func paint_current_tile(size: int):
