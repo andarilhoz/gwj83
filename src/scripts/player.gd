@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var walk_loss_energy: float
 @export var dash_loss_energy: float
 
+@export var phantom_camera_level_1 : PhantomCamera2D
+@export var phantom_camera_level_2 : PhantomCamera2D
+@export var phantom_camera_level_3 : PhantomCamera2D
+
 var _tilemap_slime: TileMapDual
 var last_direction = Vector2.ZERO
 
@@ -18,6 +22,7 @@ var has_target_position: bool = false
 @export var move_speed: float 
 @export var dash_speed: float
 @export var process_food_by_seconds: float
+@export var min_player_scale: float = 0.3
 
 #@export_range(1, 100, 1) var initial_size_percentage: float
 #@export_range(1, 100, 1) var min_size_percentage: float 
@@ -36,10 +41,19 @@ func _ready():
 	tile_movement_component.start(self, level)
 	update_size(energy_component.initial_energy)
 	energy_component.energy_update.connect(update_size)
+	phantom_camera_level_1.priority = 1
+	phantom_camera_level_2.priority = 0
+	phantom_camera_level_3.priority = 0
 	paint_current_tile(level)
 
 func update_size(percentage: float):
-	scale = Vector2(percentage / 100, percentage / 100)
+	if percentage >= 100 and level < 3:
+		evolve()
+		return
+	
+	var update_scale = percentage / 100
+	update_scale = min_player_scale if update_scale < min_player_scale else update_scale
+	scale = Vector2(update_scale, update_scale)
 
 func _physics_process(delta):
 	if has_target_position:
@@ -101,11 +115,21 @@ func move_towards(direction: Vector2):
 
 	if !has_slime and !can_spend:
 		return
-	elif !has_slime and can_spend:
-		energy_component.lose_energy(walk_loss_energy)
-
 	last_direction = direction
 	tile_movement_component.move_in_direction(self, direction, level)
+	
+	if has_target_position and !has_slime and can_spend:
+		energy_component.lose_energy(walk_loss_energy)
+
+
+func evolve():
+	level += 1
+	energy_component.reset_energy()
+	if level == 2:
+		phantom_camera_level_2.priority = 2
+	elif level == 3:
+		phantom_camera_level_3.priority = 3
+	
 
 func dash():
 	if !energy_component.can_lose_energy(dash_loss_energy):
