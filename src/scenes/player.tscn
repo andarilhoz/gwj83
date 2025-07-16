@@ -359,7 +359,7 @@ tilemap_path_big = NodePath("../../TileMaps/WalkablePathBig")
 
 [node name="EnergyComponent" type="Node" parent="."]
 script = ExtResource("4_0qy4j")
-initial_energy = 15000.0
+initial_energy = 50.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-14, -6)
@@ -411,5 +411,10 @@ one_way_collision = true
 
 [node name="EnemyInsideSlime" parent="InternalPhysicsBodies" instance=ExtResource("5_ya6j6")]
 
+[node name="Digestao" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Digestao" to="." method="_on_digestao_timeout"]

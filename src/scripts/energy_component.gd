@@ -16,7 +16,7 @@ func _ready():
 func add_energy(value: float):
 	current_energy += value
 	progress_bar.value = current_energy
-	
+
 func lose_energy(value: float): 
 	current_energy -= value
 	progress_bar.value = current_energy

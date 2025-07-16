@@ -17,11 +17,14 @@ var target_position: Vector2 = Vector2.ZERO
 var has_target_position: bool = false
 @export var move_speed: float 
 @export var dash_speed: float
+@export var process_food_by_seconds: float
 
 @onready var area2d: Area2D = $Area2D
 var painted_coords = Vector2i(2, 1)
 
 var current_speed: float = 0.0
+
+var absorbed_enemies : Array[EnemyInside] = []
 
 func _ready():
 	current_speed = move_speed
@@ -78,6 +81,7 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("attack"):
 		dash()
+	
 
 func move_towards(direction: Vector2):
 	if has_target_position:
@@ -127,18 +131,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 	var enemy = body as Enemy
 
-	if enemy.level < level:
-		enemy.die()
-		_spawn_enemy_inside(enemy.absorbed_version)
-		$AnimatedSprite2D.play("After_Eating")
-	elif enemy.level == level and dashing:
-		enemy.die()
-		_spawn_enemy_inside(enemy.absorbed_version)
-		$AnimatedSprite2D.play("After_Eating")
+	if enemy.level < level || (enemy.level == level and dashing):
+		kill_enemy(enemy)
 
+func kill_enemy(enemy: Enemy):
+	enemy.die()
+	_spawn_enemy_inside(enemy.absorbed_version)
+	$AnimatedSprite2D.play("After_Eating")
 
 func _spawn_enemy_inside(absorbed_scene: PackedScene):
 	var enemy_instance = absorbed_scene.instantiate()
+	absorbed_enemies.append(enemy_instance as EnemyInside)
 	$InternalPhysicsBodies.add_child(enemy_instance)
 
 	# Posição aleatória dentro de um círculo interno
@@ -156,7 +159,6 @@ func _spawn_enemy_inside(absorbed_scene: PackedScene):
 	joint.node_b = get_path()
 
 
-
 func paint_current_tile(size: int):
 	if tile_movement_component.has_slime_in_cell(size):
 		return
@@ -168,3 +170,24 @@ func paint_current_tile(size: int):
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Dash_Finish":
 		pass # Replace with function body.
+
+func _on_digestao_timeout() -> void:
+	process_food(process_food_by_seconds)
+
+func process_food(process_food_value: float):
+	if absorbed_enemies.is_empty():
+		return
+		
+	var first_food = absorbed_enemies[0]
+	var returned_absorption = first_food.absorbe_energy(process_food_value)
+	if returned_absorption > 0:
+		var energy_absorbed = process_food_value - returned_absorption
+		print("comendo: "+ str(energy_absorbed) + "energia")
+		energy_component.add_energy(energy_absorbed)
+		absorbed_enemies.pop_front()
+		first_food.dissolve_complete()
+		process_food(returned_absorption)
+	else:
+		energy_component.add_energy(process_food_value)
+		print("comendo: "+ str(process_food_value) + "energia")
+	

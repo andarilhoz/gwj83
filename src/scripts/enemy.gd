@@ -37,8 +37,6 @@ func _physics_process(delta):
 	if velocity.length() > 0:
 		anim.play("Walk")
 
-
-
 	if velocity.length() < 1:
 		if attack.can_attack():
 			attack.attack(to_player)
