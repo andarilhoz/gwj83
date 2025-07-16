@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bbxv486ri4pxd"]
+[gd_scene load_steps=53 format=3 uid="uid://bbxv486ri4pxd"]
 
 [ext_resource type="Script" uid="uid://b4ymxb2exqw5j" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Texture2D" uid="uid://d0iyl7lncguop" path="res://src/assets/SlimeCharacter/SlimeCharacter.png" id="2_l2v1k"]
@@ -325,6 +325,35 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Curve" id="Curve_ya6j6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.219016), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0qy4j"]
+curve = SubResource("Curve_ya6j6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8v6aa"]
+lifetime_randomness = 0.37
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -129.0
+angle_max = 341.3
+inherit_velocity_ratio = 0.551
+spread = 19.404
+initial_velocity_max = 29.28
+gravity = Vector3(0, 96.095, 0)
+radial_accel_min = -4.05
+radial_accel_max = 46.95
+damping_max = 1.351
+scale_min = 13.64
+scale_max = 18.42
+scale_curve = SubResource("CurveTexture_0qy4j")
+color = Color(1.44392e-06, 0.745324, 0.236615, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.12
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_l2v1k"]
 a = Vector2(64, 50)
 b = Vector2(-64, 50)
@@ -347,7 +376,7 @@ tile_movement_component = NodePath("TileMovementComponent")
 energy_component = NodePath("EnergyComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -14)
+position = Vector2(2, -70)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="TileMovementComponent" type="Node2D" parent="."]
@@ -367,19 +396,36 @@ scale = Vector2(0.519999, 0.679998)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -14)
+position = Vector2(26.9231, -97.0591)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -40)
+position = Vector2(0, -100)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_oric3")
 animation = &"After_Eating"
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(16, 16.5)
+rotation = -0.709909
+scale = Vector2(13.615, 13.615)
+amount = 23
+amount_ratio = 0.3167
+lifetime = 2.31
+preprocess = 1.45
+speed_scale = 2.36
+explosiveness = 1.0
+randomness = 1.0
+collision_base_size = 0.0
+draw_order = 0
+trail_lifetime = 0.01
+process_material = SubResource("ParticleProcessMaterial_8v6aa")
+
 [node name="InternalWalls" type="Node2D" parent="."]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="InternalWalls"]
+position = Vector2(0, -68)
 collision_layer = 16
 collision_mask = 16
 can_sleep = false
@@ -408,8 +454,11 @@ shape = SubResource("SegmentShape2D_0qy4j")
 one_way_collision = true
 
 [node name="InternalPhysicsBodies" type="Node2D" parent="."]
+position = Vector2(0, -68)
 
 [node name="EnemyInsideSlime" parent="InternalPhysicsBodies" instance=ExtResource("5_ya6j6")]
+visible = false
+position = Vector2(2, -70)
 
 [node name="Digestao" type="Timer" parent="."]
 wait_time = 0.12
