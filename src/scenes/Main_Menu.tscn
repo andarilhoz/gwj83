@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfgo3umdsfqko"]
+[gd_scene load_steps=18 format=3 uid="uid://did3fvk7t0xi0"]
 
-[ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
+[ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
 [ext_resource type="Texture2D" uid="uid://cetjh3c6p8dil" path="res://src/assets/MenuPlaceHolders/pixel-art-video-games-retro-games-castlevania-wallpaper-preview.jpg" id="1_yh40j"]
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="2_kwek3"]
 [ext_resource type="Texture2D" uid="uid://dywt655sx2mon" path="res://src/assets/MenuPlaceHolders/League-of-Legends-Logo.png" id="3_xfhpr"]

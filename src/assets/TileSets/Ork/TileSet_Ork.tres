@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://e7juk7ci47yw"]
+
+[ext_resource type="Shader" uid="uid://6rlmlioft12x" path="res://assets/shader/shader.gdshader" id="1_plded"]
+[ext_resource type="Texture2D" uid="uid://jjn6f0185kqk" path="res://src/assets/TileSets/Ork/DeadGrass_TiledTexture.png" id="2_u0wak"]
+[ext_resource type="Texture2D" uid="uid://d4l65tshwqtf8" path="res://src/assets/TileSets/Ork/DarkDirt_TiledTexture.png" id="3_1iruc"]
+
+[resource]
+shader = ExtResource("1_plded")
+shader_parameter/overlay = ExtResource("2_u0wak")
+shader_parameter/fg_color = Color(1, 0, 0, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.149
+shader_parameter/overlay2 = ExtResource("3_1iruc")
+shader_parameter/fg_color2 = Color(0, 1, 0, 1)
+shader_parameter/bg_color2 = Color(0, 0, 0, 1)
+shader_parameter/tolerance2 = 0.145
+shader_parameter/tile_size = 800.0
+shader_parameter/tile_size2 = 800.0

@@ -7,7 +7,7 @@ extends Node2D
 @export var tilemap_path_medium: NodePath
 @export var tilemap_path_big: NodePath
 @export var move_duration: float = 0.2
-@export var start_cell: Vector2 = Vector2i(24, 6)
+@export var start_cell: Vector2 = Vector2i(0, 0)
 
 var _tilemap_slime: TileMapDual
 var _tilemap_small: TileMapLayer

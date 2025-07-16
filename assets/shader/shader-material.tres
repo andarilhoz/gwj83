@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ckch5r1m2f8oo"]
 
 [ext_resource type="Shader" uid="uid://6rlmlioft12x" path="res://assets/shader/shader.gdshader" id="1_hd81n"]
-[ext_resource type="Texture2D" uid="uid://blmw5bk6lck3r" path="res://src/assets/TiledGoo.png" id="2_hd81n"]
+[ext_resource type="Texture2D" uid="uid://blmw5bk6lck3r" path="res://src/assets/TileSets/Slime/TiledGoo.png" id="2_hd81n"]
 
 [resource]
 shader = ExtResource("1_hd81n")
