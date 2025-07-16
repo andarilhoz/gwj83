@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 @export var tile_movement_component: TileMovementComponent
 @export var energy_component: EnergyComponent
-@export var tilemap_slime: NodePath
+@export var tilemap_slime_level_1: NodePath
+@export var tilemap_slime_level_2: NodePath
+@export var tilemap_slime_level_3: NodePath
 @export var walk_loss_energy: float
 @export var dash_loss_energy: float
 
@@ -10,7 +12,9 @@ extends CharacterBody2D
 @export var phantom_camera_level_2 : PhantomCamera2D
 @export var phantom_camera_level_3 : PhantomCamera2D
 
-var _tilemap_slime: TileMapDual
+var _tilemap_slime_level_1: TileMapDual
+var _tilemap_slime_level_2: TileMapDual
+var _tilemap_slime_level_3: TileMapDual
 var last_direction = Vector2.ZERO
 
 var dashing: bool = false
@@ -37,8 +41,11 @@ var absorbed_enemies : Array[EnemyInside] = []
 
 func _ready():
 	current_speed = move_speed
-	_tilemap_slime = get_node(tilemap_slime)
-	tile_movement_component.start(self, level)
+	_tilemap_slime_level_1 = get_node(tilemap_slime_level_1)
+	_tilemap_slime_level_2 = get_node(tilemap_slime_level_2)
+	_tilemap_slime_level_3 = get_node(tilemap_slime_level_3)
+	
+	tile_movement_component.start(self, level, _tilemap_slime_level_1, _tilemap_slime_level_2, _tilemap_slime_level_3)
 	update_size(energy_component.initial_energy)
 	energy_component.energy_update.connect(update_size)
 	phantom_camera_level_1.priority = 1
@@ -46,6 +53,13 @@ func _ready():
 	phantom_camera_level_3.priority = 0
 	paint_current_tile(level)
 
+func get_tilemap_by_size() -> TileMapDual:
+	match level:
+		1: return _tilemap_slime_level_1
+		2: return _tilemap_slime_level_2
+		3: return _tilemap_slime_level_3
+	return _tilemap_slime_level_1
+	
 func update_size(percentage: float):
 	if percentage >= 100 and level < 3:
 		evolve()
@@ -123,6 +137,8 @@ func move_towards(direction: Vector2):
 
 
 func evolve():
+	var tilemap = get_tilemap_by_size()
+	tilemap.clear()
 	level += 1
 	energy_component.reset_energy()
 	if level == 2:
@@ -197,10 +213,10 @@ func _spawn_enemy_inside(absorbed_scene: PackedScene):
 func paint_current_tile(size: int):
 	if tile_movement_component.has_slime_in_cell(size):
 		return
-		
-	var cell = _tilemap_slime.local_to_map(global_position)
-	_tilemap_slime.set_cell(cell, 0, painted_coords)
-
+	
+	var tilemap = get_tilemap_by_size()
+	var cell = tilemap.local_to_map(global_position)
+	tilemap.set_cell(cell, 0, painted_coords)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "Dash_Finish":

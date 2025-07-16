@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=48 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
@@ -595,6 +595,12 @@ terrain_set_0/terrain_1/name = "FG -GooTileSet_Masked.png"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_p1ia5")
 
+[sub_resource type="TileSet" id="TileSet_tyryd"]
+tile_size = Vector2i(128, 128)
+
+[sub_resource type="TileSet" id="TileSet_xxm0n"]
+tile_size = Vector2i(256, 256)
+
 [sub_resource type="Resource" id="Resource_tyryd"]
 script = ExtResource("11_kbdt0")
 duration = 1.0
@@ -903,7 +909,7 @@ position = Vector2(-1806, 211)
 scale = Vector2(2.51256, 2.35181)
 texture = SubResource("AtlasTexture_tx8mq")
 
-[node name="TileMapSlime" type="TileMapLayer" parent="TileMaps"]
+[node name="TileMapSlimeLevel1" type="TileMapLayer" parent="TileMaps"]
 texture_filter = 1
 material = ExtResource("3_5lsyw")
 tile_set = SubResource("TileSet_4rjby")
@@ -912,11 +918,27 @@ display_material = ExtResource("5_p1ia5")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
+[node name="TileMapSlimeLevel2" type="TileMapLayer" parent="TileMaps"]
+material = ExtResource("3_5lsyw")
+tile_set = SubResource("TileSet_tyryd")
+script = ExtResource("5_lp058")
+godot_4_3_compatibility = false
+metadata/_custom_type_script = "uid://cjk8nronimk5r"
+
+[node name="TileMapSlimeLevel3" type="TileMapLayer" parent="TileMaps"]
+material = ExtResource("3_5lsyw")
+tile_set = SubResource("TileSet_xxm0n")
+script = ExtResource("5_lp058")
+godot_4_3_compatibility = false
+metadata/_custom_type_script = "uid://cjk8nronimk5r"
+
 [node name="Player" parent="." node_paths=PackedStringArray("phantom_camera_level_1", "phantom_camera_level_2", "phantom_camera_level_3") instance=ExtResource("12_lcp4o")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(-7, -8)
-tilemap_slime = NodePath("../TileMaps/TileMapSlime")
+tilemap_slime_level_1 = NodePath("../TileMaps/TileMapSlimeLevel1")
+tilemap_slime_level_2 = NodePath("../TileMaps/TileMapSlimeLevel2")
+tilemap_slime_level_3 = NodePath("../TileMaps/TileMapSlimeLevel3")
 walk_loss_energy = 1.0
 dash_loss_energy = 5.0
 phantom_camera_level_1 = NodePath("../PhantomCamera2DLevel1")
