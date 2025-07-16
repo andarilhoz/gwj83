@@ -596,9 +596,11 @@ metadata/_custom_type_script = "uid://cjk8nronimk5r"
 unique_name_in_owner = true
 position = Vector2(-7, -8)
 tilemap_slime = NodePath("../TileMaps/TileMapSlime")
+walk_loss_energy = 1.0
+dash_loss_energy = 5.0
 move_speed = 300.0
 dash_speed = 700.0
-process_food_by_seconds = 0.05
+process_food_by_seconds = 1.0
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true

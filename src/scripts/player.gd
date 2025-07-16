@@ -19,6 +19,10 @@ var has_target_position: bool = false
 @export var dash_speed: float
 @export var process_food_by_seconds: float
 
+#@export_range(1, 100, 1) var initial_size_percentage: float
+#@export_range(1, 100, 1) var min_size_percentage: float 
+#@export_range(100, 400, 1) var max_size_percentage: float 
+
 @onready var area2d: Area2D = $Area2D
 var painted_coords = Vector2i(2, 1)
 
@@ -30,7 +34,12 @@ func _ready():
 	current_speed = move_speed
 	_tilemap_slime = get_node(tilemap_slime)
 	tile_movement_component.start(self, level)
+	update_size(energy_component.initial_energy)
+	energy_component.energy_update.connect(update_size)
 	paint_current_tile(level)
+
+func update_size(percentage: float):
+	scale = Vector2(percentage / 100, percentage / 100)
 
 func _physics_process(delta):
 	if has_target_position:
@@ -92,6 +101,8 @@ func move_towards(direction: Vector2):
 
 	if !has_slime and !can_spend:
 		return
+	elif !has_slime and can_spend:
+		energy_component.lose_energy(walk_loss_energy)
 
 	last_direction = direction
 	tile_movement_component.move_in_direction(self, direction, level)
@@ -182,12 +193,10 @@ func process_food(process_food_value: float):
 	var returned_absorption = first_food.absorbe_energy(process_food_value)
 	if returned_absorption > 0:
 		var energy_absorbed = process_food_value - returned_absorption
-		print("comendo: "+ str(energy_absorbed) + "energia")
 		energy_component.add_energy(energy_absorbed)
 		absorbed_enemies.pop_front()
 		first_food.dissolve_complete()
 		process_food(returned_absorption)
 	else:
 		energy_component.add_energy(process_food_value)
-		print("comendo: "+ str(process_food_value) + "energia")
 	

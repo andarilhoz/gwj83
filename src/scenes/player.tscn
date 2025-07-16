@@ -412,7 +412,7 @@ one_way_collision = true
 [node name="EnemyInsideSlime" parent="InternalPhysicsBodies" instance=ExtResource("5_ya6j6")]
 
 [node name="Digestao" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.12
 autostart = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
