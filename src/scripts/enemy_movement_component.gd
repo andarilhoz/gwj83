@@ -11,17 +11,20 @@ func start(owner: CharacterBody2D, movement_speed: float, stop_dist: float):
 	speed = movement_speed
 	stop_distance = stop_dist
 
-func move_towards_player(player: CharacterBody2D, delta: float) -> Vector2:
+func move_towards_player(player: CharacterBody2D, delta: float, is_afraid := false) -> Vector2:
 	if not enemy or not player:
 		return Vector2.ZERO
 
 	var to_player: Vector2 = player.global_position - enemy.global_position
 	var distance: float = to_player.length()
+	var direction: Vector2 = to_player.normalized()
 
-	if distance > stop_distance:
-		var direction: Vector2 = to_player.normalized()
+	if is_afraid:
+		direction = -direction  # Inverte direção pra fugir
+
+	if distance > stop_distance or is_afraid:
 		enemy.velocity = direction * speed
 	else:
 		enemy.velocity = Vector2.ZERO
-	
-	return to_player.normalized()
+
+	return direction

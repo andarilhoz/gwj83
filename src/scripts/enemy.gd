@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var attack = $EnemyAttack
 @onready var movement_component: EnemyMovementComponent = $Enemy_movement_component
 @export var absorbed_version: PackedScene #Cena do Inimigo dentro da Slime
-
+var is_afraid: bool = false 
 
 @export var speed = 200
 @export var stop_distance: float = 150.0
@@ -27,11 +27,13 @@ func initialize(received_player: CharacterBody2D):
 	initialized = true
 	
 	
+	
 func _physics_process(delta):
 	if !player or attack.is_attacking:
 		return
-
-	var to_player = movement_component.move_towards_player(player, delta)
+	
+	is_afraid = player.level > level
+	var to_player = movement_component.move_towards_player(player, delta, is_afraid)
 	anim.flip_h = player.global_position.x < global_position.x
 	move_and_slide()
 	if velocity.length() > 0:

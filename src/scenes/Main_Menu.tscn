@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="2_kwek3"]
 [ext_resource type="Texture2D" uid="uid://dywt655sx2mon" path="res://src/assets/MenuPlaceHolders/League-of-Legends-Logo.png" id="3_xfhpr"]
 [ext_resource type="AudioStream" uid="uid://ccvw786cgcrsj" path="res://src/assets/MenuPlaceHolders/5503696892461056.wav" id="5_xfhpr"]
-[ext_resource type="Script" uid="uid://dnp4r6tw0rn53" path="res://src/scripts/settings.gd" id="6_amoe7"]
+[ext_resource type="Script" path="res://src/scripts/settings.gd" id="6_amoe7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
 texture = ExtResource("1_yh40j")

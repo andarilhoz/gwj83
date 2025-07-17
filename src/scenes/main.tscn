@@ -985,6 +985,8 @@ script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
 enemy_scene = ExtResource("12_p1ia5")
 spawn_radius = 2184.15
+max_enemies = 30
+min_enemies = 5
 
 [node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
 position = Vector2(-631, -418)
