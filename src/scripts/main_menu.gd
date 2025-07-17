@@ -1,5 +1,9 @@
 extends Control
 
+@onready var menu_container = $VBoxContainer
+@onready var settings_panel = $Settings
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,8 +21,14 @@ func _on_start_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	pass # Replace with function body.
+	menu_container.visible = false
+	settings_panel.visible = true
 
 
 func _on_exit_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_button_toggled(toggled_on: bool) -> void:
+	settings_panel.visible = false
+	menu_container.visible = true

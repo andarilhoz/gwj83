@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://q811bxhn5jy3"]
 
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_puklq"]
-[ext_resource type="PackedScene" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="2_bcvgw"]
+[ext_resource type="PackedScene" uid="uid://dyfvcryqw7lpa" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="2_bcvgw"]
 [ext_resource type="Texture2D" uid="uid://bu0twmve7heog" path="res://src/assets/Enemy_Sprites/Dragon_SpriteSheet.png" id="2_puklq"]
 [ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="3_r6qj2"]
-[ext_resource type="Script" path="res://src/scripts/enemy_movement_component.gd" id="4_qmm4b"]
+[ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="4_qmm4b"]
 [ext_resource type="AudioStream" uid="uid://blr305uomnvh3" path="res://src/assets/Sounds/DragoNGrowl.wav" id="6_bcvgw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bcvgw"]
@@ -52,10 +52,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yue2g"]
-size = Vector2(215, 209.781)
+size = Vector2(139, 209.781)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rvav"]
-radius = 13.3417
+radius = 4.17998
 
 [node name="Enemy_Dragon" type="CharacterBody2D" groups=["enemy"]]
 texture_filter = 1
@@ -63,6 +63,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_puklq")
 absorbed_version = ExtResource("2_bcvgw")
+stop_distance = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.75, -0.75)
@@ -71,7 +72,7 @@ sprite_frames = SubResource("SpriteFrames_8xw2p")
 animation = &"Walk"
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(77.5, 72.1093)
+position = Vector2(39.5, 72.1093)
 shape = SubResource("RectangleShape2D_yue2g")
 
 [node name="EnemyAttack" type="Node" parent="."]
@@ -80,7 +81,7 @@ script = ExtResource("3_r6qj2")
 [node name="Attack_Hitbox" type="Area2D" parent="."]
 
 [node name="Attack Collider" type="CollisionShape2D" parent="Attack_Hitbox"]
-position = Vector2(265, 68)
+position = Vector2(287, 66)
 scale = Vector2(12, 12)
 shape = SubResource("CircleShape2D_6rvav")
 disabled = true

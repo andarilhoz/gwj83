@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="4_6rvav"]
 [ext_resource type="AudioStream" uid="uid://cs88r0ovmqfoy" path="res://src/assets/Sounds/NhamNham.wav" id="5_dyya8"]
 [ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="6_6rvav"]
-[ext_resource type="Script" path="res://src/scripts/enemy_movement_component.gd" id="7_cxdrd"]
+[ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="7_cxdrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsx1q"]
 atlas = ExtResource("4_6rvav")
@@ -63,6 +63,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dyya8")
 absorbed_version = ExtResource("2_6rvav")
+stop_distance = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.75, -0.75)
