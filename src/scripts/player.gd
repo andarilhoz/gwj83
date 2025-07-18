@@ -67,6 +67,7 @@ func update_size(percentage: float):
 	
 	var update_scale = percentage / 100
 	update_scale = min_player_scale if update_scale < min_player_scale else update_scale
+	update_scale+=level
 	scale = Vector2(update_scale, update_scale)
 
 func _physics_process(delta):

@@ -1019,14 +1019,14 @@ texture_progress = ExtResource("21_tx8mq")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(156, 401)
+position = Vector2(220, 473)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("22_tyryd")
 hframes = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(942, 400)
+position = Vector2(1006, 473)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("23_tx8mq")
 offset = Vector2(-1.495, 0)

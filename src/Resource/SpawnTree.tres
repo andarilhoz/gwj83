@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="EnemySpawnSet" load_steps=14 format=3 uid="uid://3sgttonlblgv"]
+[gd_resource type="Resource" script_class="EnemySpawnSet" load_steps=15 format=3 uid="uid://3sgttonlblgv"]
 
-[ext_resource type="Script" uid="uid://cqyu32hw0kb2q" path="res://src/scripts/EnemySpawnEntry.gd" id="1_1c6jb"]
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnEntry.gd" id="1_1c6jb"]
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="1_4ajep"]
-[ext_resource type="Script" uid="uid://boqbpjt52ta2a" path="res://src/scripts/EnemySpawnSet.gd" id="1_h5pw4"]
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnSet.gd" id="1_h5pw4"]
 [ext_resource type="PackedScene" uid="uid://d1frq1n7eeuvj" path="res://src/scenes/Enemy_Orc.tscn" id="2_1c6jb"]
-[ext_resource type="PackedScene" uid="uid://dyfvcryqw7lpa" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="4_n05c3"]
+[ext_resource type="PackedScene" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="4_n05c3"]
+[ext_resource type="PackedScene" uid="uid://q811bxhn5jy3" path="res://src/scenes/Enemy_Dragon.tscn" id="5_1c6jb"]
 
 [sub_resource type="Resource" id="Resource_w03pr"]
 script = ExtResource("1_1c6jb")
@@ -38,7 +39,7 @@ metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
 
 [sub_resource type="Resource" id="Resource_nuotv"]
 script = ExtResource("1_1c6jb")
-scene = ExtResource("4_n05c3")
+scene = ExtResource("5_1c6jb")
 weight = 6.0
 metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
 
@@ -59,4 +60,3 @@ script = ExtResource("1_h5pw4")
 level_1_enemies = Array[ExtResource("1_1c6jb")]([SubResource("Resource_w03pr"), SubResource("Resource_fhneb")])
 level_2_enemies = Array[ExtResource("1_1c6jb")]([SubResource("Resource_7xmns"), SubResource("Resource_3w4qp"), SubResource("Resource_fljsq")])
 level_3_enemies = Array[ExtResource("1_1c6jb")]([SubResource("Resource_nuotv"), SubResource("Resource_yy5o7"), SubResource("Resource_n3p51")])
-metadata/_custom_type_script = "uid://boqbpjt52ta2a"

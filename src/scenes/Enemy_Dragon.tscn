@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://q811bxhn5jy3"]
 
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_puklq"]
-[ext_resource type="PackedScene" uid="uid://dyfvcryqw7lpa" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="2_bcvgw"]
+[ext_resource type="PackedScene" uid="uid://102fh04soqsr" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="2_bcvgw"]
 [ext_resource type="Texture2D" uid="uid://bu0twmve7heog" path="res://src/assets/Enemy_Sprites/Dragon_SpriteSheet.png" id="2_puklq"]
 [ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="3_r6qj2"]
 [ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="4_qmm4b"]
