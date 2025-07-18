@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemySpawnSet" load_steps=5 format=3 uid="uid://dg5rq80f05fbe"]
+
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnEntry.gd" id="1_n8a1o"]
+[ext_resource type="PackedScene" uid="uid://cfp81ud14gltf" path="res://src/scenes/Consumable_Mushroom.tscn" id="2_5vgt2"]
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnSet.gd" id="6_cf423"]
+
+[sub_resource type="Resource" id="Resource_w03pr"]
+script = ExtResource("1_n8a1o")
+scene = ExtResource("2_5vgt2")
+weight = 99.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[resource]
+script = ExtResource("6_cf423")
+level_1_enemies = Array[ExtResource("1_n8a1o")]([SubResource("Resource_w03pr")])
+level_2_enemies = Array[ExtResource("1_n8a1o")]([])
+level_3_enemies = Array[ExtResource("1_n8a1o")]([])

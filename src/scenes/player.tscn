@@ -375,7 +375,8 @@ tile_movement_component = NodePath("TileMovementComponent")
 energy_component = NodePath("EnergyComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -70)
+position = Vector2(-2.38419e-07, -20)
+scale = Vector2(0.194685, 0.181243)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="TileMovementComponent" type="Node2D" parent="."]
@@ -389,8 +390,8 @@ script = ExtResource("4_0qy4j")
 initial_energy = 50.0
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-14, -6)
-scale = Vector2(0.519999, 0.679998)
+position = Vector2(-22, -4)
+scale = Vector2(0.140871, 0.163682)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -400,8 +401,7 @@ shape = SubResource("CircleShape2D_h2yge")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.894118)
 texture_filter = 1
-position = Vector2(0, -100)
-scale = Vector2(4, 4)
+position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_oric3")
 animation = &"After_Eating"
 
@@ -423,6 +423,8 @@ trail_lifetime = 0.01
 process_material = SubResource("ParticleProcessMaterial_8v6aa")
 
 [node name="InternalWalls" type="Node2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(-0.15861, 0.197636)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="InternalWalls"]
 position = Vector2(0, -68)
@@ -454,7 +456,7 @@ shape = SubResource("SegmentShape2D_0qy4j")
 one_way_collision = true
 
 [node name="InternalPhysicsBodies" type="Node2D" parent="."]
-position = Vector2(0, -68)
+position = Vector2(-2, -14)
 
 [node name="Digestao" type="Timer" parent="."]
 wait_time = 0.12

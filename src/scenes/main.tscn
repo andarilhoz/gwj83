@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c1f8bafs7263i" path="res://src/assets/Props/Goblin_Props.png" id="11_tx8mq"]
 [ext_resource type="Texture2D" uid="uid://cyr6cvvemfnrd" path="res://src/assets/TileSets/Slime/GooTileSet_Masked256.png" id="11_tyryd"]
 [ext_resource type="PackedScene" uid="uid://bbxv486ri4pxd" path="res://src/scenes/player.tscn" id="12_lcp4o"]
-[ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="12_p1ia5"]
+[ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy_Goblin.tscn" id="12_p1ia5"]
 [ext_resource type="Texture2D" uid="uid://0u2vbjagh6kq" path="res://src/assets/TileSets/Slime/GooTileSet_Masked_512.png" id="14_2sd1y"]
 [ext_resource type="Material" uid="uid://bvkj7ecmvalyd" path="res://src/assets/TileSets/Slime/Material_Slime_Tileset_512.tres" id="15_7opv2"]
 [ext_resource type="Texture2D" uid="uid://dx0otm8r6snqa" path="res://src/assets/TileSets/Slime/GooTileSet_Masked_1024.png" id="15_am227"]
@@ -1192,7 +1192,7 @@ position = Vector2(-7, -8)
 script = ExtResource("10_p1ia5")
 follow_mode = 5
 follow_target = NodePath("../Player")
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.6, 0.6)
 tween_resource = SubResource("Resource_tx8mq")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
@@ -1202,7 +1202,7 @@ position = Vector2(-7, -8)
 script = ExtResource("10_p1ia5")
 follow_mode = 5
 follow_target = NodePath("../Player")
-zoom = Vector2(0.25, 0.25)
+zoom = Vector2(0.3, 0.3)
 tween_resource = SubResource("Resource_xxm0n")
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
@@ -1210,13 +1210,10 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
 enemy_scene = ExtResource("12_p1ia5")
-spawn_radius = 2184.15
-max_enemies = 30
+spawn_radius = 2007.68
 min_enemies = 5
+spawn_rate = 0.5
 spawn_table = ExtResource("19_tx8mq")
-
-[node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
-position = Vector2(-631, -418)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(0, 200)
@@ -1225,14 +1222,15 @@ transform = Transform2D(1, 0, 0, 1, 0, 200)
 [node name="EnergyBar" type="TextureProgressBar" parent="CanvasLayer"]
 unique_name_in_owner = true
 texture_filter = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = -0.00859375
+anchor_top = 0.675
+anchor_right = 1.00937
 anchor_bottom = 1.0
-offset_left = 110.0
-offset_top = -169.0
-offset_right = 855.0
-offset_bottom = 109.0
+offset_left = 286.0
+offset_top = -46.0
+offset_right = 335.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -1244,6 +1242,7 @@ texture_progress = ExtResource("21_tx8mq")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
 position = Vector2(220, 473)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("22_tyryd")

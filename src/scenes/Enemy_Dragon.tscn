@@ -90,3 +90,5 @@ disabled = true
 
 [node name="Enemy_movement_component" type="Node" parent="."]
 script = ExtResource("4_qmm4b")
+speed = 600.0
+afraid_distance = 800.0

@@ -88,3 +88,5 @@ disabled = true
 
 [node name="Enemy_movement_component" type="Node" parent="."]
 script = ExtResource("4_kdiuh")
+speed = 250.0
+afraid_distance = 400.0
