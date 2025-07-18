@@ -19,6 +19,7 @@ config/icon="res://src/assets/icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 EnemySound_Manager="*res://src/scripts/EnemySoundManager.gd"
+GameConfigLoader="*res://src/scripts/GameConfigLoader.gd"
 
 [display]
 

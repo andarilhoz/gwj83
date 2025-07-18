@@ -5,8 +5,6 @@ extends CharacterBody2D
 @export var tilemap_slime_level_1: NodePath
 @export var tilemap_slime_level_2: NodePath
 @export var tilemap_slime_level_3: NodePath
-@export var walk_loss_energy: float
-@export var dash_loss_energy: float
 
 @export var phantom_camera_level_1 : PhantomCamera2D
 @export var phantom_camera_level_2 : PhantomCamera2D
@@ -23,14 +21,7 @@ var dash_amount: int = 3
 
 var target_position: Vector2 = Vector2.ZERO
 var has_target_position: bool = false
-@export var move_speed: float 
-@export var dash_speed: float
-@export var process_food_by_seconds: float
-@export var min_player_scale: float = 0.3
-
-#@export_range(1, 100, 1) var initial_size_percentage: float
-#@export_range(1, 100, 1) var min_size_percentage: float 
-#@export_range(100, 400, 1) var max_size_percentage: float 
+var current_stats: LevelStats
 
 @onready var area2d: Area2D = $Area2D
 var painted_coords = Vector2i(2, 1)
@@ -40,18 +31,20 @@ var current_speed: float = 0.0
 var absorbed_enemies : Array[EnemyInside] = []
 
 func _ready():
-	current_speed = move_speed
 	_tilemap_slime_level_1 = get_node(tilemap_slime_level_1)
 	_tilemap_slime_level_2 = get_node(tilemap_slime_level_2)
 	_tilemap_slime_level_3 = get_node(tilemap_slime_level_3)
 	
+	update_stats_for_level()
+	
 	tile_movement_component.start(self, level, _tilemap_slime_level_1, _tilemap_slime_level_2, _tilemap_slime_level_3)
-	update_size(energy_component.initial_energy)
+	update_size(GameConfigLoader.config.player_initial_energy)
 	energy_component.energy_update.connect(update_size)
 	phantom_camera_level_1.priority = 1
 	phantom_camera_level_2.priority = 0
 	phantom_camera_level_3.priority = 0
 	paint_current_tile(level)
+	update_stats_for_level()
 
 func get_tilemap_by_size() -> TileMapDual:
 	match level:
@@ -61,12 +54,12 @@ func get_tilemap_by_size() -> TileMapDual:
 	return _tilemap_slime_level_1
 	
 func update_size(percentage: float):
-	if percentage >= 100 and level < 3:
+	if percentage >= current_stats.max_energy and level < 3:
 		evolve()
 		return
 	
 	var update_scale = percentage / 100
-	update_scale = min_player_scale if update_scale < min_player_scale else update_scale
+	update_scale = GameConfigLoader.config.min_player_scale if update_scale < GameConfigLoader.config.min_player_scale else update_scale
 	update_scale+=level
 	scale = Vector2(update_scale, update_scale)
 
@@ -126,7 +119,7 @@ func move_towards(direction: Vector2):
 		return
 	
 	var has_slime = tile_movement_component.has_slime_in_direction(direction, level)
-	var can_spend = energy_component.can_lose_energy(walk_loss_energy)
+	var can_spend = energy_component.can_lose_energy(current_stats.walk_loss_energy)
 
 	if !has_slime and !can_spend:
 		return
@@ -134,10 +127,11 @@ func move_towards(direction: Vector2):
 	tile_movement_component.move_in_direction(self, direction, level)
 	
 	if has_target_position and !has_slime and can_spend:
-		energy_component.lose_energy(walk_loss_energy)
+		energy_component.lose_energy(current_stats.walk_loss_energy)
 
 
 func evolve():
+	update_stats_for_level()
 	var tilemap = get_tilemap_by_size()
 	tilemap.clear()
 	level += 1
@@ -149,12 +143,15 @@ func evolve():
 	
 
 func dash():
-	if !energy_component.can_lose_energy(dash_loss_energy):
+	if !absorbed_enemies.is_empty():
+		return
+		
+	if !energy_component.can_lose_energy(current_stats.dash_loss_energy):
 		return
 
 	dashing = true
-	current_speed = dash_speed  # aumenta a velocidade
-	energy_component.lose_energy(dash_loss_energy)
+	current_speed = current_stats.dash_speed  # aumenta a velocidade
+	energy_component.lose_energy(current_stats.dash_loss_energy)
 	tile_movement_component.dash_towards(self, dash_amount, last_direction, level)
 	var bodies = area2d.get_overlapping_bodies()
 	for body in bodies:
@@ -169,12 +166,12 @@ func dash():
 
 
 func _on_painted_floor():
-	energy_component.lose_energy(walk_loss_energy)
+	energy_component.lose_energy(current_stats.walk_loss_energy)
 
 func _on_dash_finished():
 	$AnimatedSprite2D.play("Dash_Finish")
 	dashing = false
-	current_speed = move_speed 
+	current_speed = current_stats.move_speed 
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -224,7 +221,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		pass # Replace with function body.
 
 func _on_digestao_timeout() -> void:
-	process_food(process_food_by_seconds)
+	process_food(current_stats.process_food_by_seconds)
 
 func process_food(process_food_value: float):
 	if absorbed_enemies.is_empty():
@@ -241,3 +238,12 @@ func process_food(process_food_value: float):
 	else:
 		energy_component.add_energy(process_food_value)
 	
+func update_stats_for_level():
+	match level:
+		1: current_stats = GameConfigLoader.config.level_1_stats
+		2: current_stats = GameConfigLoader.config.level_2_stats
+		3: current_stats = GameConfigLoader.config.level_3_stats
+		_: current_stats = GameConfigLoader.config.level_1_stats
+
+	current_speed = current_stats.move_speed
+	energy_component.set_max_energy(current_stats.max_energy)

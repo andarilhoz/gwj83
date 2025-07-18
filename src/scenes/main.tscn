@@ -1170,14 +1170,9 @@ position = Vector2(-7, -8)
 tilemap_slime_level_1 = NodePath("../TileMaps/TileMapSlimeLevel1")
 tilemap_slime_level_2 = NodePath("../TileMaps/TileMapSlimeLevel2")
 tilemap_slime_level_3 = NodePath("../TileMaps/TileMapSlimeLevel3")
-walk_loss_energy = 1.0
-dash_loss_energy = 5.0
 phantom_camera_level_1 = NodePath("../PhantomCamera2DLevel1")
 phantom_camera_level_2 = NodePath("../PhantomCamera2DLevel2")
 phantom_camera_level_3 = NodePath("../PhantomCamera2DLevel3")
-move_speed = 300.0
-dash_speed = 700.0
-process_food_by_seconds = 1.0
 
 [node name="PhantomCamera2DLevel1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
