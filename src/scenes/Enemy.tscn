@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_dyya8"]
 [ext_resource type="PackedScene" uid="uid://dgjak0e8dbrpp" path="res://src/scenes/EnemyInsideSlime.tscn" id="2_6rvav"]
 [ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="4_6rvav"]
-[ext_resource type="AudioStream" uid="uid://cs88r0ovmqfoy" path="res://src/assets/Sounds/NhamNham.wav" id="5_dyya8"]
+[ext_resource type="AudioStream" uid="uid://3fk37sw6sh8w" path="res://src/assets/Sounds/GoblinSoundV2.wav" id="5_6rvav"]
 [ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="6_6rvav"]
 [ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="7_cxdrd"]
 
@@ -77,6 +77,7 @@ shape = SubResource("RectangleShape2D_yue2g")
 
 [node name="EnemyAttack" type="Node" parent="."]
 script = ExtResource("6_6rvav")
+attack_sound = ExtResource("5_6rvav")
 
 [node name="Attack_Hitbox" type="Area2D" parent="."]
 
@@ -87,6 +88,3 @@ disabled = true
 
 [node name="Enemy_movement_component" type="Node" parent="."]
 script = ExtResource("7_cxdrd")
-
-[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_dyya8")

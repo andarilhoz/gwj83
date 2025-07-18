@@ -18,6 +18,7 @@ config/icon="res://src/assets/icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+EnemySound_Manager="*res://src/scripts/EnemySoundManager.gd"
 
 [display]
 
