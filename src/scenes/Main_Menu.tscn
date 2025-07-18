@@ -1,13 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://did3fvk7t0xi0"]
+[gd_scene load_steps=30 format=3 uid="uid://did3fvk7t0xi0"]
 
 [ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
 [ext_resource type="Texture2D" uid="uid://mnp4xqm6m65y" path="res://src/assets/Main_Menu/Menu_Background.png" id="2_idn0a"]
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="2_kwek3"]
 [ext_resource type="Texture2D" uid="uid://cxhceudy8aqfj" path="res://src/assets/Main_Menu/Gloop_Title.png" id="4_j3esw"]
 [ext_resource type="Texture2D" uid="uid://dsw0of3ib3e5c" path="res://src/assets/Consumables/Mushroom_Sprite.png" id="5_rxowy"]
-[ext_resource type="AudioStream" uid="uid://ccvw786cgcrsj" path="res://src/assets/MenuPlaceHolders/5503696892461056.wav" id="5_xfhpr"]
 [ext_resource type="Texture2D" uid="uid://bf3jsisvk5srt" path="res://src/assets/Consumables/RoastedMeat_Sprite.png" id="6_250sv"]
 [ext_resource type="Script" path="res://src/scripts/settings.gd" id="6_amoe7"]
+[ext_resource type="AudioStream" uid="uid://c8t1ep1hxtof7" path="res://src/assets/Sounds/MenuTheme.wav" id="7_l5pa6"]
+[ext_resource type="Texture2D" uid="uid://bp68con6hfnbn" path="res://src/assets/Main_Menu/Credits_Portraits/Andre_Portrait.png" id="9_yto3i"]
+[ext_resource type="Script" uid="uid://cbxf5y8fb4ybr" path="res://src/scripts/WoblyMovementHead.gd" id="10_2eemj"]
+[ext_resource type="Texture2D" uid="uid://8egfb2b1fiuc" path="res://src/assets/Main_Menu/Credits_Portraits/Cintxa_Portrait.png" id="10_l5pa6"]
+[ext_resource type="Texture2D" uid="uid://cnjenurr5b0d5" path="res://src/assets/Main_Menu/Credits_Portraits/Gus_Portrait.png" id="11_2eemj"]
+[ext_resource type="Texture2D" uid="uid://c2uk4078u2q34" path="res://src/assets/Main_Menu/Credits_Portraits/Magno_Portrait.png" id="12_bsxck"]
+[ext_resource type="Shader" uid="uid://djkroto8tombx" path="res://src/materials/MovingLetras.gdshader" id="13_40fpi"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
 texture = ExtResource("2_idn0a")
@@ -41,6 +47,12 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_yto3i"]
 offsets = PackedFloat32Array(0, 0.663399, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yto3i"]
+shader = ExtResource("13_40fpi")
+shader_parameter/amplitude = 5.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -219,7 +231,7 @@ scale_amount_curve = SubResource("Curve_rtsvh")
 color_ramp = SubResource("Gradient_yto3i")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_xfhpr")
+stream = ExtResource("7_l5pa6")
 autoplay = true
 
 [node name="Settings" type="Control" parent="."]
@@ -322,13 +334,200 @@ theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 46
 text = "Return"
 
+[node name="Instructions" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Instructions"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -69.0
+offset_right = 156.0
+offset_bottom = -11.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 46
+text = "Return"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Credits"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -50.0
+offset_right = -338.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6, 6)
+theme_override_constants/h_separation = 90
+theme_override_constants/v_separation = 30
+columns = 2
+
+[node name="Control" type="Control" parent="Credits/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Credits/GridContainer/Control"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("9_yto3i")
+script = ExtResource("10_2eemj")
+
+[node name="Label" type="Label" parent="Credits/GridContainer/Control"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 7.16667
+offset_right = 262.667
+offset_bottom = 111.167
+grow_vertical = 2
+scale = Vector2(0.195, 0.195)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+text = "Andre"
+
+[node name="Control2" type="Control" parent="Credits/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Credits/GridContainer/Control2"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("12_bsxck")
+script = ExtResource("10_2eemj")
+
+[node name="Label" type="Label" parent="Credits/GridContainer/Control2"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 7.16667
+offset_right = 262.667
+offset_bottom = 111.167
+grow_vertical = 2
+scale = Vector2(0.195, 0.195)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+text = "Magno"
+
+[node name="Control3" type="Control" parent="Credits/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Credits/GridContainer/Control3"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("11_2eemj")
+script = ExtResource("10_2eemj")
+
+[node name="Label" type="Label" parent="Credits/GridContainer/Control3"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 7.16667
+offset_right = 262.667
+offset_bottom = 111.167
+grow_vertical = 2
+scale = Vector2(0.195, 0.195)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+text = "Gustavo"
+
+[node name="Control4" type="Control" parent="Credits/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Credits/GridContainer/Control4"]
+texture_filter = 1
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("10_l5pa6")
+script = ExtResource("10_2eemj")
+
+[node name="Label" type="Label" parent="Credits/GridContainer/Control4"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 7.16667
+offset_right = 262.667
+offset_bottom = 111.167
+grow_vertical = 2
+scale = Vector2(0.195, 0.195)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+text = "Cintia"
+
+[node name="Button" type="Button" parent="Credits"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -77.0
+offset_right = 171.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.33, 0.86, 0.18, 1)
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 46
+text = "Return"
+
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Instructions" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="toggled" from="Settings/VBoxContainer/Mute" to="Settings" method="_on_mute_toggled"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Volume" to="Settings" method="_on_volume_value_changed"]
 [connection signal="toggled" from="Settings/VBoxContainer/CheckBox" to="Settings" method="_on_check_box_toggled"]
 [connection signal="item_selected" from="Settings/VBoxContainer/OptionButton" to="Settings" method="_on_option_button_item_selected"]
-[connection signal="toggled" from="Settings/Button" to="." method="_on_button_toggled"]
-[connection signal="toggled" from="Settings/Button" to="Settings" method="_on_button_toggled"]
+[connection signal="pressed" from="Settings/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Instructions/Button" to="." method="_on_instructions_return_pressed"]
+[connection signal="pressed" from="Credits/Button" to="." method="_on_return_Credits_pressed"]

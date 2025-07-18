@@ -2,6 +2,8 @@ extends Control
 
 @onready var menu_container = $VBoxContainer
 @onready var settings_panel = $Settings
+@onready var credits_panel = $Credits
+@onready var instructions_panel = $Instructions
 
 
 
@@ -29,6 +31,26 @@ func _on_exit_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_button_toggled(toggled_on: bool) -> void:
+func _on_button_pressed() -> void: # RETURN DO SETTINGS
 	settings_panel.visible = false
+	menu_container.visible = true
+
+
+func _on_return_Credits_pressed() -> void:
+	credits_panel.visible = false
+	menu_container.visible = true
+
+
+func _on_credits_pressed() -> void:
+	credits_panel.visible = true
+	menu_container.visible = false
+
+
+func _on_instructions_pressed() -> void:
+	instructions_panel.visible = true
+	menu_container.visible = false
+
+
+func _on_instructions_return_pressed() -> void:
+	instructions_panel.visible = false
 	menu_container.visible = true
