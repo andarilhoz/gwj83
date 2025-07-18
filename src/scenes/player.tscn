@@ -398,6 +398,7 @@ position = Vector2(26.9231, -97.0591)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.894118)
 texture_filter = 1
 position = Vector2(0, -100)
 scale = Vector2(4, 4)
@@ -405,6 +406,7 @@ sprite_frames = SubResource("SpriteFrames_oric3")
 animation = &"After_Eating"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+visible = false
 position = Vector2(16, 16.5)
 rotation = -0.709909
 scale = Vector2(13.615, 13.615)

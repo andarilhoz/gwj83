@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=55 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
@@ -19,7 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://bbxv486ri4pxd" path="res://src/scenes/player.tscn" id="12_lcp4o"]
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="12_p1ia5"]
 [ext_resource type="Texture2D" uid="uid://0u2vbjagh6kq" path="res://src/assets/TileSets/Slime/GooTileSet_Masked_512.png" id="14_2sd1y"]
+[ext_resource type="Material" uid="uid://bvkj7ecmvalyd" path="res://src/assets/TileSets/Slime/Material_Slime_Tileset_512.tres" id="15_7opv2"]
 [ext_resource type="Texture2D" uid="uid://dx0otm8r6snqa" path="res://src/assets/TileSets/Slime/GooTileSet_Masked_1024.png" id="15_am227"]
+[ext_resource type="Material" uid="uid://g6q4h6neox2w" path="res://src/assets/TileSets/Slime/Material_Slime_Tileset_1024.tres" id="17_h8ax2"]
 [ext_resource type="Texture2D" uid="uid://svaj0ibsfkld" path="res://src/assets/HealthBar/Health_Bar_Background.png" id="19_j04uq"]
 [ext_resource type="Resource" uid="uid://3sgttonlblgv" path="res://src/Resource/SpawnTree.tres" id="19_tx8mq"]
 [ext_resource type="Texture2D" uid="uid://d13wu6njhup03" path="res://src/assets/HealthBar/Health_Bar_Over.png" id="20_tyryd"]
@@ -1147,7 +1149,7 @@ texture_filter = 1
 material = ExtResource("3_5lsyw")
 tile_set = SubResource("TileSet_tyryd")
 script = ExtResource("5_lp058")
-display_material = ExtResource("5_p1ia5")
+display_material = ExtResource("15_7opv2")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
@@ -1157,7 +1159,7 @@ material = ExtResource("3_5lsyw")
 position = Vector2(66, 64)
 tile_set = SubResource("TileSet_xxm0n")
 script = ExtResource("5_lp058")
-display_material = ExtResource("5_p1ia5")
+display_material = ExtResource("17_h8ax2")
 godot_4_3_compatibility = false
 metadata/_custom_type_script = "uid://cjk8nronimk5r"
 
