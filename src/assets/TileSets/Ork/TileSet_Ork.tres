@@ -14,5 +14,5 @@ shader_parameter/overlay2 = ExtResource("3_1iruc")
 shader_parameter/fg_color2 = Color(0, 1, 0, 1)
 shader_parameter/bg_color2 = Color(0, 0, 0, 1)
 shader_parameter/tolerance2 = 0.145
-shader_parameter/tile_size = 800.0
-shader_parameter/tile_size2 = 800.0
+shader_parameter/tile_size = 400.0
+shader_parameter/tile_size2 = 400.0

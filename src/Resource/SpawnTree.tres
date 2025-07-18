@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="1_4ajep"]
 [ext_resource type="Script" path="res://src/scripts/EnemySpawnSet.gd" id="1_h5pw4"]
 [ext_resource type="PackedScene" uid="uid://d1frq1n7eeuvj" path="res://src/scenes/Enemy_Orc.tscn" id="2_1c6jb"]
-[ext_resource type="PackedScene" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="4_n05c3"]
+[ext_resource type="PackedScene" uid="uid://102fh04soqsr" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="4_n05c3"]
 [ext_resource type="PackedScene" uid="uid://q811bxhn5jy3" path="res://src/scenes/Enemy_Dragon.tscn" id="5_1c6jb"]
 
 [sub_resource type="Resource" id="Resource_w03pr"]

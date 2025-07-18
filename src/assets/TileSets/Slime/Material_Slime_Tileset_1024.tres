@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://g6q4h6neox2w"]
+
+[ext_resource type="Shader" uid="uid://6rlmlioft12x" path="res://assets/shader/shader.gdshader" id="1_i5ktw"]
+[ext_resource type="Texture2D" uid="uid://blmw5bk6lck3r" path="res://src/assets/TileSets/Slime/TiledGoo.png" id="2_h016w"]
+
+[resource]
+shader = ExtResource("1_i5ktw")
+shader_parameter/overlay = ExtResource("2_h016w")
+shader_parameter/fg_color = Color(1, 0, 0, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.576
+shader_parameter/fg_color2 = Color(0, 0, 0, 1)
+shader_parameter/bg_color2 = Color(0, 0, 0, 1)
+shader_parameter/tolerance2 = 0.0
+shader_parameter/tile_size = 1200.0
+shader_parameter/tile_size2 = 64.0
