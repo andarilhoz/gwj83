@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=49 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bbxv486ri4pxd" path="res://src/scenes/player.tscn" id="12_lcp4o"]
 [ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy.tscn" id="12_p1ia5"]
 [ext_resource type="Texture2D" uid="uid://svaj0ibsfkld" path="res://src/assets/HealthBar/Health_Bar_Background.png" id="19_j04uq"]
+[ext_resource type="Resource" uid="uid://3sgttonlblgv" path="res://src/Resource/SpawnTree.tres" id="19_tx8mq"]
 [ext_resource type="Texture2D" uid="uid://d13wu6njhup03" path="res://src/assets/HealthBar/Health_Bar_Over.png" id="20_tyryd"]
 [ext_resource type="AudioStream" uid="uid://b7tp5dnlrr31" path="res://src/assets/Sounds/SlimeBG.wav" id="20_v252j"]
 [ext_resource type="Texture2D" uid="uid://b35y25cfmo5wg" path="res://src/assets/HealthBar/Health_Bar_Progress.png" id="21_tx8mq"]
@@ -987,6 +988,7 @@ enemy_scene = ExtResource("12_p1ia5")
 spawn_radius = 2184.15
 max_enemies = 30
 min_enemies = 5
+spawn_table = ExtResource("19_tx8mq")
 
 [node name="Enemy_Base" parent="." instance=ExtResource("12_p1ia5")]
 position = Vector2(-631, -418)

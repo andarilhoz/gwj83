@@ -14,7 +14,7 @@ var is_afraid: bool = false
 
 var walk_timer: float = 0.0
 
-var level = 1;
+@export var level = 1;
 var player: CharacterBody2D
 var initialized : bool = false
 

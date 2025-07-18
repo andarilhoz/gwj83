@@ -7,6 +7,8 @@ extends Node2D
 @export var max_enemies: int = 10
 @export var min_enemies: int = 3
 @export var spawn_rate: float = 2.0 # segundos entre spawns
+@export var spawn_table: EnemySpawnSet
+
 
 var _current_enemies: Array = []
 var _spawn_timer: Timer
@@ -29,24 +31,47 @@ func _on_spawn_timeout():
 		spawn()
 
 func spawn():
-	if not player or not enemy_scene:
+	if not player or not spawn_table:
+		return
+
+	var pool: Array[EnemySpawnEntry] = spawn_table.get_pool_for_level(player.level)
+	if pool.is_empty():
+		return
+
+	var chosen_entry: EnemySpawnEntry = pick_weighted_entry(pool)
+	if not chosen_entry or not chosen_entry.scene:
 		return
 
 	var angle = randf() * TAU
 	var distance = randf_range(0.5 * spawn_radius, spawn_radius)
 	var offset = Vector2.RIGHT.rotated(angle) * distance
 
-	var enemy_instance = enemy_scene.instantiate()
+	var enemy_instance = chosen_entry.scene.instantiate()
 	enemy_instance.global_position = player.global_position + offset
 	add_child(enemy_instance)
 	_current_enemies.append(enemy_instance)
-	
-	var enemy_script = enemy_instance as Enemy
-	enemy_script.initialize(player)
 
-	# Opcional: remover inimigos da lista quando morrerem
+	var enemy_script = enemy_instance as Enemy
+	if enemy_script:
+		enemy_script.initialize(player)
+
 	if enemy_instance.has_signal("died"):
 		enemy_instance.died.connect(func():
 			_current_enemies.erase(enemy_instance)
 			enemy_instance.queue_free()
 		)
+
+func pick_weighted_entry(entries: Array[EnemySpawnEntry]) -> EnemySpawnEntry:
+	var total := 0.0
+	for entry in entries:
+		total += entry.weight
+
+	var rand_value := randf() * total
+	var acc := 0.0
+
+	for entry in entries:
+		acc += entry.weight
+		if rand_value <= acc:
+			return entry
+
+	return null
