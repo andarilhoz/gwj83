@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="GameConfig" load_steps=5 format=3 uid="uid://ce6aqq6do8nl3"]
 
-[ext_resource type="Resource" uid="uid://cmwovn5wwredd" path="res://level_1_stats.tres" id="1_4pyng"]
+[ext_resource type="Resource" uid="uid://cmwovn5wwredd" path="res://src/Resource/level_1_stats.tres" id="1_4pyng"]
 [ext_resource type="Script" uid="uid://dx6duoujlntra" path="res://src/scripts/GameConfig.gd" id="1_wtobl"]
-[ext_resource type="Resource" uid="uid://butvaqmhe5hvd" path="res://level_2_stats.tres" id="2_4cbws"]
-[ext_resource type="Resource" uid="uid://b23360fxxonfc" path="res://level_3_stats.tres" id="3_ppknx"]
+[ext_resource type="Resource" uid="uid://butvaqmhe5hvd" path="res://src/Resource/level_2_stats.tres" id="2_4cbws"]
+[ext_resource type="Resource" uid="uid://b23360fxxonfc" path="res://src/Resource/level_3_stats.tres" id="3_ppknx"]
 
 [resource]
 script = ExtResource("1_wtobl")
