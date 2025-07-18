@@ -1,50 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://102fh04soqsr"]
+[gd_scene load_steps=5 format=3 uid="uid://dcquf5g64uerd"]
 
-[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_6uerr"]
-[ext_resource type="Texture2D" uid="uid://bu0twmve7heog" path="res://src/assets/Enemy_Sprites/Dragon_SpriteSheet.png" id="2_6uerr"]
+[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_0hq84"]
+[ext_resource type="Texture2D" uid="uid://dsw0of3ib3e5c" path="res://src/assets/Consumables/Mushroom_Sprite.png" id="2_0hq84"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
-bounce = 0.2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g7ocm"]
-atlas = ExtResource("2_6uerr")
-region = Rect2(0, 128, 256, 128)
+rough = true
+bounce = 0.1
+absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fyrt"]
 radius = 15.1327
 
 [node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
-script = ExtResource("1_6uerr")
-level = 3
+script = ExtResource("1_0hq84")
+level = 1
 rigidbody = NodePath("RigidBody2D")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
 length = 5.0
-stiffness = 64.0
-damping = 0.51
+stiffness = 0.2
+damping = 8.11
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 32
 collision_mask = 16
+mass = 0.47
 physics_material_override = SubResource("PhysicsMaterial_2fyrt")
 gravity_scale = 0.0
+inertia = 2.76
 can_sleep = false
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-modulate = Color(0, 1, 0, 1)
-self_modulate = Color(0, 1, 0, 1)
+modulate = Color(0, 1, 0.254902, 1)
+self_modulate = Color(0.415686, 1, 0, 1)
 texture_filter = 1
 position = Vector2(-7, -1)
-texture = SubResource("AtlasTexture_g7ocm")
+scale = Vector2(1.285, 1.31)
+texture = ExtResource("2_0hq84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-7, 0)
 shape = SubResource("CircleShape2D_2fyrt")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
