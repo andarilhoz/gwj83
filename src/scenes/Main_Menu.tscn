@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://did3fvk7t0xi0"]
+[gd_scene load_steps=32 format=3 uid="uid://did3fvk7t0xi0"]
 
 [ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
 [ext_resource type="Texture2D" uid="uid://mnp4xqm6m65y" path="res://src/assets/Main_Menu/Menu_Background.png" id="2_idn0a"]
@@ -17,6 +17,12 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
 texture = ExtResource("2_idn0a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5pa6"]
+shader = ExtResource("13_40fpi")
+shader_parameter/amplitude = 1.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amoe7"]
 
@@ -39,6 +45,12 @@ texture = ExtResource("2_idn0a")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yto3i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfhpr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2eemj"]
+shader = ExtResource("13_40fpi")
+shader_parameter/amplitude = 1.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
 
 [sub_resource type="Curve" id="Curve_rtsvh"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.834337, 0.992216), 0.0, 0.0, 0, 0, Vector2(1, 0.556287), 0.0, 0.0, 0, 0]
@@ -90,6 +102,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="StartGame" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_l5pa6")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
@@ -111,6 +124,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
 text = "Start Game"
 
 [node name="Instructions" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_2eemj")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
@@ -132,6 +146,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
 text = "Instructions"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_2eemj")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
@@ -153,6 +168,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
 text = "Options"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_2eemj")
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
