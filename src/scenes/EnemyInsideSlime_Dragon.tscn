@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyfvcryqw7lpa"]
+[gd_scene load_steps=6 format=3 uid="uid://102fh04soqsr"]
 
 [ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_6uerr"]
 [ext_resource type="Texture2D" uid="uid://bu0twmve7heog" path="res://src/assets/Enemy_Sprites/Dragon_SpriteSheet.png" id="2_6uerr"]
@@ -16,6 +16,7 @@ radius = 15.1327
 [node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
 script = ExtResource("1_6uerr")
 rigidbody = NodePath("RigidBody2D")
+level = 3
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
@@ -32,6 +33,8 @@ can_sleep = false
 freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+modulate = Color(0, 1, 0, 1)
+self_modulate = Color(0, 1, 0, 1)
 texture_filter = 1
 position = Vector2(-7, -1)
 texture = SubResource("AtlasTexture_g7ocm")

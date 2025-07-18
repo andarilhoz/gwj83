@@ -2,11 +2,19 @@ class_name EnemyInside
 extends Node2D
 
 @export var rigidbody: RigidBody2D
-@export var energy: float
+@export var level: int
 @onready var sprite = $RigidBody2D/Sprite2D
 
 
+var energy: float
+
 func _ready():
+	match level:
+		1: energy = GameConfigLoader.config.enemy_level_1
+		2: energy = GameConfigLoader.config.enemy_level_2
+		3: energy = GameConfigLoader.config.enemy_level_3
+		_: energy = GameConfigLoader.config.enemy_level_1
+
 	apply_slime_tint()
 
 func apply_slime_tint():

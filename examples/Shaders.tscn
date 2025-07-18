@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://crei5q5vul8o4"]
 
-[ext_resource type="Material" uid="uid://ckch5r1m2f8oo" path="res://assets/shader/shader-material.tres" id="1_qtvuh"]
+[ext_resource type="Material" uid="uid://ckch5r1m2f8oo" path="res://src/assets/TileSets/Slime/Material_Slime_Tileset_256.tres" id="1_qtvuh"]
 [ext_resource type="Script" uid="uid://cy84qvt88fwk2" path="res://examples/rotating_light.gd" id="1_rr5qa"]
 [ext_resource type="Material" uid="uid://cmbcfxlkxxnwq" path="res://addons/TileMapDual/ghost_material.tres" id="2_14orm"]
 [ext_resource type="TileSet" uid="uid://6h55aginnmsp" path="res://assets/tileset/shader.tres" id="2_h40s4"]

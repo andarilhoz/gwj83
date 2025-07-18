@@ -1,8 +1,7 @@
 [gd_resource type="Resource" script_class="EnemySpawnEntry" load_steps=2 format=3 uid="uid://ckut8154um02g"]
 
-[ext_resource type="Script" uid="uid://cqyu32hw0kb2q" path="res://src/scripts/EnemySpawnEntry.gd" id="1_05fqn"]
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnEntry.gd" id="1_05fqn"]
 
 [resource]
 script = ExtResource("1_05fqn")
 weight = 1.0
-metadata/_custom_type_script = "uid://cqyu32hw0kb2q"

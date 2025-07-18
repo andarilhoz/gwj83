@@ -1,10 +1,9 @@
-[gd_scene load_steps=53 format=3 uid="uid://bbxv486ri4pxd"]
+[gd_scene load_steps=52 format=3 uid="uid://bbxv486ri4pxd"]
 
 [ext_resource type="Script" uid="uid://b4ymxb2exqw5j" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Texture2D" uid="uid://d0iyl7lncguop" path="res://src/assets/SlimeCharacter/SlimeCharacter.png" id="2_l2v1k"]
 [ext_resource type="Script" uid="uid://bahh1mknjhcs5" path="res://src/scripts/tile_movement_component.gd" id="3_ya6j6"]
 [ext_resource type="Script" uid="uid://bqpu7nte3oa33" path="res://src/scripts/energy_component.gd" id="4_0qy4j"]
-[ext_resource type="PackedScene" uid="uid://dgjak0e8dbrpp" path="res://src/scenes/EnemyInsideSlime.tscn" id="5_ya6j6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
 radius = 124.016
@@ -399,6 +398,7 @@ position = Vector2(26.9231, -97.0591)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.894118)
 texture_filter = 1
 position = Vector2(0, -100)
 scale = Vector2(4, 4)
@@ -406,6 +406,7 @@ sprite_frames = SubResource("SpriteFrames_oric3")
 animation = &"After_Eating"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+visible = false
 position = Vector2(16, 16.5)
 rotation = -0.709909
 scale = Vector2(13.615, 13.615)
@@ -454,10 +455,6 @@ one_way_collision = true
 
 [node name="InternalPhysicsBodies" type="Node2D" parent="."]
 position = Vector2(0, -68)
-
-[node name="EnemyInsideSlime" parent="InternalPhysicsBodies" instance=ExtResource("5_ya6j6")]
-visible = false
-position = Vector2(2, -70)
 
 [node name="Digestao" type="Timer" parent="."]
 wait_time = 0.12

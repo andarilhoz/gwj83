@@ -27,7 +27,6 @@ func initialize(received_player: CharacterBody2D):
 	initialized = true
 	
 	
-	
 func _physics_process(delta):
 	if !player or attack.is_attacking:
 		return

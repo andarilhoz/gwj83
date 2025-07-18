@@ -1,14 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://did3fvk7t0xi0"]
+[gd_scene load_steps=23 format=3 uid="uid://did3fvk7t0xi0"]
 
 [ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
-[ext_resource type="Texture2D" uid="uid://cetjh3c6p8dil" path="res://src/assets/MenuPlaceHolders/pixel-art-video-games-retro-games-castlevania-wallpaper-preview.jpg" id="1_yh40j"]
+[ext_resource type="Texture2D" uid="uid://mnp4xqm6m65y" path="res://src/assets/Main_Menu/Menu_Background.png" id="2_idn0a"]
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="2_kwek3"]
-[ext_resource type="Texture2D" uid="uid://dywt655sx2mon" path="res://src/assets/MenuPlaceHolders/League-of-Legends-Logo.png" id="3_xfhpr"]
+[ext_resource type="Texture2D" uid="uid://cxhceudy8aqfj" path="res://src/assets/Main_Menu/Gloop_Title.png" id="4_j3esw"]
+[ext_resource type="Texture2D" uid="uid://dsw0of3ib3e5c" path="res://src/assets/Consumables/Mushroom_Sprite.png" id="5_rxowy"]
 [ext_resource type="AudioStream" uid="uid://ccvw786cgcrsj" path="res://src/assets/MenuPlaceHolders/5503696892461056.wav" id="5_xfhpr"]
+[ext_resource type="Texture2D" uid="uid://bf3jsisvk5srt" path="res://src/assets/Consumables/RoastedMeat_Sprite.png" id="6_250sv"]
 [ext_resource type="Script" path="res://src/scripts/settings.gd" id="6_amoe7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
-texture = ExtResource("1_yh40j")
+texture = ExtResource("2_idn0a")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amoe7"]
 
@@ -32,6 +34,14 @@ texture = ExtResource("1_yh40j")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfhpr"]
 
+[sub_resource type="Curve" id="Curve_rtsvh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.834337, 0.992216), 0.0, 0.0, 0, 0, Vector2(1, 0.556287), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yto3i"]
+offsets = PackedFloat32Array(0, 0.663399, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -43,6 +53,7 @@ script = ExtResource("1_kwek3")
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0.65834, 0.65834, 0.65834, 1)
+z_index = -5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,19 +70,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -213.0
-offset_top = -115.5
+offset_top = -36.0
 offset_right = 213.0
-offset_bottom = 115.5
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="StartGame" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_outline_color = Color(0.17924, 0.596303, 0.229149, 1)
-theme_override_colors/font_color = Color(0.342186, 0.856691, 0.307106, 1)
-theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
@@ -87,12 +98,33 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Instructions" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_outline_color = Color(0.17924, 0.596303, 0.229149, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
 theme_override_colors/font_color = Color(0.342186, 0.856691, 0.307106, 1)
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rtsvh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+text = "Instructions"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.866667, 0.203922, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
@@ -108,12 +140,12 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
 text = "Options"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_outline_color = Color(0.17924, 0.596303, 0.229149, 1)
-theme_override_colors/font_color = Color(0.342186, 0.856691, 0.307106, 1)
-theme_override_constants/outline_size = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.866667, 0.203922, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
@@ -135,12 +167,56 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -165.5
-offset_right = 165.5
-offset_bottom = 186.0
+offset_left = -422.0
+offset_right = 946.0
+offset_bottom = 512.0
 grow_horizontal = 2
-texture = ExtResource("3_xfhpr")
-expand_mode = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_j3esw")
+
+[node name="Mushroom_Emmiter" type="CPUParticles2D" parent="TextureRect"]
+z_index = -1
+texture_filter = 1
+position = Vector2(375, 1230)
+rotation = -1.52596
+amount = 3
+texture = ExtResource("5_rxowy")
+lifetime = 3.5
+spread = 20.59
+gravity = Vector2(0, 100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 100.0
+damping_max = 100.0
+angle_min = -585.8
+angle_max = 720.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_rtsvh")
+color_ramp = SubResource("Gradient_yto3i")
+
+[node name="Meat_Emmiter" type="CPUParticles2D" parent="TextureRect"]
+z_index = -1
+texture_filter = 1
+position = Vector2(1198.33, 1218.33)
+rotation = -1.74446
+amount = 3
+texture = ExtResource("6_250sv")
+lifetime = 3.5
+spread = 14.49
+gravity = Vector2(0, 100)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+linear_accel_min = -100.0
+linear_accel_max = -100.0
+damping_min = 100.0
+damping_max = 100.0
+angle_min = -585.8
+angle_max = 720.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_rtsvh")
+color_ramp = SubResource("Gradient_yto3i")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xfhpr")
@@ -163,15 +239,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -282.0
-offset_top = -135.0
-offset_right = 282.0
-offset_bottom = 199.0
+offset_left = -221.0
+offset_top = -71.0
+offset_right = 343.0
+offset_bottom = 263.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.834671, 0.834671)
 
 [node name="Mute_Text" type="Label" parent="Settings/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 36
 text = "Mute"
@@ -181,16 +261,23 @@ layout_mode = 2
 
 [node name="Volume_text" type="Label" parent="Settings/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 36
 text = "Volume"
 
 [node name="Volume" type="HSlider" parent="Settings/VBoxContainer"]
+modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 value = 50.0
 
 [node name="Resolution2" type="Label" parent="Settings/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 36
 text = "FullScreen"
@@ -200,6 +287,9 @@ layout_mode = 2
 
 [node name="Resolution" type="Label" parent="Settings/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 36
 text = "Resolution"
@@ -215,6 +305,7 @@ popup/item_2/text = "1280x720"
 popup/item_2/id = 2
 
 [node name="Button" type="Button" parent="Settings"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -224,11 +315,17 @@ offset_top = -95.0
 offset_right = 187.0
 offset_bottom = -39.0
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 46
 text = "Return"
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Instructions" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="Settings/VBoxContainer/Mute" to="Settings" method="_on_mute_toggled"]
 [connection signal="value_changed" from="Settings/VBoxContainer/Volume" to="Settings" method="_on_volume_value_changed"]
 [connection signal="toggled" from="Settings/VBoxContainer/CheckBox" to="Settings" method="_on_check_box_toggled"]
