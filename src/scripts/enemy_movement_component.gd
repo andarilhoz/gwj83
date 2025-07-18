@@ -2,9 +2,11 @@ extends Node
 
 class_name EnemyMovementComponent
 
-var speed: float = 200.0
+@export var speed: float = 200.0
 var stop_distance: float = 86.0
 var enemy: CharacterBody2D
+@export var afraid_distance: float = 250.0  # distância segura ao fugir
+
 
 func start(owner: CharacterBody2D, movement_speed: float, stop_dist: float):
 	enemy = owner
@@ -17,14 +19,19 @@ func move_towards_player(player: CharacterBody2D, delta: float, is_afraid := fal
 
 	var to_player: Vector2 = player.global_position - enemy.global_position
 	var distance: float = to_player.length()
-	var direction: Vector2 = to_player.normalized()
 
+	var direction: Vector2
 	if is_afraid:
-		direction = -direction  # Inverte direção pra fugir
-
-	if distance > stop_distance or is_afraid:
-		enemy.velocity = direction * speed
+		if distance < afraid_distance:
+			direction = -to_player.normalized()
+			enemy.velocity = direction * speed
+		else:
+			enemy.velocity = Vector2.ZERO
 	else:
-		enemy.velocity = Vector2.ZERO
+		if distance > stop_distance:
+			direction = to_player.normalized()
+			enemy.velocity = direction * speed
+		else:
+			enemy.velocity = Vector2.ZERO
 
 	return direction
