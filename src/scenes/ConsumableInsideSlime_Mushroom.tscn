@@ -13,8 +13,9 @@ radius = 15.1327
 
 [node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
 script = ExtResource("1_0hq84")
-level = 1
 rigidbody = NodePath("RigidBody2D")
+level = 1
+self_type = 1
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")

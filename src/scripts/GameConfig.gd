@@ -14,3 +14,8 @@ class_name GameConfig
 @export var enemy_level_1: float = 10
 @export var enemy_level_2: float = 50
 @export var enemy_level_3: float = 100
+
+@export_group("Energia fornecida por consumíveis ao serem consumidos")
+@export var consumable_level_1: float = 10
+@export var consumable_level_2: float = 50
+@export var consumable_level_3: float = 100
