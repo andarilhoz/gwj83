@@ -23,7 +23,7 @@ var initialized : bool = false
 signal died
 
 func _ready():
-	var speed = randf_range(min_speed, max_speed)
+	speed = randf_range(min_speed, max_speed)
 	var player = get_node("/root/Node2D/Player")  
 
 	if player:

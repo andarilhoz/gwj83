@@ -12,7 +12,7 @@ func _ready():
 		return
 	var player = players[0]
 	player.player_died.connect(_on_player_died)
-	
+	player.victory.connect(_on_player_victory)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -52,4 +52,8 @@ func toggle_pause():
 	
 func _on_player_died():
 	defeat_menu.visible = true
+	get_tree().paused = true
+	
+func _on_player_victory():
+	Win_menu.visible = true
 	get_tree().paused = true
