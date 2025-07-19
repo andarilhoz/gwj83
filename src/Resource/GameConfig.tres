@@ -14,5 +14,5 @@ player_initial_energy = 50.0
 min_player_scale = 0.3
 enemy_level_1 = 10.0
 enemy_level_2 = 50.0
-enemy_level_3 = 100.0
+enemy_level_3 = 300.0
 metadata/_custom_type_script = "uid://dx6duoujlntra"

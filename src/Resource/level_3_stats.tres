@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1_f68fs")
-move_speed = 300.0
-dash_speed = 700.0
-walk_loss_energy = 1.0
-dash_loss_energy = 5.0
-process_food_by_seconds = 1.0
+move_speed = 2000.0
+dash_speed = 2100.0
+walk_loss_energy = 50.0
+dash_loss_energy = 100.0
+process_food_by_seconds = 100.0
+max_energy = 30000.0
 metadata/_custom_type_script = "uid://pgjdk1c0t3sd"

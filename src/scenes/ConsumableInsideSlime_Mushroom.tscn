@@ -1,24 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://46xposw55vfc"]
+[gd_scene load_steps=5 format=3 uid="uid://dcquf5g64uerd"]
 
-[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_6jqkd"]
-[ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="2_6jqkd"]
+[ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_0hq84"]
+[ext_resource type="Texture2D" uid="uid://dsw0of3ib3e5c" path="res://src/assets/Consumables/Mushroom_Sprite.png" id="2_0hq84"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
 rough = true
 bounce = 0.1
 absorbent = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jqkd"]
-atlas = ExtResource("2_6jqkd")
-region = Rect2(0, 32, 64, 32)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fyrt"]
 radius = 15.1327
 
 [node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
-script = ExtResource("1_6jqkd")
-rigidbody = NodePath("RigidBody2D")
+script = ExtResource("1_0hq84")
 level = 1
+rigidbody = NodePath("RigidBody2D")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
@@ -41,7 +37,8 @@ modulate = Color(0, 1, 0.254902, 1)
 self_modulate = Color(0.415686, 1, 0, 1)
 texture_filter = 1
 position = Vector2(-7, -1)
-texture = SubResource("AtlasTexture_6jqkd")
+scale = Vector2(1.285, 1.31)
+texture = ExtResource("2_0hq84")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-7, 0)

@@ -1,22 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://cya04icria1dh"]
+[gd_scene load_steps=13 format=3 uid="uid://d0a342m1em05d"]
 
-[ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_dyya8"]
-[ext_resource type="PackedScene" uid="uid://46xposw55vfc" path="res://src/scenes/EnemyInsideSlime.tscn" id="2_6rvav"]
-[ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="4_6rvav"]
-[ext_resource type="AudioStream" uid="uid://3fk37sw6sh8w" path="res://src/assets/Sounds/GoblinSoundV2.wav" id="5_6rvav"]
-[ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="6_6rvav"]
-[ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="7_cxdrd"]
+[ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_1vpi8"]
+[ext_resource type="PackedScene" uid="uid://u52bcxdahaeo" path="res://src/scenes/EnemyInsideSlime_Goblin.tscn" id="2_1vpi8"]
+[ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="3_0hlej"]
+[ext_resource type="Script" uid="uid://b0pw2v1ak6ve5" path="res://src/scripts/enemy_attack.gd" id="4_vskmp"]
+[ext_resource type="AudioStream" uid="uid://3fk37sw6sh8w" path="res://src/assets/Sounds/GoblinSoundV2.wav" id="5_qh5vq"]
+[ext_resource type="Script" uid="uid://c42yqt3dfrvdh" path="res://src/scripts/enemy_movement_component.gd" id="6_7w058"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsx1q"]
-atlas = ExtResource("4_6rvav")
+atlas = ExtResource("3_0hlej")
 region = Rect2(64, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyya8"]
-atlas = ExtResource("4_6rvav")
+atlas = ExtResource("3_0hlej")
 region = Rect2(0, 32, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rvav"]
-atlas = ExtResource("4_6rvav")
+atlas = ExtResource("3_0hlej")
 region = Rect2(0, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xw2p"]
@@ -61,8 +61,8 @@ radius = 13.3417
 texture_filter = 1
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("1_dyya8")
-absorbed_version = ExtResource("2_6rvav")
+script = ExtResource("1_1vpi8")
+absorbed_version = ExtResource("2_1vpi8")
 stop_distance = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -76,15 +76,17 @@ position = Vector2(-8, 4)
 shape = SubResource("RectangleShape2D_yue2g")
 
 [node name="EnemyAttack" type="Node" parent="."]
-script = ExtResource("6_6rvav")
-attack_sound = ExtResource("5_6rvav")
+script = ExtResource("4_vskmp")
+attack_sound = ExtResource("5_qh5vq")
+damage_percent = 0.2
 
 [node name="Attack_Hitbox" type="Area2D" parent="."]
 
 [node name="Attack Collider" type="CollisionShape2D" parent="Attack_Hitbox"]
-position = Vector2(31, 15)
 shape = SubResource("CircleShape2D_6rvav")
 disabled = true
 
 [node name="Enemy_movement_component" type="Node" parent="."]
-script = ExtResource("7_cxdrd")
+script = ExtResource("6_7w058")
+speed = 80.0
+afraid_distance = 400.0
