@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=56 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b35y25cfmo5wg" path="res://src/assets/HealthBar/Health_Bar_Progress.png" id="21_tx8mq"]
 [ext_resource type="Texture2D" uid="uid://dnvpquu1kb6as" path="res://src/assets/HealthBar/DeathIcons.png" id="22_tyryd"]
 [ext_resource type="Texture2D" uid="uid://bvrfgh5sm07h4" path="res://src/assets/HealthBar/UpIcons.png" id="23_tx8mq"]
+[ext_resource type="PackedScene" uid="uid://dnf0p3ul3x7ap" path="res://src/scenes/win_lose_screen.tscn" id="29_7opv2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rjby"]
 texture = ExtResource("2_kbdt0")
@@ -1128,3 +1129,5 @@ frame = 2
 stream = ExtResource("20_v252j")
 volume_db = -15.39
 autoplay = true
+
+[node name="Win_Lose Screen" parent="." instance=ExtResource("29_7opv2")]
