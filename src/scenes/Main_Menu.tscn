@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://did3fvk7t0xi0"]
+[gd_scene load_steps=39 format=3 uid="uid://did3fvk7t0xi0"]
 
 [ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
 [ext_resource type="Texture2D" uid="uid://mnp4xqm6m65y" path="res://src/assets/Main_Menu/Menu_Background.png" id="2_idn0a"]
@@ -13,8 +13,14 @@
 [ext_resource type="Script" path="res://src/scripts/WoblyMovementHead.gd" id="10_2eemj"]
 [ext_resource type="Texture2D" uid="uid://8egfb2b1fiuc" path="res://src/assets/Main_Menu/Credits_Portraits/Cintxa_Portrait.png" id="10_l5pa6"]
 [ext_resource type="Texture2D" uid="uid://cnjenurr5b0d5" path="res://src/assets/Main_Menu/Credits_Portraits/Gus_Portrait.png" id="11_2eemj"]
+[ext_resource type="Texture2D" uid="uid://b51lfgiw6red7" path="res://src/assets/Main_Menu/Tutorial/Tutorial_Background.png" id="11_40fpi"]
+[ext_resource type="Texture2D" uid="uid://cm5r37jwk6266" path="res://src/assets/Main_Menu/Tutorial/WASD.tres" id="12_abgvc"]
 [ext_resource type="Texture2D" uid="uid://c2uk4078u2q34" path="res://src/assets/Main_Menu/Credits_Portraits/Magno_Portrait.png" id="12_bsxck"]
+[ext_resource type="Texture2D" uid="uid://dd6o2l3qfvhb2" path="res://src/assets/Main_Menu/Tutorial/Space.tres" id="13_22ese"]
 [ext_resource type="Shader" path="res://src/materials/MovingLetras.gdshader" id="13_40fpi"]
+[ext_resource type="Texture2D" uid="uid://svaj0ibsfkld" path="res://src/assets/HealthBar/Health_Bar_Background.png" id="14_4iusw"]
+[ext_resource type="Texture2D" uid="uid://b35y25cfmo5wg" path="res://src/assets/HealthBar/Health_Bar_Progress.png" id="15_gkdla"]
+[ext_resource type="Texture2D" uid="uid://d13wu6njhup03" path="res://src/assets/HealthBar/Health_Bar_Over.png" id="16_gxtlu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
 texture = ExtResource("2_idn0a")
@@ -365,7 +371,92 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Instructions"]
+[node name="TextureRect" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1168.0
+offset_top = 305.0
+offset_right = 1680.0
+offset_bottom = 641.0
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("11_40fpi")
+
+[node name="TextureRect2" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 144.0
+offset_top = 305.0
+offset_right = 656.0
+offset_bottom = 641.0
+texture = ExtResource("11_40fpi")
+
+[node name="Space" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(2.015, 0)
+layout_mode = 0
+offset_left = 824.0
+offset_top = 553.0
+offset_right = 2104.0
+offset_bottom = 1303.0
+rotation = 3.14159
+scale = Vector2(-0.163873, -0.0583607)
+texture = ExtResource("12_abgvc")
+
+[node name="WASD" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(2.015, 0)
+layout_mode = 0
+offset_left = 824.0
+offset_top = 398.0
+offset_right = 2104.0
+offset_bottom = 1148.0
+rotation = 3.14159
+scale = Vector2(-0.162078, -0.15955)
+texture = ExtResource("13_22ese")
+
+[node name="BackBackground" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(2.015, 0)
+layout_mode = 0
+offset_left = 189.0
+offset_top = 567.0
+offset_right = 1541.0
+offset_bottom = 1317.0
+rotation = 3.14159
+scale = Vector2(-0.417709, -0.0611066)
+texture = ExtResource("14_4iusw")
+
+[node name="BackBackground2" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(2.015, 0)
+layout_mode = 0
+offset_left = 189.0
+offset_top = 567.0
+offset_right = 1541.0
+offset_bottom = 1317.0
+rotation = 3.14159
+scale = Vector2(-0.349392, -0.0611048)
+texture = ExtResource("15_gkdla")
+
+[node name="BackBackground3" type="TextureRect" parent="Instructions"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(2.015, 0)
+layout_mode = 0
+offset_left = 189.0
+offset_top = 567.0
+offset_right = 1541.0
+offset_bottom = 1317.0
+rotation = 3.14159
+scale = Vector2(-0.417709, -0.0611066)
+texture = ExtResource("16_gxtlu")
+
+[node name="Return" type="Button" parent="Instructions"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 2
@@ -382,6 +473,122 @@ theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 46
 text = "Return"
+
+[node name="Inputs" type="Button" parent="Instructions"]
+material = SubResource("ShaderMaterial_l5pa6")
+layout_mode = 2
+offset_left = 711.0
+offset_top = 310.0
+offset_right = 1137.0
+offset_bottom = 369.0
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+button_mask = 0
+text = "Inputs"
+
+[node name="Movement" type="Button" parent="Instructions"]
+material = SubResource("ShaderMaterial_l5pa6")
+layout_mode = 2
+offset_left = 881.0
+offset_top = 426.001
+offset_right = 1307.0
+offset_bottom = 485.001
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+button_mask = 0
+text = "Movement"
+
+[node name="Eat" type="Button" parent="Instructions"]
+material = SubResource("ShaderMaterial_l5pa6")
+layout_mode = 2
+offset_left = 881.0
+offset_top = 550.0
+offset_right = 1307.0
+offset_bottom = 609.0
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+button_mask = 0
+text = "EATtack"
+
+[node name="Game Description" type="Button" parent="Instructions"]
+material = SubResource("ShaderMaterial_l5pa6")
+layout_mode = 2
+offset_left = 169.0
+offset_top = 327.0
+offset_right = 668.0
+offset_bottom = 547.0
+scale = Vector2(1.08, 1)
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
+button_mask = 0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "MAIN GOAL - Eat enemies to survive and grow LARGER. 
+
+Consumption - Moving on clean ground and EATtacking consumes your GOO. 
+
+Eating - Eat enemies your size by EATtacking to increse you goo level. 
+You can't perform another EATtack while digesting creatures.
+
+Goo Bar - This bar measures your GOO level. If the level gets too low, you'll DIE. 
+Fully fills the bar to LEVEL UP."
+alignment = 0
 
 [node name="Credits" type="Control" parent="."]
 visible = false
@@ -552,5 +759,9 @@ text = "Return"
 [connection signal="toggled" from="Settings/VBoxContainer/CheckBox" to="Settings" method="_on_check_box_toggled"]
 [connection signal="item_selected" from="Settings/VBoxContainer/OptionButton" to="Settings" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Settings/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Instructions/Button" to="." method="_on_instructions_return_pressed"]
+[connection signal="pressed" from="Instructions/Return" to="." method="_on_instructions_return_pressed"]
+[connection signal="pressed" from="Instructions/Inputs" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Instructions/Movement" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Instructions/Eat" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Instructions/Game Description" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Credits/Button" to="." method="_on_return_Credits_pressed"]
