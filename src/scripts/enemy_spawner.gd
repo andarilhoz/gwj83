@@ -3,7 +3,10 @@ extends Node2D
 @export var player: CharacterBody2D
 @export var enemy_scene: PackedScene
 
-@export_range(0, 10000) var spawn_radius: float = 300.0
+@export_range(0, 10000) var spawn_radius_level_1: float = 300.0
+@export_range(0, 10000) var spawn_radius_level_2: float = 300.0
+@export_range(0, 10000) var spawn_radius_level_3: float = 300.0
+
 @export var max_enemies: int = 10
 @export var min_enemies: int = 3
 @export var spawn_rate: float = 2.0 # segundos entre spawns
@@ -21,6 +24,14 @@ func _ready():
 	_spawn_timer.autostart = true
 	add_child(_spawn_timer)
 	_spawn_timer.timeout.connect(_on_spawn_timeout)
+
+
+func get_spawn_radious() -> float:
+	match player.level:
+		1: return spawn_radius_level_1
+		2: return spawn_radius_level_2
+		3: return spawn_radius_level_3
+		_: return spawn_radius_level_1
 
 func _on_spawn_timeout():
 	if _current_enemies.size() >= max_enemies:
@@ -43,6 +54,7 @@ func spawn():
 		return
 
 	var angle = randf() * TAU
+	var spawn_radius = get_spawn_radious()
 	var distance = randf_range(0.5 * spawn_radius, spawn_radius)
 	var offset = Vector2.RIGHT.rotated(angle) * distance
 
