@@ -365,7 +365,7 @@ b = Vector2(40, 76)
 a = Vector2(34, 24)
 b = Vector2(-75.4298, 24.2972)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("tile_movement_component", "energy_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("tile_movement_component", "energy_component") groups=["player"]]
 scale = Vector2(0.5, 0.5)
 collision_mask = 0
 floor_stop_on_slope = false
@@ -387,7 +387,7 @@ tilemap_path_big = NodePath("../../TileMaps/WalkablePathBig")
 
 [node name="EnergyComponent" type="Node" parent="."]
 script = ExtResource("4_0qy4j")
-initial_energy = 50.0
+initial_energy = 100.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-22, -4)
@@ -395,7 +395,7 @@ scale = Vector2(0.140871, 0.163682)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(26.9231, -97.0591)
+position = Vector2(156.171, -85.5317)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

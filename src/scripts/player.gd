@@ -30,10 +30,15 @@ var current_speed: float = 0.0
 
 var absorbed_enemies : Array[EnemyInside] = []
 
+var is_dead: bool = false
+signal player_died
+
+
 func _ready():
 	_tilemap_slime_level_1 = get_node(tilemap_slime_level_1)
 	_tilemap_slime_level_2 = get_node(tilemap_slime_level_2)
 	_tilemap_slime_level_3 = get_node(tilemap_slime_level_3)
+	energy_component.zero_energy.connect(die)
 	
 	update_stats_for_level()
 	
@@ -247,3 +252,26 @@ func update_stats_for_level():
 
 	current_speed = current_stats.move_speed
 	energy_component.set_max_energy(current_stats.max_energy)
+
+
+func die():
+	if is_dead:
+		return
+	is_dead = true
+	player_died.emit()
+
+	remove_from_group("player") #remover pros inimigos calarem a boca
+	print("Jogador morreu!")
+
+	# Cancela qualquer movimento
+	has_target_position = false
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+	set_process(false)
+
+	# Toca animação de morte
+	$AnimatedSprite2D.play("Death")
+
+	# Opcional: para o tempo do jogo após a animação terminar
+	await $AnimatedSprite2D.animation_finished
+	get_tree().paused = true

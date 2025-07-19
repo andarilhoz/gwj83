@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://c1f8bafs7263i" path="res://src/assets/Props/Goblin_Props.png" id="11_tx8mq"]
 [ext_resource type="Texture2D" uid="uid://cyr6cvvemfnrd" path="res://src/assets/TileSets/Slime/GooTileSet_Masked256.png" id="11_tyryd"]
 [ext_resource type="PackedScene" uid="uid://bbxv486ri4pxd" path="res://src/scenes/player.tscn" id="12_lcp4o"]
-[ext_resource type="PackedScene" uid="uid://3a1m2kb51an2" path="res://src/scenes/Enemy_Goblin.tscn" id="12_p1ia5"]
 [ext_resource type="Texture2D" uid="uid://0u2vbjagh6kq" path="res://src/assets/TileSets/Slime/GooTileSet_Masked_512.png" id="14_2sd1y"]
 [ext_resource type="Material" uid="uid://bvkj7ecmvalyd" path="res://src/assets/TileSets/Slime/Material_Slime_Tileset_512.tres" id="15_7opv2"]
 [ext_resource type="Texture2D" uid="uid://dx0otm8r6snqa" path="res://src/assets/TileSets/Slime/GooTileSet_Masked_1024.png" id="15_am227"]
@@ -845,6 +844,9 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="Resource" id="Resource_am227"]
+metadata/__load_path__ = "res://src/scenes/Enemy.tscn"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1209,7 +1211,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
-enemy_scene = ExtResource("12_p1ia5")
+enemy_scene = SubResource("Resource_am227")
 spawn_radius = 2007.68
 min_enemies = 5
 spawn_rate = 0.5

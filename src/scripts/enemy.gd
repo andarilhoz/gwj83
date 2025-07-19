@@ -20,6 +20,12 @@ var initialized : bool = false
 
 signal died
 
+func _ready():
+	var player = get_node("/root/Node2D/Player")  
+
+	if player:
+		player.player_died.connect(on_player_died)
+
 func initialize(received_player: CharacterBody2D):
 	attack.player = received_player
 	player = received_player
@@ -57,3 +63,13 @@ func update_sprite_bounce(delta):
 
 func die():
 	died.emit()
+	
+func on_player_died():
+	set_process(false)
+	set_physics_process(false)
+	
+	if has_node("AttackSound"):
+		$AttackSound.stop()
+	
+	if has_node("AnimatedSprite2D"):
+		$AnimatedSprite2D.play("Idle")  # ou qualquer animação parada

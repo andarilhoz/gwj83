@@ -39,3 +39,21 @@ func reset_energy():
 
 func can_lose_energy(value: float) -> bool:
 	return current_energy > value
+	
+
+func take_damage(percent: float):
+	var damage = max_energy * percent
+	current_energy -= damage
+	current_energy = clamp(current_energy, 0, max_energy)
+	print("Levou ", damage, " de dano. Energia atual: ", current_energy)
+	flash_damage()
+	if current_energy <= 0:
+		zero_energy.emit()
+
+func flash_damage():
+	var sprite = $"../AnimatedSprite2D"
+	for i in range(3):
+		sprite.modulate = Color(1, 0.4, 0.4)  # vermelho claro
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color(1, 1, 1)  # volta ao normal
+		await get_tree().create_timer(0.1).timeout

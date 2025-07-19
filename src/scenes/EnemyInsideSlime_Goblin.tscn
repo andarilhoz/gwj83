@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgjak0e8dbrpp"]
+[gd_scene load_steps=6 format=3 uid="uid://u52bcxdahaeo"]
 
 [ext_resource type="Script" uid="uid://dmmfw1a82avfp" path="res://src/scripts/enemy_inside_slime.gd" id="1_6jqkd"]
 [ext_resource type="Texture2D" uid="uid://cxbrajis7j1g5" path="res://src/assets/Enemy_Sprites/Goblin_SpriteSheet.png" id="2_6jqkd"]
