@@ -1,3 +1,4 @@
+class_name PlayerScript
 extends CharacterBody2D
 
 @export var tile_movement_component: TileMovementComponent

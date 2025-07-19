@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 
 @onready var anim = $AnimatedSprite2D
-@onready var attack = $EnemyAttack
+@onready var attack: EnemyAttack = $EnemyAttack
 @onready var movement_component: EnemyMovementComponent = $Enemy_movement_component
 @export var absorbed_version: PackedScene #Cena do Inimigo dentro da Slime
 var is_afraid: bool = false 
@@ -28,6 +28,7 @@ func _ready():
 
 func initialize(received_player: CharacterBody2D):
 	attack.player = received_player
+	attack.enemy_script = self
 	player = received_player
 	movement_component.start(self, speed, stop_distance) 
 	initialized = true

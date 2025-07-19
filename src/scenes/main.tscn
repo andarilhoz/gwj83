@@ -710,7 +710,7 @@ terrain_set_0/terrain_1/name = "FG -GooTileSet_Maskedv5.png"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "FG -GooTileSet_Masked_512.png"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
-sources/3 = SubResource("TileSetAtlasSource_7opv2")
+sources/0 = SubResource("TileSetAtlasSource_7opv2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8ax2"]
 texture = ExtResource("15_am227")
@@ -823,7 +823,7 @@ terrain_set_0/terrain_1/name = "FG -GooTileSet_Maskedv5.png"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "FG -GooTileSet_Masked_1024.png"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
-sources/3 = SubResource("TileSetAtlasSource_h8ax2")
+sources/0 = SubResource("TileSetAtlasSource_h8ax2")
 
 [sub_resource type="Resource" id="Resource_tyryd"]
 script = ExtResource("11_kbdt0")
@@ -1158,7 +1158,6 @@ metadata/_custom_type_script = "uid://cjk8nronimk5r"
 [node name="TileMapSlimeLevel3" type="TileMapLayer" parent="TileMaps"]
 texture_filter = 1
 material = ExtResource("3_5lsyw")
-position = Vector2(66, 64)
 tile_set = SubResource("TileSet_xxm0n")
 script = ExtResource("5_lp058")
 display_material = ExtResource("17_h8ax2")

@@ -11,6 +11,8 @@ signal energy_update(energy: float)
 var current_energy: float
 var max_energy: float = 100.0  # valor padrão, pode ser sobrescrito com set_max_energy()
 
+var is_invulnerable: bool = false
+
 func _ready():
 	reset_energy()
 
@@ -42,13 +44,15 @@ func can_lose_energy(value: float) -> bool:
 	
 
 func take_damage(percent: float):
+	if is_invulnerable:
+		return
+	
+	is_invulnerable = true
 	var damage = max_energy * percent
-	current_energy -= damage
-	current_energy = clamp(current_energy, 0, max_energy)
 	print("Levou ", damage, " de dano. Energia atual: ", current_energy)
 	flash_damage()
-	if current_energy <= 0:
-		zero_energy.emit()
+	lose_energy(damage)
+ 	
 
 func flash_damage():
 	var sprite = $"../AnimatedSprite2D"
@@ -57,3 +61,5 @@ func flash_damage():
 		await get_tree().create_timer(0.1).timeout
 		sprite.modulate = Color(1, 1, 1)  # volta ao normal
 		await get_tree().create_timer(0.1).timeout
+	
+	is_invulnerable = false

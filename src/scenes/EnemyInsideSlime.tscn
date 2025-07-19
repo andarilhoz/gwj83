@@ -15,7 +15,7 @@ region = Rect2(0, 32, 64, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fyrt"]
 radius = 15.1327
 
-[node name="EnemyInsideSlime" type="Node2D" node_paths=PackedStringArray("rigidbody")]
+[node name="EnemyInsideSlime2" type="Node2D" node_paths=PackedStringArray("rigidbody")]
 script = ExtResource("1_6jqkd")
 rigidbody = NodePath("RigidBody2D")
 level = 1

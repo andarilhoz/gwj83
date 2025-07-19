@@ -45,7 +45,8 @@ func has_slime_in_cell(size: int) -> bool:
 		return false
 	var tilemap = get_tilemap_by_size(size)
 	var current_tile = tilemap.local_to_map(global_position)
-	var slime_tile_data = get_tilemap_slime_by_size(size).get_cell_tile_data(current_tile)
+	var slimap = get_tilemap_slime_by_size(size)
+	var slime_tile_data = slimap.get_cell_tile_data(current_tile)
 	return slime_tile_data != null
 	
 func move_in_direction(entity: CharacterBody2D, direction: Vector2, size: int):
@@ -96,7 +97,7 @@ func get_tilemap_by_size(size: int):
 		2: return _tilemap_medium
 		3: return _tilemap_big
 
-func get_tilemap_slime_by_size(size: int):
+func get_tilemap_slime_by_size(size: int) -> TileMapDual:
 	match size:
 		1: return _tilemap_slime_1
 		2: return _tilemap_slime_2

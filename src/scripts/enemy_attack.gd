@@ -1,3 +1,4 @@
+class_name EnemyAttack
 extends Node
 
 var player: Node2D
@@ -14,7 +15,7 @@ var is_attacking = false
 var attack_timer = 0.0
 var anim: AnimatedSprite2D
 var origin_node: Node2D  # onde a sprite está
-
+var enemy_script: Enemy
 
 # Em vez de attack_sound.play()
 
@@ -32,7 +33,7 @@ func _process(delta):
 		attack_timer -= delta
 
 func can_attack() -> bool:
-	return attack_timer <= 0 and !is_attacking
+	return attack_timer <= 0 and !is_attacking and !enemy_script.is_afraid
 
 func attack(direction: Vector2):
 	if !can_attack():
@@ -89,6 +90,9 @@ func _on_attack_hitbox_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player"):
 	
 		var energy_component = body.get_node_or_null("EnergyComponent")
+		var player = body as PlayerScript
+		if player.dashing :
+			print("Player is dashing")
 		if energy_component:
 			print("Chamando dano...")
 			player.energy_component.take_damage(damage_percent)

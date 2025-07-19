@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cqyu32hw0kb2q" path="res://src/scripts/EnemySpawnEntry.gd" id="1_1c6jb"]
 [ext_resource type="Script" uid="uid://boqbpjt52ta2a" path="res://src/scripts/EnemySpawnSet.gd" id="1_h5pw4"]
 [ext_resource type="PackedScene" uid="uid://d1frq1n7eeuvj" path="res://src/scenes/Enemy_Orc.tscn" id="2_1c6jb"]
-[ext_resource type="PackedScene" path="res://src/scenes/Enemy_Goblin.tscn" id="3_1c6jb"]
+[ext_resource type="PackedScene" uid="uid://d0a342m1em05d" path="res://src/scenes/Enemy_Goblin.tscn" id="3_1c6jb"]
 [ext_resource type="PackedScene" uid="uid://102fh04soqsr" path="res://src/scenes/EnemyInsideSlime_Dragon.tscn" id="4_n05c3"]
 [ext_resource type="PackedScene" uid="uid://q811bxhn5jy3" path="res://src/scenes/Enemy_Dragon.tscn" id="5_1c6jb"]
 
