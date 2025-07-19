@@ -9,7 +9,9 @@ extends CharacterBody2D
 @export var absorbed_version: PackedScene #Cena do Inimigo dentro da Slime
 var is_afraid: bool = false 
 
-@export var speed = 200
+@export var min_speed: float = 100.0
+@export var max_speed: float = 250.0
+var speed = 0
 @export var stop_distance: float = 150.0
 
 var walk_timer: float = 0.0
@@ -21,6 +23,7 @@ var initialized : bool = false
 signal died
 
 func _ready():
+	var speed = randf_range(min_speed, max_speed)
 	var player = get_node("/root/Node2D/Player")  
 
 	if player:
