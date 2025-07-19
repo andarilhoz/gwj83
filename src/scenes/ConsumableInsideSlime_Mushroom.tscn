@@ -15,6 +15,7 @@ radius = 15.1327
 script = ExtResource("1_0hq84")
 rigidbody = NodePath("RigidBody2D")
 level = 1
+self_type = 1
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
