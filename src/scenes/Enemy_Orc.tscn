@@ -63,6 +63,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_5pe7i")
 absorbed_version = ExtResource("2_32lbc")
+speed = 250
 level = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -78,6 +79,7 @@ shape = SubResource("RectangleShape2D_yue2g")
 [node name="EnemyAttack" type="Node" parent="."]
 script = ExtResource("3_kxsdw")
 attack_sound = ExtResource("6_32lbc")
+damage_percent = 0.15
 
 [node name="Attack_Hitbox" type="Area2D" parent="."]
 

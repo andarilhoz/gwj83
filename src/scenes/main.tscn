@@ -1217,16 +1217,12 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
 enemy_scene = SubResource("Resource_am227")
+spawn_radius_level_1 = 1200.0
+spawn_radius_level_2 = 2500.0
+spawn_radius_level_3 = 5000.0
+max_enemies = 20
 min_enemies = 5
-spawn_rate = 0.5
-spawn_table = ExtResource("19_tx8mq")
-
-[node name="ComponentSpawner" type="Node2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("2_yk6rd")
-player = NodePath("../Player")
-enemy_scene = SubResource("Resource_am227")
-min_enemies = 5
-spawn_rate = 0.5
+spawn_rate = 4.0
 spawn_table = ExtResource("19_tx8mq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

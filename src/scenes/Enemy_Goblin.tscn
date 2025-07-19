@@ -63,6 +63,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_1vpi8")
 absorbed_version = ExtResource("2_1vpi8")
+speed = 90
 stop_distance = 80.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -78,7 +79,6 @@ shape = SubResource("RectangleShape2D_yue2g")
 [node name="EnemyAttack" type="Node" parent="."]
 script = ExtResource("4_vskmp")
 attack_sound = ExtResource("5_qh5vq")
-damage_percent = 0.2
 
 [node name="Attack_Hitbox" type="Area2D" parent="."]
 
