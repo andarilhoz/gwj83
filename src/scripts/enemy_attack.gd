@@ -93,6 +93,7 @@ func _on_attack_hitbox_body_entered(body: CharacterBody2D) -> void:
 		var player = body as PlayerScript
 		if player.dashing :
 			print("Player is dashing")
+			return
 		if energy_component:
 			print("Chamando dano...")
 			player.energy_component.take_damage(damage_percent)
