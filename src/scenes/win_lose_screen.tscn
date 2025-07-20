@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vpnhrcq34ec0" path="res://src/scripts/PauseMenu.gd" id="1_s4s53"]
 [ext_resource type="Texture2D" uid="uid://ddiwflpgmbdbm" path="res://src/assets/Main_Menu/Defeat.png" id="2_bhx5b"]
-[ext_resource type="Shader" path="res://src/materials/MovingLetras.gdshader" id="3_bhx5b"]
+[ext_resource type="Shader" uid="uid://djkroto8tombx" path="res://src/materials/MovingLetras.gdshader" id="3_bhx5b"]
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="4_kyatx"]
 [ext_resource type="Texture2D" uid="uid://fwpdgw2jxeh" path="res://src/assets/Main_Menu/Victory_Glow.png" id="5_801my"]
 [ext_resource type="Texture2D" uid="uid://yngrmlbtjjd3" path="res://src/assets/Main_Menu/Victory.png" id="5_kyatx"]
@@ -412,6 +412,8 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_xjvh2")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jtcgo")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o4wrs")
 text = "Exit to Menu"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="Defeat_Screen/VBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="Defeat_Screen/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

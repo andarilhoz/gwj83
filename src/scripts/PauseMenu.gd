@@ -6,6 +6,7 @@ var is_paused = false
 @onready var defeat_menu = $Defeat_Screen
 @onready var player = $Player  # ou via grupo
 @onready var player_canvas = $"../CanvasLayer"
+@onready var audio = $AudioStreamPlayer2D
 
 func _ready():
 	var players = get_tree().get_nodes_in_group("player")
@@ -54,11 +55,14 @@ func toggle_pause():
 
 	
 func _on_player_died():
+	audio.stream = preload("res://src/assets/Sounds/failure.wav")
+	audio.play()
 	player_canvas.visible = false
 	defeat_menu.visible = true
 	get_tree().paused = true
 	
 func _on_player_victory():
+	audio.stream = preload("res://src/assets/Sounds/Som Vitoria.wav")
 	player_canvas.visible = false
 	Win_menu.visible = true
 	get_tree().paused = true
