@@ -6,7 +6,7 @@
 script = ExtResource("1_f68fs")
 move_speed = 2000.0
 dash_speed = 2100.0
-walk_loss_energy = 50.0
-dash_loss_energy = 100.0
-process_food_by_seconds = 50.0
-max_energy = 3000.0
+walk_loss_energy = 2.5
+dash_loss_energy = 25.0
+process_food_by_seconds = 100.0
+max_energy = 60000.0
