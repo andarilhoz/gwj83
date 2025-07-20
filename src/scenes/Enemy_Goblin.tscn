@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0a342m1em05d"]
+[gd_scene load_steps=12 format=3 uid="uid://d0a342m1em05d"]
 
 [ext_resource type="Script" uid="uid://cxpr62fipo4ai" path="res://src/scripts/enemy.gd" id="1_1vpi8"]
 [ext_resource type="PackedScene" uid="uid://u52bcxdahaeo" path="res://src/scenes/EnemyInsideSlime_Goblin.tscn" id="2_1vpi8"]
@@ -54,9 +54,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yue2g"]
 size = Vector2(46, 73.125)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6rvav"]
-radius = 13.3417
-
 [node name="Enemy_Base" type="CharacterBody2D" groups=["enemy"]]
 z_index = 2
 texture_filter = 1
@@ -82,12 +79,6 @@ shape = SubResource("RectangleShape2D_yue2g")
 script = ExtResource("4_vskmp")
 attack_sound = ExtResource("5_qh5vq")
 damage_percent = 0.05
-
-[node name="Attack_Hitbox" type="Area2D" parent="."]
-
-[node name="Attack Collider" type="CollisionShape2D" parent="Attack_Hitbox"]
-shape = SubResource("CircleShape2D_6rvav")
-disabled = true
 
 [node name="Enemy_movement_component" type="Node" parent="."]
 script = ExtResource("6_7w058")

@@ -83,7 +83,7 @@ shape = SubResource("RectangleShape2D_yue2g")
 [node name="EnemyAttack" type="Node" parent="."]
 script = ExtResource("3_r6qj2")
 attack_sound = ExtResource("6_bcvgw")
-damage_percent = 0.15
+damage_percent = 0.2
 
 [node name="Attack_Hitbox" type="Area2D" parent="."]
 

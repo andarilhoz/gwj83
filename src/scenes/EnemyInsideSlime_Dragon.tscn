@@ -17,12 +17,13 @@ radius = 15.1327
 script = ExtResource("1_6uerr")
 rigidbody = NodePath("RigidBody2D")
 level = 3
+self_enemy_type = 2
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
 length = 5.0
 stiffness = 64.0
-damping = 0.51
+damping = 0.5
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 32

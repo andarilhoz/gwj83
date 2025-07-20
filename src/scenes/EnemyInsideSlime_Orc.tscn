@@ -4,9 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cln2ungkt4ret" path="res://src/assets/Enemy_Sprites/Ork_SppriteSheet.png" id="2_bsi3n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
-rough = true
-bounce = 0.1
-absorbent = true
+bounce = 0.2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jqkd"]
 atlas = ExtResource("2_bsi3n")
@@ -19,17 +17,17 @@ radius = 15.1327
 script = ExtResource("1_bsi3n")
 rigidbody = NodePath("RigidBody2D")
 level = 2
+self_enemy_type = 1
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
-length = 2.0
+length = 5.0
 stiffness = 64.0
-damping = 0.51
+damping = 0.5
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 32
 collision_mask = 16
-mass = 1.164
 physics_material_override = SubResource("PhysicsMaterial_2fyrt")
 gravity_scale = 0.0
 can_sleep = false

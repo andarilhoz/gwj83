@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bbxv486ri4pxd"]
+[gd_scene load_steps=53 format=3 uid="uid://bbxv486ri4pxd"]
 
 [ext_resource type="Script" uid="uid://b4ymxb2exqw5j" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Texture2D" uid="uid://d0iyl7lncguop" path="res://src/assets/SlimeCharacter/SlimeCharacter.png" id="2_l2v1k"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bqpu7nte3oa33" path="res://src/scripts/energy_component.gd" id="4_0qy4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h2yge"]
-radius = 124.016
+radius = 20.025
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2v1k"]
 atlas = ExtResource("2_l2v1k")
@@ -354,19 +354,22 @@ hue_variation_min = -2.23517e-08
 hue_variation_max = 0.12
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_l2v1k"]
-a = Vector2(64, 50)
-b = Vector2(-64, 50)
+a = Vector2(94.5718, 98.9734)
+b = Vector2(-81.9618, 98.9739)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ya6j6"]
-a = Vector2(-76, 74)
-b = Vector2(40, 76)
+a = Vector2(-122.033, 102.267)
+b = Vector2(44.9406, 102.267)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0qy4j"]
-a = Vector2(34, 24)
-b = Vector2(-75.4298, 24.2972)
+a = Vector2(84.0333, 37.6576)
+b = Vector2(-77.8805, 37.657)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8v6aa"]
+a = Vector2(81.9621, 52.8206)
+b = Vector2(-100.876, 52.8206)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("tile_movement_component", "energy_component") groups=["player"]]
-scale = Vector2(0.5, 0.5)
 collision_mask = 0
 floor_stop_on_slope = false
 floor_block_on_wall = false
@@ -374,12 +377,8 @@ script = ExtResource("1_v4rts")
 tile_movement_component = NodePath("TileMovementComponent")
 energy_component = NodePath("EnergyComponent")
 
-[node name="PlayerTarget" type="Node2D" parent="."]
-position = Vector2(0, -20)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, -20)
-scale = Vector2(0.194685, 0.181243)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="TileMovementComponent" type="Node2D" parent="."]
@@ -388,17 +387,17 @@ tilemap_path_small = NodePath("../../TileMaps/WalkablePathSmall")
 tilemap_path_medium = NodePath("../../TileMaps/WalkablePathMedium")
 tilemap_path_big = NodePath("../../TileMaps/WalkablePathBig")
 
-[node name="EnergyComponent" type="Node" parent="."]
+[node name="EnergyComponent" type="Node" parent="." node_paths=PackedStringArray("shake_timer")]
 script = ExtResource("4_0qy4j")
 initial_energy = 100.0
+magnitude = 44.0
+shake_timer = NodePath("../ShakeTimer")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(-22, -4)
-scale = Vector2(0.140871, 0.163682)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(156.171, -85.5317)
+position = Vector2(0, -20)
 shape = SubResource("CircleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -441,32 +440,41 @@ freeze_mode = 1
 rotation = -3.14159
 shape = SubResource("SegmentShape2D_l2v1k")
 one_way_collision = true
-
-[node name="DownWall" type="CollisionShape2D" parent="InternalWalls/RigidBody2D"]
-shape = SubResource("SegmentShape2D_l2v1k")
-one_way_collision = true
+one_way_collision_margin = 16.1
 
 [node name="LeftWall" type="CollisionShape2D" parent="InternalWalls/RigidBody2D"]
 position = Vector2(14, 18)
 rotation = 1.5708
 shape = SubResource("SegmentShape2D_ya6j6")
 one_way_collision = true
+one_way_collision_margin = 16.1
 
 [node name="RightWall" type="CollisionShape2D" parent="InternalWalls/RigidBody2D"]
 position = Vector2(38, -20)
 rotation = -1.5708
 shape = SubResource("SegmentShape2D_0qy4j")
 one_way_collision = true
+one_way_collision_margin = 16.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InternalWalls/RigidBody2D"]
+shape = SubResource("SegmentShape2D_8v6aa")
+one_way_collision = true
+one_way_collision_margin = 16.1
 
 [node name="InternalPhysicsBodies" type="Node2D" parent="."]
-position = Vector2(-2, -14)
+position = Vector2(0, -20)
 
 [node name="Digestao" type="Timer" parent="."]
 wait_time = 0.12
 autostart = true
 
 [node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -18)
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Digestao" to="." method="_on_digestao_timeout"]
+[connection signal="timeout" from="ShakeTimer" to="EnergyComponent" method="_on_shake_timer_timeout"]

@@ -4,10 +4,13 @@
 
 [resource]
 script = ExtResource("1_8jlfi")
-move_speed = 1200.0
-dash_speed = 1500.0
+move_speed = 800.0
+dash_speed = 1600.0
 walk_loss_energy = 0.5
-dash_loss_energy = 100.0
-process_food_by_seconds = 25.0
-max_energy = 6000.0
-initial_energy = 1200.0
+dash_loss_energy = 50.0
+process_food_by_seconds = 10.0
+max_energy = 1200.0
+initial_energy = 600.0
+goblin_energy = 20.0
+orc_energy = 90.0
+dragon_energy = 0.0

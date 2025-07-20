@@ -32,6 +32,8 @@ var current_speed: float = 0.0
 
 var absorbed_enemies : Array[EnemyInside] = []
 
+@export var internal_walls: RigidBody2D
+
 var is_dead: bool = false
 signal player_died
 signal victory
@@ -72,6 +74,7 @@ func update_size(percentage: float):
 	update_scale = GameConfigLoader.config.min_player_scale if update_scale < GameConfigLoader.config.min_player_scale else update_scale
 	update_scale+=level
 	scale = Vector2(update_scale, update_scale)
+
 	
 	if not final_form_announced and level == 3 and percentage >= current_stats.max_energy:
 		final_form_announced = true
@@ -145,10 +148,11 @@ func move_towards(direction: Vector2):
 
 
 func evolve():
-	level += 1
-	update_stats_for_level()
 	var tilemap = get_tilemap_by_size()
 	tilemap.clear()
+	level += 1
+	update_stats_for_level()
+
 	energy_component.reset_energy(current_stats.initial_energy)
 	playeraudio.stream = preload("res://src/assets/Sounds/level up.wav")
 	playeraudio.play()
@@ -208,11 +212,15 @@ func kill_enemy(enemy: Enemy):
 
 func _spawn_enemy_inside(absorbed_scene: PackedScene):
 	var enemy_instance = absorbed_scene.instantiate()
-	absorbed_enemies.append(enemy_instance as EnemyInside)
+	var inside_enemy = enemy_instance as EnemyInside
+	inside_enemy.player_level = level
+	inside_enemy.initialize()
+	absorbed_enemies.append(inside_enemy)
 	$InternalPhysicsBodies.add_child(enemy_instance)
+	
 
 	# Posição aleatória dentro de um círculo interno
-	var spawn_radius := 20.0
+	var spawn_radius := 2.0
 	var angle = randf() * TAU
 	var distance = randf() * spawn_radius
 	var offset = Vector2(cos(angle), sin(angle)) * distance
@@ -257,14 +265,16 @@ func process_food(process_food_value: float):
 		energy_component.add_energy(process_food_value)
 	
 func update_stats_for_level():
-	match level:
-		1: current_stats = GameConfigLoader.config.level_1_stats
-		2: current_stats = GameConfigLoader.config.level_2_stats
-		3: current_stats = GameConfigLoader.config.level_3_stats
-		_: current_stats = GameConfigLoader.config.level_1_stats
-
+	current_stats = GameConfigLoader.getLevelStats(level)
 	current_speed = current_stats.move_speed
 	energy_component.set_max_energy(current_stats.max_energy)
+
+func get_camera():
+	match level:
+		1: return phantom_camera_level_1
+		2: return phantom_camera_level_2
+		3: return phantom_camera_level_3
+		_: return phantom_camera_level_1
 
 
 func die():

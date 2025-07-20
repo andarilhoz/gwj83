@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2fyrt"]
 rough = true
-bounce = 0.1
+bounce = 0.2
 absorbent = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jqkd"]
@@ -22,14 +22,13 @@ level = 1
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
 node_a = NodePath("../RigidBody2D")
-length = 5.0
-stiffness = 0.2
-damping = 8.11
+length = 12.0
+stiffness = 64.0
+damping = 0.5
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 32
 collision_mask = 16
-mass = 0.47
 physics_material_override = SubResource("PhysicsMaterial_2fyrt")
 gravity_scale = 0.0
 inertia = 2.76
