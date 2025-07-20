@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://did3fvk7t0xi0"]
+[gd_scene load_steps=72 format=3 uid="uid://did3fvk7t0xi0"]
 
 [ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
 [ext_resource type="Texture2D" uid="uid://mnp4xqm6m65y" path="res://src/assets/Main_Menu/Menu_Background.png" id="2_idn0a"]
@@ -67,11 +67,77 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.329513, 0.441261, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0.137255, 0.929412, 1, 1, 1, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_abgvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22ese"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4iusw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gkdla"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxtlu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkggk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tkoqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pq3u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a4xwn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mg8s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kcusu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m6vpa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6aa4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_747h6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yrya"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5lcm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ge4aq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ny1il"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7d0q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhs6i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w4233"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6njv"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yto3i"]
 shader = ExtResource("13_40fpi")
 shader_parameter/amplitude = 5.0
 shader_parameter/frequency = 10.0
 shader_parameter/speed = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yals"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5g2a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xvn7m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fpyoh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nebst"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m5fgo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_363rx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n45q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y6kl6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8svsa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rhpdo"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -360,6 +426,17 @@ theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
 theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_abgvc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_22ese")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4iusw")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_gkdla")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_gxtlu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_jkggk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tkoqh")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3pq3u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a4xwn")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3mg8s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kcusu")
 text = "Return"
 
 [node name="Instructions" type="Control" parent="."]
@@ -472,6 +549,17 @@ theme_override_colors/font_color = Color(0.333333, 0.866667, 0.188235, 1)
 theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m6vpa")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_t6aa4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_747h6")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0yrya")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i5lcm")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_ge4aq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ny1il")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_q7d0q")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mhs6i")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_w4233")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t6njv")
 text = "Return"
 
 [node name="Inputs" type="Button" parent="Instructions"]
@@ -640,12 +728,32 @@ offset_top = 7.16667
 offset_right = 262.667
 offset_bottom = 111.167
 grow_vertical = 2
-scale = Vector2(0.195, 0.195)
+scale = Vector2(0.108334, 0.0883331)
 theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 96
 text = "Andre"
+
+[node name="Label2" type="Label" parent="Credits/GridContainer/Control"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 14.6667
+offset_right = 262.667
+offset_bottom = 118.667
+grow_vertical = 2
+scale = Vector2(0.108334, 0.0883331)
+theme_override_colors/font_color = Color(0.596078, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+text = "Code; Sound; Game Design"
 
 [node name="Control2" type="Control" parent="Credits/GridContainer"]
 layout_mode = 2
@@ -669,12 +777,32 @@ offset_top = 7.16667
 offset_right = 262.667
 offset_bottom = 111.167
 grow_vertical = 2
-scale = Vector2(0.195, 0.195)
+scale = Vector2(0.108333, 0.0883331)
 theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 96
 text = "Magno"
+
+[node name="Label2" type="Label" parent="Credits/GridContainer/Control2"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 15.8333
+offset_right = 262.667
+offset_bottom = 119.834
+grow_vertical = 2
+scale = Vector2(0.108333, 0.0883331)
+theme_override_colors/font_color = Color(0.596078, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+text = "Code"
 
 [node name="Control3" type="Control" parent="Credits/GridContainer"]
 layout_mode = 2
@@ -698,12 +826,32 @@ offset_top = 7.16667
 offset_right = 262.667
 offset_bottom = 111.167
 grow_vertical = 2
-scale = Vector2(0.195, 0.195)
+scale = Vector2(0.108334, 0.0883331)
 theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 96
 text = "Gustavo"
+
+[node name="Label2" type="Label" parent="Credits/GridContainer/Control3"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 15.5
+offset_right = 303.667
+offset_bottom = 119.5
+grow_vertical = 2
+scale = Vector2(0.108334, 0.0883331)
+theme_override_colors/font_color = Color(0.596078, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+text = "Art; Game Design"
 
 [node name="Control4" type="Control" parent="Credits/GridContainer"]
 layout_mode = 2
@@ -727,12 +875,32 @@ offset_top = 7.16667
 offset_right = 262.667
 offset_bottom = 111.167
 grow_vertical = 2
-scale = Vector2(0.195, 0.195)
+scale = Vector2(0.108333, 0.0883331)
 theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 96
 text = "Cintia"
+
+[node name="Label2" type="Label" parent="Credits/GridContainer/Control4"]
+material = SubResource("ShaderMaterial_yto3i")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 29.6667
+offset_top = 15.8333
+offset_right = 262.667
+offset_bottom = 119.834
+grow_vertical = 2
+scale = Vector2(0.108333, 0.0883331)
+theme_override_colors/font_color = Color(0.596078, 0.807843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 55
+text = "Art; Sound"
 
 [node name="Button" type="Button" parent="Credits"]
 layout_mode = 1
@@ -746,8 +914,20 @@ offset_bottom = -16.0
 grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
 theme_override_colors/font_color = Color(0.33, 0.86, 0.18, 1)
+theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0yals")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_r5g2a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_xvn7m")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_fpyoh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nebst")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_m5fgo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_363rx")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_0n45q")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y6kl6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8svsa")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rhpdo")
 text = "Return"
 
 [connection signal="pressed" from="VBoxContainer/StartGame" to="." method="_on_start_pressed"]
