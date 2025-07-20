@@ -373,9 +373,6 @@ floor_block_on_wall = false
 script = ExtResource("1_v4rts")
 tile_movement_component = NodePath("TileMovementComponent")
 energy_component = NodePath("EnergyComponent")
-tilemap_slime_level_1 = null
-tilemap_slime_level_2 = null
-tilemap_slime_level_3 = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, -20)
@@ -464,6 +461,8 @@ position = Vector2(-2, -14)
 [node name="Digestao" type="Timer" parent="."]
 wait_time = 0.12
 autostart = true
+
+[node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

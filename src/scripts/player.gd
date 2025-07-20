@@ -24,6 +24,7 @@ var target_position: Vector2 = Vector2.ZERO
 var has_target_position: bool = false
 var current_stats: LevelStats
 
+@onready var playeraudio = $PlayerAudio
 @onready var area2d: Area2D = $Area2D
 var painted_coords = Vector2i(2, 1)
 
@@ -148,6 +149,8 @@ func evolve():
 	tilemap.clear()
 	level += 1
 	energy_component.reset_energy()
+	playeraudio.stream = preload("res://src/assets/Sounds/level up.wav")
+	playeraudio.play()
 	if level == 2:
 		phantom_camera_level_2.priority = 2
 	elif level == 3:
@@ -175,6 +178,8 @@ func dash():
 			enemy.die()
 			_spawn_enemy_inside(enemy.absorbed_version)
 	$AnimatedSprite2D.play("Dash")
+	playeraudio.stream = preload("res://src/assets/Sounds/SlimeEating.wav")
+	playeraudio.play()
 
 
 func _on_painted_floor():
