@@ -58,6 +58,7 @@ size = Vector2(139, 209.781)
 radius = 4.17998
 
 [node name="Enemy_Dragon" type="CharacterBody2D" groups=["enemy"]]
+z_index = 2
 texture_filter = 1
 collision_layer = 2
 collision_mask = 0

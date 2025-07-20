@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="EnemySpawnSet" load_steps=10 format=3 uid="uid://bwa47pynpq6pb"]
+
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnEntry.gd" id="1_s0mbi"]
+[ext_resource type="PackedScene" uid="uid://d1frq1n7eeuvj" path="res://src/scenes/Enemy_Orc.tscn" id="2_ifnqm"]
+[ext_resource type="Script" path="res://src/scripts/EnemySpawnSet.gd" id="5_6053a"]
+
+[sub_resource type="Resource" id="Resource_fhneb"]
+script = ExtResource("1_s0mbi")
+scene = ExtResource("2_ifnqm")
+weight = 1.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[sub_resource type="Resource" id="Resource_g71k3"]
+script = ExtResource("1_s0mbi")
+weight = 99.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[sub_resource type="Resource" id="Resource_fljsq"]
+script = ExtResource("1_s0mbi")
+weight = 1.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[sub_resource type="Resource" id="Resource_3w4qp"]
+script = ExtResource("1_s0mbi")
+scene = ExtResource("2_ifnqm")
+weight = 99.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[sub_resource type="Resource" id="Resource_yy5o7"]
+script = ExtResource("1_s0mbi")
+weight = 99.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[sub_resource type="Resource" id="Resource_n3p51"]
+script = ExtResource("1_s0mbi")
+scene = ExtResource("2_ifnqm")
+weight = 1.0
+metadata/_custom_type_script = "uid://cqyu32hw0kb2q"
+
+[resource]
+script = ExtResource("5_6053a")
+level_1_enemies = Array[ExtResource("1_s0mbi")]([SubResource("Resource_fhneb"), SubResource("Resource_g71k3")])
+level_2_enemies = Array[ExtResource("1_s0mbi")]([SubResource("Resource_fljsq"), SubResource("Resource_3w4qp")])
+level_3_enemies = Array[ExtResource("1_s0mbi")]([SubResource("Resource_yy5o7"), SubResource("Resource_n3p51")])

@@ -58,6 +58,7 @@ size = Vector2(57, 123.563)
 radius = 13.3417
 
 [node name="Enemy_Orc" type="CharacterBody2D" groups=["enemy"]]
+z_index = 2
 texture_filter = 1
 collision_layer = 2
 collision_mask = 0

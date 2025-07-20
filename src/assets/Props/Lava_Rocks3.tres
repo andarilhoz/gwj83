@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://4ug4im43oput"]
+
+[ext_resource type="Texture2D" uid="uid://48knk87xmrjr" path="res://src/assets/Props/Lava_Rocks.png" id="1_wryfr"]
+
+[resource]
+atlas = ExtResource("1_wryfr")
+region = Rect2(30, 162, 81, 45)
