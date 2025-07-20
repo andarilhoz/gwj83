@@ -21,13 +21,15 @@ var walk_timer: float = 0.0
 @export var level = 1;
 var player: CharacterBody2D
 var initialized : bool = false
+var target: Node
 
 signal died
 
 func _ready():
 	speed = randf_range(min_speed, max_speed)
 	var player = get_node("/root/Node2D/Player")  
-
+	target = player.get_node("PlayerTarget")
+	
 	if player:
 		player.player_died.connect(on_player_died)
 
@@ -82,7 +84,7 @@ func on_player_died():
 		$AnimatedSprite2D.play("Idle")  # ou qualquer animação parada
 
 func should_chase_player() -> bool:
-	var distance_to_player = global_position.distance_to(player.global_position)
+	var distance_to_player = global_position.distance_to(target.global_position)
 	if !is_chasing and distance_to_player > agro_distance:
 		return false
 	return true
@@ -90,13 +92,13 @@ func should_chase_player() -> bool:
 func update_chase_state():
 	if is_chasing:
 		return
-	var distance_to_player = global_position.distance_to(player.global_position)
+	var distance_to_player = global_position.distance_to(target.global_position)
 	if distance_to_player <= agro_distance:
 		is_chasing = true
 
 func move_towards_player(delta: float):
 	var to_player = movement_component.move_towards_player(player, delta, is_afraid)
-	anim.flip_h = player.global_position.x < global_position.x
+	anim.flip_h = target.global_position.x < global_position.x
 	move_and_slide()
 	if velocity.length() > 0:
 		anim.play("Walk")
@@ -104,5 +106,5 @@ func move_towards_player(delta: float):
 
 func handle_attack():
 	if velocity.length() < 1 and attack.can_attack():
-		var to_player = global_position.direction_to(player.global_position)
+		var to_player = global_position.direction_to(target.global_position)
 		attack.attack(to_player)

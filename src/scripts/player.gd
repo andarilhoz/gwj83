@@ -49,11 +49,12 @@ func _ready():
 	tile_movement_component.start(self, level, _tilemap_slime_level_1, _tilemap_slime_level_2, _tilemap_slime_level_3)
 	update_size(GameConfigLoader.config.player_initial_energy)
 	energy_component.energy_update.connect(update_size)
+	energy_component.reset_energy(current_stats.initial_energy)
 	phantom_camera_level_1.priority = 1
 	phantom_camera_level_2.priority = 0
 	phantom_camera_level_3.priority = 0
 	paint_current_tile(level)
-	update_stats_for_level()
+	
 
 func get_tilemap_by_size() -> TileMapDual:
 	match level:
@@ -81,7 +82,7 @@ func _physics_process(delta):
 		var direction = (target_position - position).normalized()
 		var distance = position.distance_to(target_position)
 
-		if distance < 10.0:
+		if distance < 20.0:
 			if dashing:
 				_on_dash_finished()
 			position = target_position
@@ -144,11 +145,11 @@ func move_towards(direction: Vector2):
 
 
 func evolve():
+	level += 1
 	update_stats_for_level()
 	var tilemap = get_tilemap_by_size()
 	tilemap.clear()
-	level += 1
-	energy_component.reset_energy()
+	energy_component.reset_energy(current_stats.initial_energy)
 	playeraudio.stream = preload("res://src/assets/Sounds/level up.wav")
 	playeraudio.play()
 	if level == 2:
@@ -273,7 +274,7 @@ func die():
 	player_died.emit()
 
 	remove_from_group("player") #remover pros inimigos calarem a boca
-	print("Jogador morreu!")
+	#print("Jogador morreu!")
 
 	# Cancela qualquer movimento
 	has_target_position = false

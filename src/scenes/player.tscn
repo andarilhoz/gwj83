@@ -374,6 +374,9 @@ script = ExtResource("1_v4rts")
 tile_movement_component = NodePath("TileMovementComponent")
 energy_component = NodePath("EnergyComponent")
 
+[node name="PlayerTarget" type="Node2D" parent="."]
+position = Vector2(0, -20)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.38419e-07, -20)
 scale = Vector2(0.194685, 0.181243)

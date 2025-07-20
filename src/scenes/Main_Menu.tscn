@@ -10,14 +10,14 @@
 [ext_resource type="AudioStream" uid="uid://c8t1ep1hxtof7" path="res://src/assets/Sounds/MenuTheme.wav" id="7_l5pa6"]
 [ext_resource type="Texture2D" uid="uid://b2oiavuljgcb5" path="res://src/assets/Main_Menu/Credits_Portraits/Gloop_Title_Backgroun.png" id="8_2eemj"]
 [ext_resource type="Texture2D" uid="uid://bp68con6hfnbn" path="res://src/assets/Main_Menu/Credits_Portraits/Andre_Portrait.png" id="9_yto3i"]
-[ext_resource type="Script" uid="uid://cbxf5y8fb4ybr" path="res://src/scripts/WoblyMovementHead.gd" id="10_2eemj"]
+[ext_resource type="Script" path="res://src/scripts/WoblyMovementHead.gd" id="10_2eemj"]
 [ext_resource type="Texture2D" uid="uid://8egfb2b1fiuc" path="res://src/assets/Main_Menu/Credits_Portraits/Cintxa_Portrait.png" id="10_l5pa6"]
 [ext_resource type="Texture2D" uid="uid://cnjenurr5b0d5" path="res://src/assets/Main_Menu/Credits_Portraits/Gus_Portrait.png" id="11_2eemj"]
 [ext_resource type="Texture2D" uid="uid://b51lfgiw6red7" path="res://src/assets/Main_Menu/Tutorial/Tutorial_Background.png" id="11_40fpi"]
 [ext_resource type="Texture2D" uid="uid://cm5r37jwk6266" path="res://src/assets/Main_Menu/Tutorial/WASD.tres" id="12_abgvc"]
 [ext_resource type="Texture2D" uid="uid://c2uk4078u2q34" path="res://src/assets/Main_Menu/Credits_Portraits/Magno_Portrait.png" id="12_bsxck"]
 [ext_resource type="Texture2D" uid="uid://dd6o2l3qfvhb2" path="res://src/assets/Main_Menu/Tutorial/Space.tres" id="13_22ese"]
-[ext_resource type="Shader" uid="uid://djkroto8tombx" path="res://src/materials/MovingLetras.gdshader" id="13_40fpi"]
+[ext_resource type="Shader" path="res://src/materials/MovingLetras.gdshader" id="13_40fpi"]
 [ext_resource type="Texture2D" uid="uid://svaj0ibsfkld" path="res://src/assets/HealthBar/Health_Bar_Background.png" id="14_4iusw"]
 [ext_resource type="Texture2D" uid="uid://b35y25cfmo5wg" path="res://src/assets/HealthBar/Health_Bar_Progress.png" id="15_gkdla"]
 [ext_resource type="Texture2D" uid="uid://d13wu6njhup03" path="res://src/assets/HealthBar/Health_Bar_Over.png" id="16_gxtlu"]
@@ -622,6 +622,7 @@ Fully fills the bar to LEVEL UP."
 
 [node name="Label" type="Label" parent="Instructions/Label"]
 material = SubResource("ShaderMaterial_22ese")
+layout_mode = 0
 offset_left = 700.0
 offset_top = -5.0
 offset_right = 791.0
@@ -635,6 +636,7 @@ text = "Inputs"
 
 [node name="Label2" type="Label" parent="Instructions/Label"]
 material = SubResource("ShaderMaterial_22ese")
+layout_mode = 0
 offset_left = 860.0
 offset_top = 235.0
 offset_right = 951.0
@@ -648,6 +650,7 @@ text = "EATtack"
 
 [node name="Label3" type="Label" parent="Instructions/Label"]
 material = SubResource("ShaderMaterial_22ese")
+layout_mode = 0
 offset_left = 851.0
 offset_top = 108.0
 offset_right = 960.0
@@ -816,6 +819,7 @@ text = "Code"
 
 [node name="CreditsMagno" type="Button" parent="Credits/GridContainer/Control2"]
 material = SubResource("ShaderMaterial_abgvc")
+layout_mode = 0
 offset_left = 29.8333
 offset_top = 4.33333
 offset_right = 256.833
@@ -891,6 +895,7 @@ text = "Art; Game Design"
 
 [node name="GusCredits" type="Button" parent="Credits/GridContainer/Control3"]
 material = SubResource("ShaderMaterial_abgvc")
+layout_mode = 0
 offset_left = 30.1667
 offset_top = 6.5
 offset_right = 257.167
@@ -966,6 +971,7 @@ text = "Art; Sound"
 
 [node name="CintiaCredits" type="Button" parent="Credits/GridContainer/Control4"]
 material = SubResource("ShaderMaterial_abgvc")
+layout_mode = 0
 offset_left = 27.6667
 offset_top = 6.83333
 offset_right = 254.667

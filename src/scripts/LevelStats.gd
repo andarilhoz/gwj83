@@ -7,3 +7,4 @@ class_name LevelStats
 @export var dash_loss_energy: float
 @export var process_food_by_seconds: float
 @export var max_energy: float   
+@export var initial_energy: float

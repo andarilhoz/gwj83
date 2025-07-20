@@ -54,8 +54,8 @@ func attack(direction: Vector2):
 	hitbox.get_node("Attack Collider").disabled = false
 
 	# Debug: checa se está detectando algo
-	print("🔎 Hitbox overlapping:", hitbox.get_overlapping_bodies())
-	print("🎯 Conectado?", hitbox.is_connected("body_entered", Callable(self, "_on_attack_hitbox_body_entered")))
+	#print("🔎 Hitbox overlapping:", hitbox.get_overlapping_bodies())
+	#print("🎯 Conectado?", hitbox.is_connected("body_entered", Callable(self, "_on_attack_hitbox_body_entered")))
 
 	# Animação de ataque
 	set_process(false)
@@ -86,17 +86,17 @@ func _on_tween_finished():
 	
 
 func _on_attack_hitbox_body_entered(body: CharacterBody2D) -> void:
-	print("🎯 Detectado:", body.name, "Grupos:", body.get_groups())
+	#print("🎯 Detectado:", body.name, "Grupos:", body.get_groups())
 	if body.is_in_group("player"):
 	
 		var energy_component = body.get_node_or_null("EnergyComponent")
 		var player = body as PlayerScript
 		if player.dashing :
-			print("Player is dashing")
+			#print("Player is dashing")
 			return
 		if energy_component:
-			print("Chamando dano...")
+			#print("Chamando dano...")
 			player.energy_component.take_damage(damage_percent)
-			print("✅ Acertou player! Dano aplicado.")
+			#print("✅ Acertou player! Dano aplicado.")
 		else:
 			print("⚠ EnergyComponent não encontrado em", body)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LevelStats" load_steps=2 format=3 uid="uid://b23360fxxonfc"]
 
-[ext_resource type="Script" path="res://src/scripts/LevelStats.gd" id="1_f68fs"]
+[ext_resource type="Script" uid="uid://pgjdk1c0t3sd" path="res://src/scripts/LevelStats.gd" id="1_f68fs"]
 
 [resource]
 script = ExtResource("1_f68fs")
@@ -10,3 +10,4 @@ walk_loss_energy = 2.5
 dash_loss_energy = 500.0
 process_food_by_seconds = 100.0
 max_energy = 60000.0
+initial_energy = 300.0

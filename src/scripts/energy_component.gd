@@ -13,9 +13,6 @@ var max_energy: float = 100.0  # valor padrão, pode ser sobrescrito com set_max
 
 var is_invulnerable: bool = false
 
-func _ready():
-	reset_energy()
-
 func set_max_energy(value: float) -> void:
 	max_energy = value
 	progress_bar.max_value = max_energy
@@ -33,7 +30,7 @@ func lose_energy(value: float):
 	if current_energy <= 0:
 		zero_energy.emit()
 
-func reset_energy():
+func reset_energy(initial_energy):
 	current_energy = initial_energy
 	current_energy = min(current_energy, max_energy)
 	progress_bar.value = current_energy
