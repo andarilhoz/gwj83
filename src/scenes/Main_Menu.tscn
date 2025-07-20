@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxhceudy8aqfj" path="res://src/assets/Main_Menu/Gloop_Title.png" id="4_j3esw"]
 [ext_resource type="Texture2D" uid="uid://dsw0of3ib3e5c" path="res://src/assets/Consumables/Mushroom_Sprite.png" id="5_rxowy"]
 [ext_resource type="Texture2D" uid="uid://bf3jsisvk5srt" path="res://src/assets/Consumables/RoastedMeat_Sprite.png" id="6_250sv"]
-[ext_resource type="Script" uid="uid://dnp4r6tw0rn53" path="res://src/scripts/settings.gd" id="6_amoe7"]
+[ext_resource type="Script" path="res://src/scripts/settings.gd" id="6_amoe7"]
 [ext_resource type="AudioStream" uid="uid://c8t1ep1hxtof7" path="res://src/assets/Sounds/MenuTheme.wav" id="7_l5pa6"]
 [ext_resource type="Texture2D" uid="uid://b2oiavuljgcb5" path="res://src/assets/Main_Menu/Credits_Portraits/Gloop_Title_Backgroun.png" id="8_2eemj"]
 [ext_resource type="Texture2D" uid="uid://bp68con6hfnbn" path="res://src/assets/Main_Menu/Credits_Portraits/Andre_Portrait.png" id="9_yto3i"]
