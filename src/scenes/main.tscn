@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://1tp1h011inky"]
+[gd_scene load_steps=75 format=4 uid="uid://1tp1h011inky"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_24j03"]
 [ext_resource type="Texture2D" uid="uid://da4swoy620qlb" path="res://src/assets/TileSetPLACEHOLDER-export.png" id="2_kbdt0"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://bvrfgh5sm07h4" path="res://src/assets/HealthBar/UpIcons.png" id="23_tx8mq"]
 [ext_resource type="Resource" uid="uid://bwa47pynpq6pb" path="res://src/Resource/SpawnTree_Ork.tres" id="34_qx2bx"]
 [ext_resource type="Resource" uid="uid://biiqcqxj3b150" path="res://src/Resource/SpawnTree_Dragon.tres" id="35_e2s0q"]
+[ext_resource type="PackedScene" uid="uid://dnf0p3ul3x7ap" path="res://src/scenes/win_lose_screen.tscn" id="42_e2s0q"]
 
 [sub_resource type="Gradient" id="Gradient_jjnpb"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -2923,10 +2924,10 @@ metadata/__load_path__ = "res://src/scenes/Enemy.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -100
-offset_left = -15958.0
-offset_top = -9188.0
-offset_right = -15702.0
-offset_bottom = -9148.0
+offset_left = -30026.0
+offset_top = -11031.0
+offset_right = -29770.0
+offset_bottom = -10853.0
 scale = Vector2(235.643, 131.355)
 texture = SubResource("GradientTexture1D_qx2bx")
 
@@ -5380,3 +5381,5 @@ frame = 2
 stream = ExtResource("20_v252j")
 volume_db = -15.39
 autoplay = true
+
+[node name="Win_Lose Screen" parent="." instance=ExtResource("42_e2s0q")]
