@@ -33,6 +33,8 @@ var absorbed_enemies : Array[EnemyInside] = []
 
 var is_dead: bool = false
 signal player_died
+signal victory
+var final_form_announced := false
 
 
 func _ready():
@@ -68,6 +70,10 @@ func update_size(percentage: float):
 	update_scale = GameConfigLoader.config.min_player_scale if update_scale < GameConfigLoader.config.min_player_scale else update_scale
 	update_scale+=level
 	scale = Vector2(update_scale, update_scale)
+	
+	if not final_form_announced and level == 3 and percentage >= current_stats.max_energy:
+		final_form_announced = true
+		victory.emit()
 
 func _physics_process(delta):
 	if has_target_position:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dnf0p3ul3x7ap"]
+[gd_scene load_steps=21 format=3 uid="uid://dnf0p3ul3x7ap"]
 
 [ext_resource type="Script" uid="uid://vpnhrcq34ec0" path="res://src/scripts/PauseMenu.gd" id="1_s4s53"]
 [ext_resource type="Texture2D" uid="uid://c287cnfcnwxp6" path="res://src/assets/MenuPlaceHolders/544-5445718_image-rights-to-riot-games-png-download-league.png" id="2_spjqj"]
 [ext_resource type="Shader" uid="uid://djkroto8tombx" path="res://src/materials/MovingLetras.gdshader" id="3_bhx5b"]
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="4_kyatx"]
+[ext_resource type="Texture2D" uid="uid://cxhceudy8aqfj" path="res://src/assets/Main_Menu/Gloop_Title.png" id="5_spjqj"]
 
 [sub_resource type="Gradient" id="Gradient_e38yt"]
 offsets = PackedFloat32Array(0.754209)
@@ -47,6 +48,7 @@ shader_parameter/speed = 5.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4wrs"]
 
 [node name="Win_Lose Screen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -251,7 +253,127 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jtcgo")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_o4wrs")
 text = "Main Menu"
 
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="BG" type="TextureRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_x7vtn")
+
+[node name="Defeat_Text" type="TextureRect" parent="PauseMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -340.0
+offset_right = 1028.0
+offset_bottom = 512.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_spjqj")
+
+[node name="Texto de derrota" type="Label" parent="PauseMenu"]
+material = SubResource("ShaderMaterial_fg2at")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -88.0
+offset_right = 198.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.253004, 0.811013, 1.54018e-06, 1)
+theme_override_fonts/font = ExtResource("4_kyatx")
+theme_override_font_sizes/font_size = 36
+text = "Even slimes need to digest."
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -20.0
+offset_right = 205.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="TryAgain2" type="Button" parent="PauseMenu/VBoxContainer"]
+process_mode = 3
+material = SubResource("ShaderMaterial_t5gsx")
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.282325, 0.899759, 0, 1)
+theme_override_fonts/font = ExtResource("4_kyatx")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jjnpb")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qx2bx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e2s0q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bexsm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_no6qo")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1lamk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_56s82")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_j53iq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xjvh2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jtcgo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o4wrs")
+text = "Resume
+"
+
+[node name="Restart" type="Button" parent="PauseMenu/VBoxContainer"]
+material = SubResource("ShaderMaterial_t5gsx")
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.282325, 0.899759, 0, 1)
+theme_override_fonts/font = ExtResource("4_kyatx")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jjnpb")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qx2bx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e2s0q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bexsm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_no6qo")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1lamk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_56s82")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_j53iq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xjvh2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jtcgo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o4wrs")
+text = "Restart"
+
+[node name="Exit To Menu" type="Button" parent="PauseMenu/VBoxContainer"]
+material = SubResource("ShaderMaterial_t5gsx")
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.282325, 0.899759, 0, 1)
+theme_override_fonts/font = ExtResource("4_kyatx")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jjnpb")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_qx2bx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e2s0q")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bexsm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_no6qo")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1lamk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_56s82")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_j53iq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xjvh2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_jtcgo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o4wrs")
+text = "Exit to Menu"
+
 [connection signal="pressed" from="Defeat_Screen/VBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="Defeat_Screen/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Win_Screen/VBoxContainer/TryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="Win_Screen/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/TryAgain2" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Restart" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Exit To Menu" to="." method="_on_main_menu_pressed"]
