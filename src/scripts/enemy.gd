@@ -46,7 +46,9 @@ func _physics_process(delta):
 	is_afraid = player.level > level
 
 	if not should_chase_player():
+		movement_component.idle_wander(delta)
 		anim.play("Idle")
+		move_and_slide()
 		return
 
 	update_chase_state()
