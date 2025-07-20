@@ -5,6 +5,7 @@ var is_paused = false
 @onready var Win_menu =  $Win_Screen
 @onready var defeat_menu = $Defeat_Screen
 @onready var player = $Player  # ou via grupo
+@onready var player_canvas = $"../CanvasLayer"
 
 func _ready():
 	var players = get_tree().get_nodes_in_group("player")
@@ -49,11 +50,15 @@ func toggle_pause():
 	is_paused = !is_paused 
 	get_tree().paused = is_paused
 	pause_menu.visible = is_paused
+	player_canvas.visible = !is_paused
+
 	
 func _on_player_died():
+	player_canvas.visible = false
 	defeat_menu.visible = true
 	get_tree().paused = true
 	
 func _on_player_victory():
+	player_canvas.visible = false
 	Win_menu.visible = true
 	get_tree().paused = true

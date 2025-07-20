@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://did3fvk7t0xi0"]
+[gd_scene load_steps=86 format=3 uid="uid://did3fvk7t0xi0"]
 
 [ext_resource type="Script" uid="uid://dd63j8g606sok" path="res://src/scripts/main_menu.gd" id="1_kwek3"]
 [ext_resource type="Texture2D" uid="uid://mnp4xqm6m65y" path="res://src/assets/Main_Menu/Menu_Background.png" id="2_idn0a"]
@@ -6,21 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://cxhceudy8aqfj" path="res://src/assets/Main_Menu/Gloop_Title.png" id="4_j3esw"]
 [ext_resource type="Texture2D" uid="uid://dsw0of3ib3e5c" path="res://src/assets/Consumables/Mushroom_Sprite.png" id="5_rxowy"]
 [ext_resource type="Texture2D" uid="uid://bf3jsisvk5srt" path="res://src/assets/Consumables/RoastedMeat_Sprite.png" id="6_250sv"]
-[ext_resource type="Script" path="res://src/scripts/settings.gd" id="6_amoe7"]
+[ext_resource type="Script" uid="uid://dnp4r6tw0rn53" path="res://src/scripts/settings.gd" id="6_amoe7"]
 [ext_resource type="AudioStream" uid="uid://c8t1ep1hxtof7" path="res://src/assets/Sounds/MenuTheme.wav" id="7_l5pa6"]
 [ext_resource type="Texture2D" uid="uid://b2oiavuljgcb5" path="res://src/assets/Main_Menu/Credits_Portraits/Gloop_Title_Backgroun.png" id="8_2eemj"]
 [ext_resource type="Texture2D" uid="uid://bp68con6hfnbn" path="res://src/assets/Main_Menu/Credits_Portraits/Andre_Portrait.png" id="9_yto3i"]
-[ext_resource type="Script" path="res://src/scripts/WoblyMovementHead.gd" id="10_2eemj"]
+[ext_resource type="Script" uid="uid://cbxf5y8fb4ybr" path="res://src/scripts/WoblyMovementHead.gd" id="10_2eemj"]
 [ext_resource type="Texture2D" uid="uid://8egfb2b1fiuc" path="res://src/assets/Main_Menu/Credits_Portraits/Cintxa_Portrait.png" id="10_l5pa6"]
 [ext_resource type="Texture2D" uid="uid://cnjenurr5b0d5" path="res://src/assets/Main_Menu/Credits_Portraits/Gus_Portrait.png" id="11_2eemj"]
 [ext_resource type="Texture2D" uid="uid://b51lfgiw6red7" path="res://src/assets/Main_Menu/Tutorial/Tutorial_Background.png" id="11_40fpi"]
 [ext_resource type="Texture2D" uid="uid://cm5r37jwk6266" path="res://src/assets/Main_Menu/Tutorial/WASD.tres" id="12_abgvc"]
 [ext_resource type="Texture2D" uid="uid://c2uk4078u2q34" path="res://src/assets/Main_Menu/Credits_Portraits/Magno_Portrait.png" id="12_bsxck"]
 [ext_resource type="Texture2D" uid="uid://dd6o2l3qfvhb2" path="res://src/assets/Main_Menu/Tutorial/Space.tres" id="13_22ese"]
-[ext_resource type="Shader" path="res://src/materials/MovingLetras.gdshader" id="13_40fpi"]
+[ext_resource type="Shader" uid="uid://djkroto8tombx" path="res://src/materials/MovingLetras.gdshader" id="13_40fpi"]
 [ext_resource type="Texture2D" uid="uid://svaj0ibsfkld" path="res://src/assets/HealthBar/Health_Bar_Background.png" id="14_4iusw"]
 [ext_resource type="Texture2D" uid="uid://b35y25cfmo5wg" path="res://src/assets/HealthBar/Health_Bar_Progress.png" id="15_gkdla"]
 [ext_resource type="Texture2D" uid="uid://d13wu6njhup03" path="res://src/assets/HealthBar/Health_Bar_Over.png" id="16_gxtlu"]
+[ext_resource type="Script" uid="uid://by0h5t2lrl5ub" path="res://src/scripts/credits_openTab.gd" id="17_22ese"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amoe7"]
 texture = ExtResource("2_idn0a")
@@ -111,11 +112,45 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0.137255, 0.929412, 1, 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6njv"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ese"]
+shader = ExtResource("13_40fpi")
+shader_parameter/amplitude = 1.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yto3i"]
 shader = ExtResource("13_40fpi")
 shader_parameter/amplitude = 5.0
 shader_parameter/frequency = 10.0
 shader_parameter/speed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_abgvc"]
+shader = ExtResource("13_40fpi")
+shader_parameter/amplitude = 5.0
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7wpe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_du5tk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8k888"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgtc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5wmq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbwej"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_utxne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cleyv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t07m1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qudwn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4u02n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yals"]
 
@@ -560,123 +595,69 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_q7d0q")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mhs6i")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_w4233")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_t6njv")
+button_mask = 0
 text = "Return"
 
-[node name="Inputs" type="Button" parent="Instructions"]
-material = SubResource("ShaderMaterial_l5pa6")
-layout_mode = 2
-offset_left = 711.0
-offset_top = 310.0
-offset_right = 1137.0
-offset_bottom = 369.0
-size_flags_vertical = 3
-theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+[node name="Label" type="Label" parent="Instructions"]
+material = SubResource("ShaderMaterial_22ese")
+layout_mode = 0
+offset_left = 188.0
+offset_top = 329.0
+offset_right = 801.0
+offset_bottom = 560.0
 theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
-theme_override_constants/outline_size = 13
-theme_override_fonts/font = ExtResource("2_kwek3")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
-button_mask = 0
-text = "Inputs"
-
-[node name="Movement" type="Button" parent="Instructions"]
-material = SubResource("ShaderMaterial_l5pa6")
-layout_mode = 2
-offset_left = 881.0
-offset_top = 426.001
-offset_right = 1307.0
-offset_bottom = 485.001
-size_flags_vertical = 3
 theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
-theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
-theme_override_constants/outline_size = 13
-theme_override_fonts/font = ExtResource("2_kwek3")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
-button_mask = 0
-text = "Movement"
-
-[node name="Eat" type="Button" parent="Instructions"]
-material = SubResource("ShaderMaterial_l5pa6")
-layout_mode = 2
-offset_left = 881.0
-offset_top = 550.0
-offset_right = 1307.0
-offset_bottom = 609.0
-size_flags_vertical = 3
-theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
-theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
-theme_override_constants/outline_size = 13
-theme_override_fonts/font = ExtResource("2_kwek3")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
-button_mask = 0
-text = "EATtack"
-
-[node name="Game Description" type="Button" parent="Instructions"]
-material = SubResource("ShaderMaterial_l5pa6")
-layout_mode = 2
-offset_left = 169.0
-offset_top = 327.0
-offset_right = 668.0
-offset_bottom = 547.0
-scale = Vector2(1.08, 1)
-size_flags_vertical = 3
-theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
-theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
 theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_amoe7")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b05dy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_idn0a")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_j3esw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_rxowy")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_250sv")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yh40j")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_kwek3")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yto3i")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xfhpr")
-button_mask = 0
-shortcut_feedback = false
-shortcut_in_tooltip = false
 text = "MAIN GOAL - Eat enemies to survive and grow LARGER. 
 
 Consumption - Moving on clean ground and EATtacking consumes your GOO. 
 
-Eating - Eat enemies your size by EATtacking to increse you goo level. 
+Eating - Eat enemies your size by EATtacking to increase you goo level. 
 You can't perform another EATtack while digesting creatures.
 
 Goo Bar - This bar measures your GOO level. If the level gets too low, you'll DIE. 
 Fully fills the bar to LEVEL UP."
-alignment = 0
+
+[node name="Label" type="Label" parent="Instructions/Label"]
+material = SubResource("ShaderMaterial_22ese")
+offset_left = 700.0
+offset_top = -5.0
+offset_right = 791.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 30
+text = "Inputs"
+
+[node name="Label2" type="Label" parent="Instructions/Label"]
+material = SubResource("ShaderMaterial_22ese")
+offset_left = 860.0
+offset_top = 235.0
+offset_right = 951.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 30
+text = "EATtack"
+
+[node name="Label3" type="Label" parent="Instructions/Label"]
+material = SubResource("ShaderMaterial_22ese")
+offset_left = 851.0
+offset_top = 108.0
+offset_right = 960.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0.352941, 0.862745, 0.203922, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0117647, 0.156863, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 30
+text = "Movement"
 
 [node name="Credits" type="Control" parent="."]
 visible = false
@@ -686,6 +667,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("17_22ese")
 
 [node name="GridContainer" type="GridContainer" parent="Credits"]
 layout_direction = 1
@@ -718,6 +700,7 @@ texture = ExtResource("9_yto3i")
 script = ExtResource("10_2eemj")
 
 [node name="Label" type="Label" parent="Credits/GridContainer/Control"]
+visible = false
 material = SubResource("ShaderMaterial_yto3i")
 layout_mode = 1
 anchors_preset = 4
@@ -755,6 +738,32 @@ theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 text = "Code; Sound; Game Design"
 
+[node name="CreditsAndre" type="Button" parent="Credits/GridContainer/Control"]
+material = SubResource("ShaderMaterial_abgvc")
+layout_mode = 0
+offset_left = 30.1667
+offset_top = 4.83333
+offset_right = 244.167
+offset_bottom = 107.833
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e7wpe")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_du5tk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8k888")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wgtc2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_n5wmq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gbwej")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_utxne")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_cleyv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t07m1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qudwn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4u02n")
+text = "Andre"
+
 [node name="Control2" type="Control" parent="Credits/GridContainer"]
 layout_mode = 2
 
@@ -767,6 +776,7 @@ texture = ExtResource("12_bsxck")
 script = ExtResource("10_2eemj")
 
 [node name="Label" type="Label" parent="Credits/GridContainer/Control2"]
+visible = false
 material = SubResource("ShaderMaterial_yto3i")
 layout_mode = 1
 anchors_preset = 4
@@ -791,10 +801,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 29.6667
-offset_top = 15.8333
-offset_right = 262.667
-offset_bottom = 119.834
+offset_left = 30.1667
+offset_top = 14.1667
+offset_right = 263.167
+offset_bottom = 118.167
 grow_vertical = 2
 scale = Vector2(0.108333, 0.0883331)
 theme_override_colors/font_color = Color(0.596078, 0.807843, 0, 1)
@@ -803,6 +813,31 @@ theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 text = "Code"
+
+[node name="CreditsMagno" type="Button" parent="Credits/GridContainer/Control2"]
+material = SubResource("ShaderMaterial_abgvc")
+offset_left = 29.8333
+offset_top = 4.33333
+offset_right = 256.833
+offset_bottom = 107.333
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e7wpe")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_du5tk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8k888")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wgtc2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_n5wmq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gbwej")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_utxne")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_cleyv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t07m1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qudwn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4u02n")
+text = "Magno"
 
 [node name="Control3" type="Control" parent="Credits/GridContainer"]
 layout_mode = 2
@@ -816,6 +851,7 @@ texture = ExtResource("11_2eemj")
 script = ExtResource("10_2eemj")
 
 [node name="Label" type="Label" parent="Credits/GridContainer/Control3"]
+visible = false
 material = SubResource("ShaderMaterial_yto3i")
 layout_mode = 1
 anchors_preset = 4
@@ -853,6 +889,31 @@ theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 text = "Art; Game Design"
 
+[node name="GusCredits" type="Button" parent="Credits/GridContainer/Control3"]
+material = SubResource("ShaderMaterial_abgvc")
+offset_left = 30.1667
+offset_top = 6.5
+offset_right = 257.167
+offset_bottom = 109.5
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e7wpe")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_du5tk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8k888")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wgtc2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_n5wmq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gbwej")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_utxne")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_cleyv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t07m1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qudwn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4u02n")
+text = "Gustavo"
+
 [node name="Control4" type="Control" parent="Credits/GridContainer"]
 layout_mode = 2
 
@@ -865,6 +926,7 @@ texture = ExtResource("10_l5pa6")
 script = ExtResource("10_2eemj")
 
 [node name="Label" type="Label" parent="Credits/GridContainer/Control4"]
+visible = false
 material = SubResource("ShaderMaterial_yto3i")
 layout_mode = 1
 anchors_preset = 4
@@ -889,10 +951,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 29.6667
-offset_top = 15.8333
-offset_right = 262.667
-offset_bottom = 119.834
+offset_left = 29.8333
+offset_top = 16.8333
+offset_right = 262.834
+offset_bottom = 120.834
 grow_vertical = 2
 scale = Vector2(0.108333, 0.0883331)
 theme_override_colors/font_color = Color(0.596078, 0.807843, 0, 1)
@@ -901,6 +963,31 @@ theme_override_constants/outline_size = 13
 theme_override_fonts/font = ExtResource("2_kwek3")
 theme_override_font_sizes/font_size = 55
 text = "Art; Sound"
+
+[node name="CintiaCredits" type="Button" parent="Credits/GridContainer/Control4"]
+material = SubResource("ShaderMaterial_abgvc")
+offset_left = 27.6667
+offset_top = 6.83333
+offset_right = 254.667
+offset_bottom = 109.833
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0.807843, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("2_kwek3")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e7wpe")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_du5tk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8k888")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wgtc2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_n5wmq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_gbwej")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_utxne")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_cleyv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_t07m1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_qudwn")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4u02n")
+text = "Cintia"
 
 [node name="Button" type="Button" parent="Credits"]
 layout_mode = 1
@@ -939,9 +1026,8 @@ text = "Return"
 [connection signal="toggled" from="Settings/VBoxContainer/CheckBox" to="Settings" method="_on_check_box_toggled"]
 [connection signal="item_selected" from="Settings/VBoxContainer/OptionButton" to="Settings" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Settings/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Instructions/Return" to="." method="_on_instructions_return_pressed"]
-[connection signal="pressed" from="Instructions/Inputs" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Instructions/Movement" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Instructions/Eat" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Instructions/Game Description" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credits/GridContainer/Control/CreditsAndre" to="Credits" method="_on_credits_andre_pressed"]
+[connection signal="pressed" from="Credits/GridContainer/Control2/CreditsMagno" to="Credits" method="_on_credits_magno_pressed"]
+[connection signal="pressed" from="Credits/GridContainer/Control3/GusCredits" to="Credits" method="_on_gus_credits_pressed"]
+[connection signal="pressed" from="Credits/GridContainer/Control4/CintiaCredits" to="Credits" method="_on_cintia_credits_pressed"]
 [connection signal="pressed" from="Credits/Button" to="." method="_on_return_Credits_pressed"]
