@@ -1,12 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://dnf0p3ul3x7ap"]
+[gd_scene load_steps=25 format=3 uid="uid://dnf0p3ul3x7ap"]
 
 [ext_resource type="Script" uid="uid://vpnhrcq34ec0" path="res://src/scripts/PauseMenu.gd" id="1_s4s53"]
 [ext_resource type="Texture2D" uid="uid://ddiwflpgmbdbm" path="res://src/assets/Main_Menu/Defeat.png" id="2_bhx5b"]
-[ext_resource type="Shader" uid="uid://djkroto8tombx" path="res://src/materials/MovingLetras.gdshader" id="3_bhx5b"]
+[ext_resource type="Shader" path="res://src/materials/MovingLetras.gdshader" id="3_bhx5b"]
+[ext_resource type="Texture2D" uid="uid://ck7ediafnt1qs" path="res://src/assets/Main_Menu/DefeatBanner.png" id="3_wdkln"]
 [ext_resource type="FontFile" uid="uid://dcwce76p4c5qo" path="res://src/assets/MenuPlaceHolders/GREEN SLIME.otf" id="4_kyatx"]
 [ext_resource type="Texture2D" uid="uid://fwpdgw2jxeh" path="res://src/assets/Main_Menu/Victory_Glow.png" id="5_801my"]
 [ext_resource type="Texture2D" uid="uid://yngrmlbtjjd3" path="res://src/assets/Main_Menu/Victory.png" id="5_kyatx"]
 [ext_resource type="Texture2D" uid="uid://cxhceudy8aqfj" path="res://src/assets/Main_Menu/Gloop_Title.png" id="5_spjqj"]
+[ext_resource type="Texture2D" uid="uid://cmvuynpruw0ql" path="res://src/assets/Main_Menu/VictoryBanner.png" id="7_6367c"]
 
 [sub_resource type="Gradient" id="Gradient_e38yt"]
 offsets = PackedFloat32Array(0.754209)
@@ -69,6 +71,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_x7vtn")
+
+[node name="Defeat_Text4" type="TextureRect" parent="Defeat_Screen"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -360.0
+offset_right = 1728.0
+offset_bottom = 630.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.405019, 0.365019)
+texture = ExtResource("5_801my")
+stretch_mode = 3
+
+[node name="Defeat_Text5" type="TextureRect" parent="Defeat_Screen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -243.0
+offset_right = 1728.0
+offset_bottom = 747.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.405019, 0.365019)
+texture = ExtResource("3_wdkln")
 
 [node name="Defeat_Text" type="TextureRect" parent="Defeat_Screen"]
 anchors_preset = 8
@@ -187,6 +221,21 @@ grow_vertical = 2
 scale = Vector2(0.405019, 0.365019)
 texture = ExtResource("5_801my")
 stretch_mode = 3
+
+[node name="Defeat_Text3" type="TextureRect" parent="Win_Screen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -247.0
+offset_right = 1728.0
+offset_bottom = 743.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.405019, 0.365019)
+texture = ExtResource("7_6367c")
 
 [node name="Defeat_Text" type="TextureRect" parent="Win_Screen"]
 anchors_preset = 8
