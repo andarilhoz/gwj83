@@ -5305,24 +5305,22 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
 enemy_scene = SubResource("Resource_am227")
-spawn_radius_level_1 = 1200.0
+spawn_radius_level_1 = 1500.0
 spawn_radius_level_2 = 2000.0
 spawn_radius_level_3 = 4000.0
 max_enemies = 30
 min_enemies = 1
-spawn_rate = 4.0
 spawn_table = ExtResource("19_tx8mq")
 
 [node name="EnemySpawner_Ork" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_yk6rd")
 player = NodePath("../Player")
 enemy_scene = SubResource("Resource_am227")
-spawn_radius_level_1 = 1200.0
+spawn_radius_level_1 = 1500.0
 spawn_radius_level_2 = 2000.0
 spawn_radius_level_3 = 4000.0
 max_enemies = 30
 min_enemies = 1
-spawn_rate = 4.0
 spawn_table = ExtResource("34_qx2bx")
 
 [node name="EnemySpawner_Dragon" type="Node2D" parent="." node_paths=PackedStringArray("player")]
@@ -5334,7 +5332,6 @@ spawn_radius_level_2 = 2000.0
 spawn_radius_level_3 = 4000.0
 max_enemies = 30
 min_enemies = 1
-spawn_rate = 4.0
 spawn_table = ExtResource("35_e2s0q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
